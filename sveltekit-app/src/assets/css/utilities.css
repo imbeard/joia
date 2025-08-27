@@ -1,0 +1,274 @@
+/* layout */
+
+@utility grid-12 {
+	@apply grid grid-cols-12 gap-xs;
+}
+
+@utility grid-8 {
+	@apply grid grid-cols-8 gap-xs;
+}
+
+@utility grid-6 {
+	@apply grid grid-cols-6 gap-xs;
+}
+
+@utility grid-5 {
+	@apply grid grid-cols-5 gap-xs;
+}
+
+@utility grid-4 {
+	@apply grid grid-cols-4 gap-xs;
+}
+
+@utility grid-3 {
+	@apply grid grid-cols-3 gap-xs;
+}
+
+@utility grid-2 {
+	@apply grid grid-cols-2 gap-xs;
+}
+
+/* typography */
+
+@utility typo-xs {
+	@apply text-m-xs tracking-normal lg:typo-s;
+}
+
+@utility typo-s {
+	@apply text-m-s lg:text-s tracking-tight;
+}
+
+@utility typo-base {
+	@apply text-m-base lg:text-base tracking-tight;
+}
+
+@utility typo-lg {
+	@apply text-m-lg lg:text-lg tracking-tighter;
+}
+
+@utility typo-xl {
+	@apply text-m-xl lg:text-xl tracking-tighter;
+}
+
+@utility typo-2xl {
+	@apply text-m-2xl lg:text-2xl tracking-tighter;
+}
+
+/* themes */
+
+@utility theme-pink-red {
+	@apply bg-pink text-red;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-red text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-blue {
+	@apply bg-pink text-blue;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-blue text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-brown {
+	@apply bg-pink text-brown;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-brown text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
+	}
+}
+
+@utility theme-pink-black {
+	@apply bg-pink text-black;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-black text-pink;
+	}
+	&.performance:hover {
+		@apply text-pink;
+	}
+}
+
+@utility theme-black-pink {
+	@apply bg-black text-pink;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-pink text-black;
+	}
+	&.performance:hover {
+		@apply text-black;
+	}
+}
+
+@utility theme-red-pink {
+	@apply bg-red text-pink;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-pink text-red;
+	}
+	&.performance:hover {
+		@apply text-red;
+	}
+}
+
+@utility theme-red-black {
+	@apply bg-red text-black;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-black text-red;
+	}
+	&.performance:hover {
+		@apply text-red;
+	}
+}
+
+@utility theme-brown-pink {
+	@apply bg-brown text-pink;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-pink text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-brown-gray {
+	@apply bg-brown text-gray;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-gray text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-brown-black {
+	@apply bg-brown text-black;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-black text-brown;
+	}
+	&.performance:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-gray-blue {
+	@apply bg-gray text-blue;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-blue text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
+	}
+}
+
+@utility theme-gray-black {
+	@apply bg-gray text-black;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-black text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
+	}
+}
+
+@utility theme-gray-red {
+	@apply bg-gray text-red;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-red text-gray;
+	}
+	&.performance:hover {
+		@apply text-gray;
+	}
+}
+
+@utility theme-gray-brown {
+	@apply bg-gray text-brown;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-brown text-gray;
+	}
+	&.performance:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-blue-pink {
+	@apply bg-blue text-pink;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-pink text-blue;
+	}
+	&.performance:hover {
+		@apply text-blue;
+	}
+}
+
+@utility theme-blue-gray {
+	@apply bg-blue text-gray;
+
+	&.button:hover,
+	&.card-empty:hover {
+		@apply bg-gray text-blue;
+	}
+	&.performance:hover {
+		@apply text-blue;
+	}
+}
+
+/* themes of page types */
+
+@utility theme-events {
+	@apply theme-brown-gray;
+	&:hover {
+		@apply text-brown;
+	}
+}
+
+@utility theme-partners {
+	@apply theme-pink-blue;
+}
+
+@utility theme-people {
+	@apply theme-red-pink;
+}
+
+@utility theme-performances {
+	@apply theme-black-pink;
+}
+
+@utility theme-resources {
+	@apply theme-blue-pink;
+}

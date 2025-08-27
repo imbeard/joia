@@ -1,0 +1,5 @@
+packages:
+  - 'sveltekit-app'
+  - 'studio'
+
+neverBuiltDependencies: []

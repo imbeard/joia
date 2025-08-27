@@ -1,0 +1,17 @@
+<script lang="ts">
+	// @ts-nocheck
+	import { headerHeight } from '$lib/stores/header';
+	import Image from '$lib/components/element/Image.svelte';
+	import PortableText from '$lib/components/element/PortableText.svelte';
+	import Link from '$lib/components/element/Link.svelte';
+	import Marquee from '$lib/components/element/Marquee.svelte';
+
+	// let { data } = $props();
+</script>
+
+<main>
+	<section></section>
+</main>
+
+<style>
+</style>
