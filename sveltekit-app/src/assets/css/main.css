@@ -4,7 +4,6 @@
 @import './utilities.css';
 
 @source inline("grid-cols-{0..12}");
-@source inline("theme-{pink,red,blue,black,brown,gray}-{pink,red,blue,black,brown,gray}");
 
 html {
 	font-size: 10px;
@@ -16,15 +15,6 @@ html {
 
 button {
 	@apply cursor-pointer;
-}
-
-@keyframes sliderDotProgress {
-	0% {
-		width: 0%;
-	}
-	100% {
-		width: 100%;
-	}
 }
 
 /* a {

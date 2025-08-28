@@ -1,15 +1,24 @@
 <script lang="ts">
 	import '../assets/css/main.css';
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
+	import LL, { setLocale } from '$i18n/i18n-svelte';
 	import { page } from '$app/state';
 	import LiveMode from '$lib/components/LiveMode.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import HeadHrefLangs from '$lib/components/HeaderHrefLangs.svelte';
+
 	import { dev } from '$app/environment';
 
 	let { data, children } = $props();
+	setLocale(data.locale);
+
 	let settings = $derived(data?.settings?.data);
 </script>
+
+<svelte:head>
+	<HeadHrefLangs />
+</svelte:head>
 
 {#if $isPreviewing}
 	<a href={`/preview/disable?redirect=${page.url.pathname}`} class="preview-toggle">
