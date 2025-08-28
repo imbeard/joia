@@ -33,4 +33,4 @@
 	}}
 />
 
-<nav class="w-full p-xs fixed top-0 left-0 z-99 nav" bind:clientHeight={navHeight}>Header</nav>
+<nav class="w-full p-xs fixed top-0 left-0 z-99 nav" bind:clientHeight={navHeight}></nav>
