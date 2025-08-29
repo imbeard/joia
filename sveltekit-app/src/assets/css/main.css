@@ -7,6 +7,13 @@
 
 html {
 	font-size: 10px;
+	font-family: var(--font-serif);
+	color: var(--color-green);
+}
+
+body {
+	font-size: var(--text-base);
+	line-height: var(--text-base--line-height);
 }
 
 .button {

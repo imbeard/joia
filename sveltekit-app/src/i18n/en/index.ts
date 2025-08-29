@@ -1,7 +1,8 @@
 import type { Translation } from '../i18n-types'
 
 const en = {
-	welcome: 'Hi in english',
+	book: 'Book',
+	gift: 'Gift',
 } satisfies Translation
 
 export default en

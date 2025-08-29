@@ -20,10 +20,13 @@
 
 	--text-*: initial;
 
+	--text-s: 1.4rem;
+	--text-s--line-height: 1.6rem;
 	--text-base: 1.6rem;
 	--text-base--line-height: 1.8rem;
 
 	--color-*: initial;
+	--color-white: #fff;
 	--color-green: #057953;
 
 	--spacing: 0.8rem;

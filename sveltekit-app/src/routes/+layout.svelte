@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import '../assets/css/main.css';
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import LL, { setLocale } from '$i18n/i18n-svelte';
@@ -14,6 +14,8 @@
 	setLocale(data.locale);
 
 	let settings = $derived(data?.settings?.data);
+	let name = $derived(settings?.companyName);
+	let season = $derived(settings?.season);
 </script>
 
 <svelte:head>
@@ -28,9 +30,9 @@
 {/if}
 
 <div class="typo-base">
-	<Header />
+	<Header {name} {season} />
 	{@render children?.()}
-	<div class="mt-12">
+	<div class="mt-24">
 		<Footer data={settings} />
 	</div>
 </div>

@@ -1,7 +1,8 @@
 import type { BaseTranslation } from '../i18n-types'
 
 const it = {
-	welcome: 'Ciao',
+	book: 'Prenota',
+	gift: 'Regala',
 } satisfies BaseTranslation
 
 export default it

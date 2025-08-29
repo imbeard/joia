@@ -33,3 +33,7 @@
 @utility typo-base {
 	@apply text-base;
 }
+
+@utility typo-s {
+	@apply text-s;
+}
