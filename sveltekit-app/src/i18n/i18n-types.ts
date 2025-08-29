@@ -22,6 +22,10 @@ type RootTranslation = {
 	 * G​i​f​t
 	 */
 	gift: string
+	/**
+	 * L​a​n​g​u​a​g​e
+	 */
+	language: string
 }
 
 export type TranslationFunctions = {
@@ -33,6 +37,10 @@ export type TranslationFunctions = {
 	 * Gift
 	 */
 	gift: () => LocalizedString
+	/**
+	 * Language
+	 */
+	language: () => LocalizedString
 }
 
 export type Formatters = {}

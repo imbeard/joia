@@ -5,9 +5,9 @@
 	import { headerHeight, menuOpen } from '$lib/stores/header';
 	import { afterNavigate } from '$app/navigation';
 	import { lockscroll } from '@svelte-put/lockscroll';
-	import { on } from 'svelte/events';
-
 	import MenuIcon from '$lib/components/svg/MenuIcon.svelte';
+	import AsideMenu from '$lib/components/element/AsideMenu.svelte';
+
 
 	let { name, season } = $props();
 	let navHeight = $state(0);
@@ -21,6 +21,10 @@
 	afterNavigate(() => {
 		menuOpen.set(false);
 	});
+
+	$effect(() => {
+		console.log($menuOpen)
+	})
 </script>
 
 <svelte:body use:lockscroll={locked} />
@@ -37,10 +41,12 @@
 	<a href="/" class="p-0.5 backdrop-blur-xl">{name}</a>
 	<div class="absolute left-1/2 -translate-x-1/2 p-0.5 w-auto">{season}</div>
 	<div class="flex gap-3 items-center">
-		<a href="/"  class="p-0.5 backdrop-blur-xl">{$LL.book()}</a>
-		<a href="/"  class="p-0.5 backdrop-blur-xl">{$LL.gift()}</a>
-		<div class="p-0.5">
-			<MenuIcon on:click={() => ($menuOpen = !$menuOpen)} />
-		</div>
+		<a href="/" class="p-0.5 backdrop-blur-xl">{$LL.book()}</a>
+		<a href="/" class="p-0.5 backdrop-blur-xl">{$LL.gift()}</a>
+		<button class="p-0.5" onclick={() => ($menuOpen = !$menuOpen)}>
+			<MenuIcon />
+		</button>
 	</div>
 </nav>
+
+<AsideMenu />

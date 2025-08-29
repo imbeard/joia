@@ -28,11 +28,11 @@
 	};
 
 	// update `lang` attribute
-    $effect(() => {
-        if (browser) {
-            document.querySelector('html')?.setAttribute('lang', $locale);
-        }
-    })
+	$effect(() => {
+		if (browser) {
+			document.querySelector('html')?.setAttribute('lang', $locale);
+		}
+	});
 	// update locale when navigating via browser back/forward buttons
 	const handlePopStateEvent = async ({ state }: PopStateEvent) => switchLocale(state.locale, false);
 
@@ -52,12 +52,32 @@
 
 <svelte:window on:popstate={handlePopStateEvent} />
 
-<ul>
+<ul class="flex gap-1">
 	{#each locales as l}
 		<li>
-			<a class:active={l === $locale} href={replaceLocaleInUrl(page.url, l)}>
+			<a
+				class="menu-btn uppercase"
+				class:active={l === $locale}
+				href={replaceLocaleInUrl(page.url, l)}
+			>
 				{l}
 			</a>
 		</li>
+		{#if l !== locales[locales.length - 1]}
+			<li>|</li>
+		{/if}
 	{/each}
 </ul>
+
+<style lang="postcss">
+	a.active {
+		opacity: 1;
+	}
+	.menu-btn {
+		opacity: 0.4;
+		transition: opacity 350ms ease-in-out;
+		&:hover {
+			opacity: 1;
+		}
+	}
+</style>

@@ -35,7 +35,7 @@
 			<div class="flex justify-between border-b border-b-green">
 				<input type="text" placeholder="Inserisci email" />
 				<button class="uppercase w-fit">
-					<ArrowRight />
+					<ArrowRight fill="var(--color-green)"/>
 				</button>
 			</div>
 		</div>
