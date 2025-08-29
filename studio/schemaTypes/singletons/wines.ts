@@ -47,10 +47,28 @@ export const wines = defineType({
               type: 'string',
             }),
             defineField({
-              name: 'content',
-              title: 'Content',
-              type: 'blockContent',
-            })
+              name: 'groups',
+              title: 'Groups',
+              type: 'array',
+              of: [
+                {
+                  name: 'origin',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'title',
+                      title: 'Title',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'wines',
+                      title: 'Wines',
+                      type: 'blockContent',
+                    }),
+                  ],
+                },
+              ],
+            }),
           ],
         },
       ],

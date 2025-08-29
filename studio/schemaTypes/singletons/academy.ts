@@ -36,7 +36,38 @@ export const academy = defineType({
         {
           name: 'course',
           title: 'Course',
-          type: 'infoSection',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'enrollmentOpen',
+              title: 'Enrollment Open',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Yes', value: 'yes'},
+                  {title: 'No', value: 'no'},
+                ],
+                layout: 'radio',
+                direction: 'horizontal',
+              },
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'blockContent',
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              subtitle: 'description',
+            },
+          },
         },
       ],
     }),

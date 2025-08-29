@@ -14,12 +14,7 @@ export const twoImages = defineType({
         layout: 'grid',
       },
       validation: (Rule) => Rule.max(2),
-    }),
-    defineField({
-      name: 'caption',
-      title: 'Caption',
-      type: 'blockContent',
-    }),
+    })
   ],
   preview: {
     prepare() {

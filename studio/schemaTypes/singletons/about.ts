@@ -6,6 +6,16 @@ export const about = defineType({
   title: 'About',
   type: 'document',
   icon: CropIcon,
+  fieldsets: [
+    {
+      name: 'teamSection',
+      options: {
+        collapsed: false,
+        collapsible: false,
+        modal: {type: 'popover'},
+      },
+    },
+  ],
   fields: [
     defineField({
       name: 'language',
@@ -41,8 +51,15 @@ export const about = defineType({
     defineField({
       name: 'team',
       title: 'Team',
+      fieldset: 'teamSection',
       type: 'array',
       of: [{name: 'member', title: 'Member', type: 'infoSection'}],
+    }),
+    defineField({
+      name: 'teamImage',
+      title: 'Team Image',
+      type: 'elementImage',
+      fieldset: 'teamSection',
     }),
     defineField({
       name: 'founder',

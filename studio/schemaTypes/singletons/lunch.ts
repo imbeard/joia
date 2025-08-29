@@ -41,6 +41,7 @@ export const lunch = defineType({
               name: 'price',
               title: 'Price',
               type: 'text',
+              rows: 3,
             }),
             defineField({
               name: 'description',
