@@ -33,7 +33,7 @@
 	<div class="flex flex-col gap-2 w-full border-b border-b-white pb-0.5">
 		<div class="uppercase">Newsletter</div>
 		<div class="flex justify-between">
-			<input type="text" placeholder="Inserisci email" />
+			<input type="text" placeholder={$LL.newsletter()} />
 			<button><ArrowRight fill="var(--color-white)" /></button>
 		</div>
 	</div>

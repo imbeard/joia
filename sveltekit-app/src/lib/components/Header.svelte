@@ -8,7 +8,6 @@
 	import MenuIcon from '$lib/components/svg/MenuIcon.svelte';
 	import AsideMenu from '$lib/components/element/AsideMenu.svelte';
 
-
 	let { name, season } = $props();
 	let navHeight = $state(0);
 
@@ -23,8 +22,8 @@
 	});
 
 	$effect(() => {
-		console.log($menuOpen)
-	})
+		console.log($menuOpen);
+	});
 </script>
 
 <svelte:body use:lockscroll={locked} />
@@ -38,12 +37,13 @@
 	class="w-full p-1.5 fixed top-0 left-0 z-99 flex justify-between uppercase"
 	bind:clientHeight={navHeight}
 >
-	<a href="/" class="p-0.5 backdrop-blur-xl">{name}</a>
-	<div class="absolute left-1/2 -translate-x-1/2 p-0.5 w-auto">{season}</div>
+	<a href="/" class="py-0.5 px-1 backdrop-blur-xl md:hidden">Joia</a>
+	<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{name}</a>
+	<div class="absolute left-1/2 -translate-x-1/2 py-0.5 px-1 w-auto">{season}</div>
 	<div class="flex gap-3 items-center">
-		<a href="/" class="p-0.5 backdrop-blur-xl">{$LL.book()}</a>
-		<a href="/" class="p-0.5 backdrop-blur-xl">{$LL.gift()}</a>
-		<button class="p-0.5" onclick={() => ($menuOpen = !$menuOpen)}>
+		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.book()}</a>
+		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a>
+		<button class="py-0.5 px-1" onclick={() => ($menuOpen = !$menuOpen)}>
 			<MenuIcon />
 		</button>
 	</div>

@@ -7,7 +7,8 @@
 	import { locales } from '$i18n/i18n-util';
 	import { loadLocaleAsync } from '$i18n/i18n-util.async';
 	import { onMount } from 'svelte';
-	import { replaceLocaleInUrl } from '../../utils.js';
+	import { replaceLocaleInUrl, setCookie } from '../../utils.js';
+	import { LOCALE_COOKIE_NAME } from '$lib/constants.js';
 
 	const switchLocale = async (newLocale: Locales, updateHistoryState = true) => {
 		if (!newLocale || $locale === newLocale) return;
@@ -17,6 +18,11 @@
 
 		// select locale
 		setLocale(newLocale);
+
+		// Set cookie to persist locale choice
+		if (browser) {
+			setCookie(LOCALE_COOKIE_NAME, newLocale);
+		}
 
 		if (updateHistoryState) {
 			// update url to reflect locale changes

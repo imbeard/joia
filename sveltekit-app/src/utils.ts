@@ -24,3 +24,48 @@ export const replaceLocaleInUrl = (url: URL, locale: string, full = false): stri
 const REGEX_START_WITH_BASE = new RegExp(`^${base}`);
 
 export const getPathnameWithoutBase = (url: URL) => url.pathname.replace(REGEX_START_WITH_BASE, '');
+
+// ----------------------------------------------------------------------------
+
+// Cookie utility functions
+export const setCookie = (
+	name: string,
+	value: string,
+	options: {
+		path?: string;
+		maxAge?: number;
+		httpOnly?: boolean;
+		secure?: boolean;
+		sameSite?: 'strict' | 'lax' | 'none';
+	} = {}
+) => {
+	const {
+		path = '/',
+		maxAge = 60 * 60 * 24 * 365, // 1 year
+		httpOnly = false,
+		secure = false,
+		sameSite = 'lax'
+	} = options;
+
+	let cookieString = `${name}=${value}; path=${path}; max-age=${maxAge}; samesite=${sameSite}`;
+
+	if (httpOnly) cookieString += '; httponly';
+	if (secure) cookieString += '; secure';
+
+	if (typeof document !== 'undefined') {
+		document.cookie = cookieString;
+	}
+};
+
+export const getCookie = (name: string): string | null => {
+	if (typeof document === 'undefined') return null;
+
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${name}=`);
+
+	if (parts.length === 2) {
+		return parts.pop()?.split(';').shift() || null;
+	}
+
+	return null;
+};

@@ -1,12 +1,13 @@
-import { homepageQuery } from '$lib/sanity/queries';
+import { contactQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
+
 export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 	const params = event.params;
-	const page = await loadQuery(homepageQuery, { language: params.lang });
+	const document = await loadQuery(contactQuery, { language: params.lang });
 
 	return {
-		page,
+		document,
 		params
 	};
 };

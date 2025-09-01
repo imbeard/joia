@@ -5,7 +5,10 @@ export const homepageQuery = groq`*[_type == "home" && language == $language][0]
 
 export const menusQuery = groq`*[_type == "menu" && language == $language]`;
 
-export const menuPageQuery = groq`*[_type == "menuPage" && language == $language][0]`;
+export const menuPageQuery = groq`*[_type == "menuPage" && language == $language][0] {
+    ...,
+    menus[]->
+}`;
 export const press = groq`*[_type == "press"]`;
 
 export const contactQuery = groq`*[_type == "contact" && language == $language][0]`;

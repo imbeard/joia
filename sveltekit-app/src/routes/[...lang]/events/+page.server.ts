@@ -1,12 +1,13 @@
-import { menuPageQuery } from '$lib/sanity/queries';
+import { eventsQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
+
 export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 	const params = event.params;
-	const page = await loadQuery(menuPageQuery, { language: params.lang });
+	const document = await loadQuery(eventsQuery, { language: params.lang });
 
 	return {
-		page,
+		document,
 		params
 	};
 };
