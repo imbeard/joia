@@ -16,11 +16,11 @@
 		>
 	</div>
 	<ul class="flex flex-col gap-4.5">
-		<li><a href="/" class="uppercase menu-btn">Joia</a></li>
-		<li><a href="/" class="uppercase menu-btn">I nostri menu</a></li>
-		<li><a href="/" class="uppercase menu-btn">Joia Academy</a></li>
-		<li><a href="/" class="uppercase menu-btn">Eventi e Catering</a></li>
-		<li><a href="/" class="uppercase menu-btn">Contatti</a></li>
+		<li><a href="/about" class="uppercase menu-btn">Joia</a></li>
+		<li><a href="/menu" class="uppercase menu-btn">{$LL.ourMenus()}</a></li>
+		<li><a href="/academy" class="uppercase menu-btn">Joia Academy</a></li>
+		<li><a href="/events" class="uppercase menu-btn">{$LL.eventsAndCatering()}</a></li>
+		<li><a href="/contacts" class="uppercase menu-btn">{$LL.contacts()}</a></li>
 	</ul>
 	<div class="flex flex-col gap-2">
 		<button class="button border border-white w-12 uppercase menu-btn">{$LL.book()}</button>

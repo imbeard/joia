@@ -26,6 +26,22 @@ type RootTranslation = {
 	 * L​a​n​g​u​a​g​e
 	 */
 	language: string
+	/**
+	 * O​u​r​ ​M​e​n​u​s
+	 */
+	ourMenus: string
+	/**
+	 * E​v​e​n​t​s​ ​a​n​d​ ​C​a​t​e​r​i​n​g
+	 */
+	eventsAndCatering: string
+	/**
+	 * C​o​n​t​a​c​t​s
+	 */
+	contacts: string
+	/**
+	 * A​d​d​ ​y​o​u​r​ ​e​m​a​i​l
+	 */
+	newsletter: string
 }
 
 export type TranslationFunctions = {
@@ -41,6 +57,22 @@ export type TranslationFunctions = {
 	 * Language
 	 */
 	language: () => LocalizedString
+	/**
+	 * Our Menus
+	 */
+	ourMenus: () => LocalizedString
+	/**
+	 * Events and Catering
+	 */
+	eventsAndCatering: () => LocalizedString
+	/**
+	 * Contacts
+	 */
+	contacts: () => LocalizedString
+	/**
+	 * Add your email
+	 */
+	newsletter: () => LocalizedString
 }
 
 export type Formatters = {}

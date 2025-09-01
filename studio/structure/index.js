@@ -14,6 +14,12 @@ export const structure = (S, context) =>
 
       S.documentTypeListItem('menu').title('Menus'),
 
+      S.divider(),
+
+      S.documentTypeListItem('menuPage')
+        .title('Menu Page')
+        .child(S.document().schemaType('menuPage').title('Menu Page').documentId('menuPage')),
+
       S.documentTypeListItem('wines')
         .title('Wines')
         .child(S.document().schemaType('wines').title('Wines').documentId('wines')),

@@ -29,6 +29,7 @@ import {wines} from './singletons/wines'
 import {contacts} from './singletons/contacts'
 import {events} from './singletons/events'
 import {academy} from './singletons/academy'
+import {menuPage} from './singletons/menuPage'
 
 export const schemaTypes = [
   link,
@@ -63,4 +64,5 @@ export const schemaTypes = [
   lunch,
   contacts,
   academy,
+  menuPage
 ]
