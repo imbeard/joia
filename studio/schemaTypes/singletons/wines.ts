@@ -73,12 +73,25 @@ export const wines = defineType({
         },
       ],
     }),
+    defineField({
+      name: 'tastingNotes',
+      title: 'Tasting Notes',
+      type: 'infoSection',
+    }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'linkInternal',
+    }),
   ],
   preview: {
     prepare() {
       return {
         title: 'Wines',
       }
+    },
+    select: {
+      subtitle: 'language',
     },
   },
 })

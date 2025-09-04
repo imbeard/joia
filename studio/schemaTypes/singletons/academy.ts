@@ -78,5 +78,8 @@ export const academy = defineType({
         title: 'Academy',
       }
     },
+    select: {
+      subtitle: 'language',
+    },
   },
 })

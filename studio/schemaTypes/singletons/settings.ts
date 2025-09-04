@@ -21,7 +21,7 @@ export const settings = defineType({
     },
   ],
   fields: [
-     defineField({
+    defineField({
       name: 'language',
       type: 'string',
       readOnly: true,
@@ -65,4 +65,14 @@ export const settings = defineType({
       type: 'seo',
     }),
   ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Settings',
+      }
+    },
+    select: {
+      subtitle: 'language',
+    },
+  },
 })

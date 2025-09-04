@@ -67,12 +67,20 @@ export const lunch = defineType({
       title: 'Tasting Notes',
       type: 'infoSection',
     }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'linkInternal',
+    }),
   ],
   preview: {
     prepare() {
       return {
         title: 'Lunch',
       }
+    },
+    select: {
+      subtitle: 'language',
     },
   },
 })

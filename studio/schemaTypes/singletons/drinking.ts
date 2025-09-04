@@ -14,6 +14,20 @@ export const drinking = defineType({
       hidden: true,
     }),
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'text',
@@ -110,12 +124,16 @@ export const drinking = defineType({
       title: 'Tasting Notes',
       type: 'infoSection',
     }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'linkInternal',
+    }),
   ],
   preview: {
-    prepare() {
-      return {
-        title: 'Drinking',
-      }
+    select: {
+      title: 'title',
+      subtitle: 'language',
     },
   },
 })

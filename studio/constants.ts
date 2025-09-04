@@ -7,4 +7,6 @@ export const PAGE_REFERENCES = [
   {type: 'contacts'},
   {type: 'events'},
   {type: 'menu'},
+  {type: 'drinking'},
+  {type: 'academy'},
 ]

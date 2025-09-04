@@ -9,6 +9,9 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
+	$effect(() => {
+		console.log(document);
+	});
 </script>
 
 {#if document}
@@ -33,6 +36,19 @@
 				</div>
 			{/each}
 		</div>
+		{#if document?.tastingNotes}
+			<div class="pt-40">
+				<div class="w-1/2 flex flex-col items-center justify-center text-center">
+					<h3 class="uppercase">{document?.tastingNotes?.heading}</h3>
+					<div class="max-w-lg"><PortableText data={document?.tastingNotes?.content} /></div>
+					<a
+						class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out"
+						href={document?.link?.url}
+						><span>{document?.link?.label}</span><ArrowRight fill="var(--color-green)" /></a
+					>
+				</div>
+			</div>
+		{/if}
 	</main>
 {/if}
 

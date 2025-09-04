@@ -43,5 +43,8 @@ export const menuPage = defineType({
         title: 'Menu Page',
       }
     },
+    select: {
+      subtitle: 'language',
+    },
   },
 })

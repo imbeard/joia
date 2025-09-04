@@ -45,5 +45,8 @@ export const events = defineType({
         title: 'Events',
       }
     },
+    select: {
+      subtitle: 'language',
+    },
   },
 })

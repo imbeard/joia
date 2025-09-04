@@ -81,7 +81,7 @@ export const about = defineType({
           title: 'Description',
           type: 'blockContent',
         }),
-      ]
+      ],
     }),
   ],
   preview: {
@@ -89,6 +89,9 @@ export const about = defineType({
       return {
         title: 'About',
       }
+    },
+    select: {
+      subtitle: 'language',
     },
   },
 })
