@@ -27,6 +27,7 @@ import {about} from './singletons/about'
 import {settings} from './singletons/settings'
 import {lunch} from './singletons/lunch'
 import {wines} from './singletons/wines'
+import {drinking} from './singletons/drinking'
 import {contacts} from './singletons/contacts'
 import {events} from './singletons/events'
 import {academy} from './singletons/academy'
@@ -63,6 +64,7 @@ export const schemaTypes = [
   about,
   events,
   wines,
+  drinking,
   lunch,
   contacts,
   academy,

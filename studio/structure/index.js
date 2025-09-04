@@ -24,6 +24,10 @@ export const structure = (S, context) =>
         .title('Wines')
         .child(S.document().schemaType('wines').title('Wines').documentId('wines')),
 
+      S.documentTypeListItem('drinking')
+        .title('Drinking')
+        .child(S.document().schemaType('drinking').title('Drinking').documentId('drinking')),
+
       S.documentTypeListItem('lunch')
         .title('Lunch')
         .child(S.document().schemaType('lunch').title('Lunch').documentId('lunch')),

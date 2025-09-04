@@ -14,11 +14,11 @@ https://svelte.dev/e/node_invalid_placement -->
 </script>
 
 <div
-	class="accordion py-2 border-y {lineColor}"
+	class="accordion py-1 border-y {lineColor} cursor-pointer"
 	class:py-xs={aboutPage}
 	class:border-t-0={aboutPage}
 >
-	<button class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
+	<div class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
 		<div class="flex justify-between w-full">
 			<slot name="head"></slot>
 		</div>
@@ -36,7 +36,7 @@ https://svelte.dev/e/node_invalid_placement -->
 				-
 			{/if}
 		</button>
-	</button>
+	</div>
 
 	{#if open}
 		<div class="details pt-2" transition:slide>

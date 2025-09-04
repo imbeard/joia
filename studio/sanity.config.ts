@@ -47,7 +47,19 @@ export default defineConfig({
         {id: 'it', title: 'Italian'},
         {id: 'en', title: 'English'},
       ],
-      schemaTypes: ['menu', 'home', 'wines', 'about', 'events', 'contacts', 'lunch', 'settings', 'academy', 'menuPage']
+      schemaTypes: [
+        'menu',
+        'home',
+        'wines',
+        'about',
+        'events',
+        'contacts',
+        'lunch',
+        'drinking',
+        'settings',
+        'academy',
+        'menuPage',
+      ],
     }),
   ],
   schema: {
