@@ -7,7 +7,11 @@ const it = {
 	ourMenus: 'I nostri menu',
 	eventsAndCatering: 'Eventi e Catering',
 	contacts: 'Contatti',
-	newsletter: 'Inserisci mail'
+	newsletter: 'Inserisci mail',
+	discover: 'Scopri',
+	drinkSelection: 'La selezione di bevande',
+	lunchOffer: 'Il pranzo al Joia',
+
 } satisfies BaseTranslation
 
 export default it

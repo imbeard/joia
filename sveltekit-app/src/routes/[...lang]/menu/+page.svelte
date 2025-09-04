@@ -8,9 +8,6 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
-	onMount(() => {
-		console.log(document);
-	});
 </script>
 
 {#if document}
@@ -50,22 +47,23 @@
 
 		<div class="sm:grid-2 place-items-center pt-40">
 			{#if document?.drink}
-				<div
-					class="w-1/2 flex flex-col items-center justify-center text-center"
-				>
+				<div class="w-1/2 flex flex-col items-center justify-center text-center">
 					<h3 class="uppercase">{document?.drink?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={document?.drink?.content} /></div>
-					<a class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out" href="/wines"><span>La selezione di bevande</span><ArrowRight fill="var(--color-green)" /></a
+					<a
+						class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out"
+						href="/wines"
+						><span>{$LL.drinkSelection()}</span><ArrowRight fill="var(--color-green)" /></a
 					>
 				</div>
 			{/if}
-            {#if document?.lunch}
-				<div
-					class="pt-10 sm:pt-0 w-1/2 flex flex-col items-center justify-center text-center"
-				>
+			{#if document?.lunch}
+				<div class="pt-10 sm:pt-0 w-1/2 flex flex-col items-center justify-center text-center">
 					<h3 class="uppercase">{document?.lunch?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={document?.lunch?.content} /></div>
-					<a class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out" href="/lunch"><span>Il pranzo al Joia</span><ArrowRight fill="var(--color-green)" /></a
+					<a
+						class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out"
+						href="/lunch"><span>{$LL.lunchOffer()}</span><ArrowRight fill="var(--color-green)" /></a
 					>
 				</div>
 			{/if}
@@ -75,8 +73,13 @@
 
 <style>
 	.intro {
-		height: 65vh;
+		height: 80vh;
 		width: 100%;
 		min-height: 400px;
+	}
+	@media screen and (min-width: 768px) {
+		.intro {
+			height: 65vh;
+		}
 	}
 </style>

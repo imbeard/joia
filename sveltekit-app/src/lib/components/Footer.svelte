@@ -6,7 +6,7 @@
 </script>
 
 <div class="h-screen w-full flex flex-col justify-between bg-white typo-s">
-	<div class="pl-[1.2rem] pt-[4.4rem]"><Logo /></div>
+	<div class="pl-[1.2rem] pt-[4.4rem] w-20"><Logo fill="var(--color-green)" /></div>
 	<div class="p-1.5 flex flex-col gap-5 md:gap-0 md:flex-row md:justify-between">
 		<div>
 			<div class="uppercase">{data?.companyName}</div>

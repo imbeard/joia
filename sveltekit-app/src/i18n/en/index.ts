@@ -1,4 +1,4 @@
-import type { Translation } from '../i18n-types'
+import type { Translation } from '../i18n-types';
 
 const en = {
 	book: 'Book',
@@ -7,7 +7,10 @@ const en = {
 	ourMenus: 'Our Menus',
 	eventsAndCatering: 'Events and Catering',
 	contacts: 'Contacts',
-	newsletter: 'Add your email'
-} satisfies Translation
+	newsletter: 'Add your email',
+	discover: 'Discover',
+	drinkSelection: 'Our drinks selection',
+	lunchOffer: 'Lunch at Joia'
+} satisfies Translation;
 
-export default en
+export default en;

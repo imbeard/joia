@@ -18,4 +18,4 @@ export const academyQuery = groq`*[_type == "academy" && language == $language][
 export const eventsQuery = groq`*[_type == "events" && language == $language][0]`;
 export const winesQuery = groq`*[_type == "wines" && language == $language][0]`;
 
-export const lunch = groq`*[_type == "lunch" && language == $language][0]`;
+export const lunchQuery = groq`*[_type == "lunch" && language == $language][0]`;

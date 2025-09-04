@@ -42,6 +42,18 @@ type RootTranslation = {
 	 * A​d​d​ ​y​o​u​r​ ​e​m​a​i​l
 	 */
 	newsletter: string
+	/**
+	 * D​i​s​c​o​v​e​r
+	 */
+	discover: string
+	/**
+	 * O​u​r​ ​d​r​i​n​k​s​ ​s​e​l​e​c​t​i​o​n
+	 */
+	drinkSelection: string
+	/**
+	 * L​u​n​c​h​ ​a​t​ ​J​o​i​a
+	 */
+	lunchOffer: string
 }
 
 export type TranslationFunctions = {
@@ -73,6 +85,18 @@ export type TranslationFunctions = {
 	 * Add your email
 	 */
 	newsletter: () => LocalizedString
+	/**
+	 * Discover
+	 */
+	discover: () => LocalizedString
+	/**
+	 * Our drinks selection
+	 */
+	drinkSelection: () => LocalizedString
+	/**
+	 * Lunch at Joia
+	 */
+	lunchOffer: () => LocalizedString
 }
 
 export type Formatters = {}

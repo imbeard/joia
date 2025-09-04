@@ -58,9 +58,9 @@ export const lunch = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'twoImages',
-      title: 'Hero of Two Images',
-      type: 'twoImages',
+      name: 'twoGalleries',
+      title: 'Two Galleries',
+      type: 'twoGalleries',
     }),
     defineField({
       name: 'tastingNotes',

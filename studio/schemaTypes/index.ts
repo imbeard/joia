@@ -8,6 +8,7 @@ import {blockContent} from './objects/blockContent'
 import {blockquote} from './objects/blockquote'
 import {gallery} from './objects/gallery'
 import {twoImages} from './objects/twoImages'
+import {twoGalleries} from './objects/twoGalleries'
 import {elementImage} from './objects/elementImage'
 import {elementVideo} from './objects/elementVideo'
 import {link} from './objects/link'
@@ -46,6 +47,7 @@ export const schemaTypes = [
   blockContent,
   blockquote,
   gallery,
+  twoGalleries,
   twoImages,
   highlightedText,
   elementImage,
@@ -64,5 +66,5 @@ export const schemaTypes = [
   lunch,
   contacts,
   academy,
-  menuPage
+  menuPage,
 ]

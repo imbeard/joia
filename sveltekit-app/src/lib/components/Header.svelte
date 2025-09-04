@@ -34,7 +34,7 @@
 />
 
 <nav
-	class="w-full p-1.5 fixed top-0 left-0 z-99 flex justify-between uppercase"
+	class="w-full p-1.5 fixed top-0 left-0 z-10 flex justify-between uppercase"
 	bind:clientHeight={navHeight}
 >
 	<a href="/" class="py-0.5 px-1 backdrop-blur-xl md:hidden">Joia</a>

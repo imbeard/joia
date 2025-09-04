@@ -24,7 +24,7 @@
 
 {#if $isPreviewing}
 	<a href={`/preview/disable?redirect=${page.url.pathname}`} class="preview-toggle">
-		<span>Preview Enabled</span>
+		<	Prev <ArrowRight class="rotate-180" />>Preview Enabled</span>
 		<span>Disable Preview</span>
 	</a>
 {/if}

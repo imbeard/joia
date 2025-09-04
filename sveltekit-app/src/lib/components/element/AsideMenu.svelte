@@ -4,18 +4,20 @@
 	import CloseIcon from '$lib/components/svg/CloseIcon.svelte';
 	import LocaleSwitcher from '$lib/components/LocaleSwitcher.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
+	import Logo from '$lib/components/svg/Logo.svelte';
 </script>
 
 <aside
-	class="fixed z-99 h-[100dvh] w-1/2 right-0 top-0 bg-green text-white p-xs text-center p-1.5 flex flex-col justify-between items-center"
+	class="fixed z-20 h-[100dvh] w-full md:w-1/2 right-0 top-0 bg-green text-white p-xs text-center p-1.5 flex flex-col md:justify-between items-center overflow-y-auto"
 	class:open={$menuOpen}
 >
 	<div>
-		<div class="uppercase">Scopri:</div>
+		<div class="uppercase hidden md:block">{$LL.discover()}</div>
 		<button class="absolute right-2 top-2" onclick={() => ($menuOpen = false)}><CloseIcon /></button
 		>
 	</div>
-	<ul class="flex flex-col gap-4.5">
+	<div class="w-full p-2 md:hidden"><Logo fill="var(--color-white)" /></div>
+	<ul class="flex flex-col gap-4.5 -mt-5">
 		<li><a href="/about" class="uppercase menu-btn">Joia</a></li>
 		<li><a href="/menu" class="uppercase menu-btn">{$LL.ourMenus()}</a></li>
 		<li><a href="/academy" class="uppercase menu-btn">Joia Academy</a></li>
@@ -63,11 +65,11 @@
 		width: 100%;
 	}
 
-    .menu-btn {
-        opacity: 1;
-        transition: opacity 350ms ease-in-out;
-        &:hover {
-            opacity: 0.4;
-        }
-    }
+	.menu-btn {
+		opacity: 1;
+		transition: opacity 350ms ease-in-out;
+		&:hover {
+			opacity: 0.4;
+		}
+	}
 </style>
