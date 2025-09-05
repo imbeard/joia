@@ -85,13 +85,14 @@ export const about = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      lang: 'language', // or the path your language field uses
+    },
+    prepare({lang}) {
       return {
         title: 'About',
+        subtitle: lang || '—',
       }
-    },
-    select: {
-      subtitle: 'language',
     },
   },
 })

@@ -6,7 +6,7 @@ export const PAGE_REFERENCES = [
   {type: 'wines'},
   {type: 'contacts'},
   {type: 'events'},
-  {type: 'menu'},
+  {type: 'menuPage'},
   {type: 'drinking'},
   {type: 'academy'},
 ]

@@ -30,8 +30,7 @@ export const drinking = defineType({
     defineField({
       name: 'heading',
       title: 'Heading',
-      type: 'text',
-      rows: 3,
+      type: 'blockContent',
     }),
     defineField({
       name: 'intro',
@@ -39,95 +38,27 @@ export const drinking = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'gallerySectionOne',
-      title: 'Gallery Section One',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'gallery',
-          title: 'Gallery',
-          type: 'gallery',
-        }),
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'cta',
-          title: 'CTA',
-          type: 'linkInternal',
-        }),
-      ],
-    }),
-    defineField({
-      name: 'gallerySectionTwo',
-      title: 'Gallery Section Two',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'gallery',
-          title: 'Gallery',
-          type: 'gallery',
-        }),
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'cta',
-          title: 'CTA',
-          type: 'linkInternal',
-        }),
-      ],
-    }),
-    defineField({
-      name: 'gallerySectionThree',
-      title: 'Gallery Section Three',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'gallery',
-          title: 'Gallery',
-          type: 'gallery',
-        }),
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'cta',
-          title: 'CTA',
-          type: 'linkInternal',
-        }),
-      ],
+      name: 'gallerySections',
+      title: 'Gallery Sections',
+      type: 'array',
+      of: [{type: 'gallerySection'}],
     }),
     defineField({
       name: 'tastingNotes',
       title: 'Tasting Notes',
-      type: 'infoSection',
-    }),
-    defineField({
-      name: 'link',
-      title: 'Link',
-      type: 'linkInternal',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'infoSection',
+          title: 'Info Section',
+          type: 'infoSection',
+        }),
+        defineField({
+          name: 'cta',
+          title: 'CTA',
+          type: 'linkInternal',
+        }),
+      ],
     }),
   ],
   preview: {

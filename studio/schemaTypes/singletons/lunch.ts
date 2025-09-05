@@ -65,22 +65,30 @@ export const lunch = defineType({
     defineField({
       name: 'tastingNotes',
       title: 'Tasting Notes',
-      type: 'infoSection',
-    }),
-    defineField({
-      name: 'link',
-      title: 'Link',
-      type: 'linkInternal',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'infoSection',
+          title: 'Info Section',
+          type: 'infoSection',
+        }),
+        defineField({
+          name: 'cta',
+          title: 'CTA',
+          type: 'linkInternal',
+        }),
+      ],
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      lang: 'language', // or the path your language field uses
+    },
+    prepare({lang}) {
       return {
         title: 'Lunch',
+        subtitle: lang || '—',
       }
-    },
-    select: {
-      subtitle: 'language',
     },
   },
 })

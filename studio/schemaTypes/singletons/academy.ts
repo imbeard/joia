@@ -73,13 +73,14 @@ export const academy = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      lang: 'language', // or the path your language field uses
+    },
+    prepare({lang}) {
       return {
         title: 'Academy',
+        subtitle: lang || '—',
       }
-    },
-    select: {
-      subtitle: 'language',
     },
   },
 })

@@ -38,7 +38,7 @@
 		</div>
 		{#if document?.tastingNotes}
 			<div class="pt-40">
-				<div class="w-1/2 flex flex-col items-center justify-center text-center">
+				<div class="flex flex-col items-center justify-center text-center">
 					<h3 class="uppercase">{document?.tastingNotes?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={document?.tastingNotes?.content} /></div>
 					<a

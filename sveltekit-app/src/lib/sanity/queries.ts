@@ -16,6 +16,12 @@ export const aboutQuery = groq`*[_type == "about" && language == $language][0]`;
 export const settingsQuery = groq`*[_type == "settings" && language == $language][0]`;
 export const academyQuery = groq`*[_type == "academy" && language == $language][0]`;
 export const eventsQuery = groq`*[_type == "events" && language == $language][0]`;
-export const winesQuery = groq`*[_type == "wines" && language == $language][0]`;
-
+export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
+  ...,
+  link {
+  label,
+  "url": url->_id
+  }
+  }`;
 export const lunchQuery = groq`*[_type == "lunch" && language == $language][0]`;
+export const drinkingQuery = groq`*[_type == "drinking" && language == $language][0]`;

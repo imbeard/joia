@@ -3,23 +3,20 @@ import {menu} from './documents/menu'
 import {press} from './documents/press'
 
 // objects
-import {hero} from './objects/hero'
 import {blockContent} from './objects/blockContent'
-import {blockquote} from './objects/blockquote'
+import {hero} from './objects/hero'
 import {gallery} from './objects/gallery'
+import {gallerySection} from './objects/gallerySection'
 import {twoImages} from './objects/twoImages'
 import {twoGalleries} from './objects/twoGalleries'
 import {elementImage} from './objects/elementImage'
 import {elementVideo} from './objects/elementVideo'
-import {link} from './objects/link'
 import {linkInternal} from './objects/link/linkInternal'
 import {linkExternal} from './objects/link/linkExternal'
 import {linkEmail} from './objects/link/linkEmail'
 import {seo} from './objects/seo'
-import {cta} from './objects/cta'
 import {infoSection} from './objects/infoSection'
 import {info} from './objects/info'
-import {highlightedText} from './objects/highlightedText'
 
 // singletons
 import {home} from './singletons/home'
@@ -34,7 +31,6 @@ import {academy} from './singletons/academy'
 import {menuPage} from './singletons/menuPage'
 
 export const schemaTypes = [
-  link,
   linkInternal,
   linkExternal,
   linkEmail,
@@ -46,15 +42,13 @@ export const schemaTypes = [
   // objects
   hero,
   blockContent,
-  blockquote,
   gallery,
   twoGalleries,
   twoImages,
-  highlightedText,
+  gallerySection,
   elementImage,
   elementVideo,
   seo,
-  cta,
   infoSection,
   info,
 

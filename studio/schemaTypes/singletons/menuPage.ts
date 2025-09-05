@@ -38,13 +38,14 @@ export const menuPage = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      lang: 'language', // or the path your language field uses
+    },
+    prepare({lang}) {
       return {
         title: 'Menu Page',
+        subtitle: lang || '—',
       }
-    },
-    select: {
-      subtitle: 'language',
     },
   },
 })

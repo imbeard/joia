@@ -40,13 +40,14 @@ export const events = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      lang: 'language', // or the path your language field uses
+    },
+    prepare({lang}) {
       return {
         title: 'Events',
+        subtitle: lang || '—',
       }
-    },
-    select: {
-      subtitle: 'language',
     },
   },
 })
