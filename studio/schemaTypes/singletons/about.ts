@@ -64,7 +64,18 @@ export const about = defineType({
     defineField({
       name: 'founder',
       title: 'Founder',
-      type: 'infoSection',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'elementImage',
+        }),
+        defineField({
+          name: 'infoSection',
+          type: 'infoSection',
+        }),
+      ],
     }),
     defineField({
       name: 'location',

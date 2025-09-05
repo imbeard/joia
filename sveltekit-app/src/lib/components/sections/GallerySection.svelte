@@ -4,10 +4,11 @@
 	import Autoplay from 'embla-carousel-autoplay';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Image from '$lib/components/element/Image.svelte';
+	import { getPageLink } from '$lib/utils';
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let { section } = $props();
+	let { section, direction } = $props();
 	let gallery = $derived(section?.gallery?.items);
 
 	let emblaApi;
@@ -47,14 +48,19 @@
 	function initEmbla(embla) {
 		emblaApi = embla.detail;
 	}
+
+	$effect(() => {
+		console.log(section);
+	});
 </script>
 
 {#if section}
-	<div class="md:grid-2 h-screen w-full">
+	<div class="md:grid-2 gap-2 md:h-screen w-full" dir={direction % 2 === 0 ? 'ltr' : 'rtl'}>
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
 			class="embla gallery-container"
+			dir="ltr"
 			use:emblaCarouselSvelte={{ options }}
 			onemblaInit={initEmbla}
 			onmouseenter={() => (galleryHovered = true)}
@@ -78,7 +84,7 @@
 			</div>
 
 			<!-- Navigation button for first gallery -->
-			{#if galleryHovered}
+			{#if galleryHovered && gallery.length > 1}
 				<div
 					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
 					style="left: {cursorX}px; top: {cursorY}px;"
@@ -97,9 +103,23 @@
 				</div>
 			{/if}
 		</div>
-		<div class="h-full flex flex-col justify-between">
-			<div class="flex items-center h-full"><p>title</p></div>
-			<div class="">Lorem ipsum dolor sit</div>
+
+		<div
+			class="h-full flex flex-col justify-between p-1.5 md:p-0"
+			class:pl-2={direction % 2 === 1}
+			dir="ltr"
+		>
+			<div class="flex items-center h-full uppercase">
+				<h3>{section.title}</h3>
+			</div>
+			<div>{section.description}</div>
+			<a
+				class="mt-2.5 uppercase w-fit flex gap-1 items-center"
+				href="/{getPageLink(section.cta.url)}"
+			>
+				<div>{section.cta.label}</div>
+				<ArrowRight fill="green" />
+			</a>
 		</div>
 	</div>
 {/if}
@@ -108,7 +128,6 @@
 	.gallery-container {
 		position: relative;
 		cursor: pointer;
-		height: 100svh;
 	}
 
 	.embla {
@@ -153,9 +172,15 @@
 	}
 
 	@media (min-width: 768px) {
+		.gallery-container {
+			position: relative;
+			cursor: pointer;
+			height: 100svh;
+		}
 		.embla__container {
 			min-height: 370px;
 			height: 100%;
+			width: 50vw;
 			aspect-ratio: auto;
 		}
 

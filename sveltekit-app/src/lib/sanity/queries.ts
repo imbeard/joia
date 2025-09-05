@@ -18,10 +18,29 @@ export const academyQuery = groq`*[_type == "academy" && language == $language][
 export const eventsQuery = groq`*[_type == "events" && language == $language][0]`;
 export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
   ...,
-  link {
-  label,
-  "url": url->_id
-  }
+  tastingNotes {
+    ...,
+    cta {
+      label,
+      "url": url->_id
+    }
+    }
   }`;
 export const lunchQuery = groq`*[_type == "lunch" && language == $language][0]`;
-export const drinkingQuery = groq`*[_type == "drinking" && language == $language][0]`;
+export const drinkingQuery = groq`*[_type == "drinking" && language == $language][0] {
+  ...,
+  gallerySections[] {
+    ...,
+    cta {
+      ...,
+      "url":url->_id
+    }
+  },
+  tastingNotes {
+    ...,
+    cta {
+      ...,
+      "url":url->_id
+    }
+    }
+  }`;

@@ -1,31 +1,31 @@
 /* layout */
 
 @utility grid-12 {
-	@apply grid grid-cols-12 gap-base;
+	@apply grid grid-cols-12;
 }
 
 @utility grid-8 {
-	@apply grid grid-cols-8 gap-base;
+	@apply grid grid-cols-8;
 }
 
 @utility grid-6 {
-	@apply grid grid-cols-6 gap-base;
+	@apply grid grid-cols-6;
 }
 
 @utility grid-5 {
-	@apply grid grid-cols-5 gap-base;
+	@apply grid grid-cols-5;
 }
 
 @utility grid-4 {
-	@apply grid grid-cols-4 gap-base;
+	@apply grid grid-cols-4;
 }
 
 @utility grid-3 {
-	@apply grid grid-cols-3 gap-base;
+	@apply grid grid-cols-3;
 }
 
 @utility grid-2 {
-	@apply grid grid-cols-2 gap-base;
+	@apply grid grid-cols-2;
 }
 
 /* typography */

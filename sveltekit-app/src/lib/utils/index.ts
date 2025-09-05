@@ -20,6 +20,16 @@ export function dateYear(date: string | null) {
 	return year;
 }
 
-export function capitalize(string) {
+export function capitalize(string: string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function getPageLink(page: string) {
+	let link = '';
+	if (page === 'menuPage') {
+		link = 'menu';
+	} else {
+		link = page;
+	}
+	return link;
 }
