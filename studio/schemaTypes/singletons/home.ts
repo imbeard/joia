@@ -19,9 +19,9 @@ export const home = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'hero',
-      title: 'Hero',
-      type: 'hero',
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'gallery',
     }),
     defineField({
       name: 'about',
@@ -61,6 +61,11 @@ export const home = defineType({
       title: 'Chefs',
       type: 'object',
       fields: [
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+        }),
         defineField({
           name: 'title',
           title: 'Title',

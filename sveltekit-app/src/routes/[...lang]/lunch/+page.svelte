@@ -38,7 +38,7 @@
 			<PortableText data={document.tastingNotes.content} />
 			<a href="/menu" class="mt-2.5 flex gap-1 items-center uppercase mx-auto w-fit"
 				>{$LL.ourMenus()}
-				<div><ArrowRight fill="green" /></div>
+				<div><ArrowRight fill="var(--color-green)" /></div>
 			</a>
 		</div>
 	</main>

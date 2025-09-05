@@ -72,3 +72,19 @@ button {
 	position: absolute;
 	object-fit: cover;
 }
+
+.rich-text ul {
+	list-style: none;
+}
+
+.media-player[data-media-player] {
+	display: block !important;
+}
+
+.player :where(.player .vds-video-layout .play-button) {
+	position: absolute;
+	z-index: 50;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

@@ -1,10 +1,97 @@
 <script>
 	import LL from '$i18n/i18n-svelte';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import PortableText from '$lib/components/element/PortableText.svelte';
+	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
+	import Accordion from '$lib/components/element/Accordion.svelte';
+	import Gallery from '$lib/components/element/Gallery.svelte';
+	import Image from '$lib/components/element/Image.svelte';
+	import Logo from '$lib/components/svg/Logo.svelte';
+	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
+	let home = $derived(data?.document?.data?.home);
+	let menus = $derived(data?.document?.data?.menus);
+
+	const handleMenuLinks = (slug) => {
+		const currentLang = data?.params?.lang || 'en';
+		sessionStorage.setItem('scrollToHash', slug);
+		goto(`/${currentLang}/menu`);
+	};
+
+	onMount(() => {
+		console.log(home);
+	});
 </script>
 
-<main></main>
+{#if home}
+	<main>
+		<div class="p-2 pt-6 w-full h-screen flex flex-col justify-between">
+			<div class="w-1/3 min-w-30"><Logo fill="var(--color-green)" /></div>
+			<PortableText data={home?.intro} />
+		</div>
+		<Gallery data={home?.gallery} />
+		<div class="px-1.5 md:w-1/2">
+			<h3 class="uppercase py-3">{home?.about?.heading}</h3>
+			<PortableText data={home?.about?.content} />
+			<h3 class="uppercase py-3">{$LL.ourMenus()}</h3>
+
+			{#if menus}
+				{#each menus as menu, index}
+					<button
+						onclick={() => handleMenuLinks(menu.slug)}
+						class="w-full py-1.5 border-green border-b flex justify-between items-center"
+						class:border-t={index === 0}
+					>
+						<h4 class="uppercase">{menu.title}</h4>
+						<ArrowRight fill="var(--color-green)" />
+					</button>
+				{/each}
+				<div class="pt-1.5">
+					<a class="uppercase w-fit flex gap-1 items-center" href="/menu">
+						<span>{$LL.discoverOurMenus()}</span>
+						<ArrowRight fill="var(--color-green)" />
+					</a>
+				</div>
+			{/if}
+		</div>
+
+		{#if home.lunch}
+			<div class="pt-24 px-1.5 flex flex-col gap-1.5 items-center">
+				<h3 class="uppercase text-center">{home.lunch.heading}</h3>
+				<PortableText data={home.lunch.content} />
+				<a class="w-fit uppercase flex gap-1 items-center" href="/lunch">
+					<span>{$LL.lunchOffer()}</span>
+					<ArrowRight fill="var(--color-green)" />
+				</a>
+			</div>
+		{/if}
+
+		{#if home.chefs}
+			<div class="md:grid-2 gap-2 pt-24">
+				<div class="image"><Image image={home.chefs.image} /></div>
+				<div class="info flex flex-col justify-between px-1.5 pt-2 md:pt-0 md:px-0 md:pr-1.5">
+					<div class="flex flex-col justify-center h-full">
+						<h3 class="uppercase pb-2 md:pb-0">
+							{home.chefs.title}
+						</h3>
+					</div>
+					<div>
+						<PortableText data={home.chefs.content} />
+						<a
+							href="/{getPageLink(home.chefs.cta.url)}"
+							class="mt-2.5 flex gap-1 items-center uppercase w-fit"
+							>{home.chefs.cta.label}
+							<div><ArrowRight fill="var(--color-green)" /></div>
+						</a>
+					</div>
+				</div>
+			</div>
+		{/if}
+	</main>
+{/if}
 
 <style>
 </style>

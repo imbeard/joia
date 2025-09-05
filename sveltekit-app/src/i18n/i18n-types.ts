@@ -31,6 +31,10 @@ type RootTranslation = {
 	 */
 	ourMenus: string
 	/**
+	 * D​i​s​c​o​v​e​r​ ​o​u​r​ ​m​e​n​u​s
+	 */
+	discoverOurMenus: string
+	/**
 	 * E​v​e​n​t​s​ ​a​n​d​ ​C​a​t​e​r​i​n​g
 	 */
 	eventsAndCatering: string
@@ -73,6 +77,10 @@ export type TranslationFunctions = {
 	 * Our Menus
 	 */
 	ourMenus: () => LocalizedString
+	/**
+	 * Discover our menus
+	 */
+	discoverOurMenus: () => LocalizedString
 	/**
 	 * Events and Catering
 	 */

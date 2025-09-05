@@ -9,7 +9,7 @@ export const gallery = defineType({
       name: 'items',
       title: 'Gallery Items',
       type: 'array',
-      of: [{type: 'elementImage'}],
+      of: [{type: 'elementImage'}, {type: 'elementVideo'}],
       options: {
         layout: 'grid',
       },

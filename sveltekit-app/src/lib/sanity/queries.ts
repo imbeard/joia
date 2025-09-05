@@ -1,7 +1,23 @@
 import groq from 'groq';
 
 // singletons
-export const homepageQuery = groq`*[_type == "home" && language == $language][0]`;
+export const homepageQuery = groq`{
+  "home": *[_type == "home" && language == $language][0] {
+  ...,
+  chefs {
+  ...,
+  cta {
+    label,
+    "url": url->_id
+  }
+  }
+  },
+  "menus": *[_type == "menu" && language == $language] {
+    title,
+    "slug": slug.current,
+    _id
+    }
+  }`;
 
 export const menusQuery = groq`*[_type == "menu" && language == $language]`;
 

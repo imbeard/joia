@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 
 	import Image from '$lib/components/element/Image.svelte';
+	import Video from '$lib/components/element/Video.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import { fade } from 'svelte/transition';
 
@@ -101,6 +102,11 @@
 						{#if slide._type == 'elementImage'}
 							<div class="image-container">
 								<Image image={slide} fit="cover" />
+							</div>
+						{/if}
+						{#if slide._type == 'elementVideo'}
+							<div class="image-container">
+								<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
 							</div>
 						{/if}
 						{#if slide.caption}

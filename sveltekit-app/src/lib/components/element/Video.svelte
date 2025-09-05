@@ -17,12 +17,14 @@
 
 	let player = $state();
 
-	let posterUrl = $derived(poster
-		? getImage(poster, {
-				projectId: PUBLIC_SANITY_PROJECT_ID,
-				dataset: PUBLIC_SANITY_DATASET
-			})
-		: '');
+	let posterUrl = $derived(
+		poster
+			? getImage(poster, {
+					projectId: PUBLIC_SANITY_PROJECT_ID,
+					dataset: PUBLIC_SANITY_DATASET
+				})
+			: ''
+	);
 </script>
 
 <div class="player h-full">
@@ -38,10 +40,6 @@
 			<source {src} />
 			<media-poster class="vds-poster"></media-poster>
 		</media-provider>
-		<media-video-layout small-when="always" class="vds-video-layout">
-			<svg slot="play-icon">
-				<PlayButton />
-			</svg>
-		</media-video-layout>
+		<media-video-layout small-when="always" class="vds-video-layout"> </media-video-layout>
 	</media-player>
 </div>

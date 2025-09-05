@@ -4,7 +4,6 @@ import {press} from './documents/press'
 
 // objects
 import {blockContent} from './objects/blockContent'
-import {hero} from './objects/hero'
 import {gallery} from './objects/gallery'
 import {gallerySection} from './objects/gallerySection'
 import {twoImages} from './objects/twoImages'
@@ -40,7 +39,6 @@ export const schemaTypes = [
   press,
 
   // objects
-  hero,
   blockContent,
   gallery,
   twoGalleries,

@@ -1,6 +1,5 @@
 <script>
 	// @ts-nocheck
-
 	import LL from '$i18n/i18n-svelte';
 	import { onMount } from 'svelte';
 	import PortableText from '$lib/components/element/PortableText.svelte';
@@ -9,9 +8,6 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
-	$effect(() => {
-		console.log(document);
-	});
 </script>
 
 {#if document}

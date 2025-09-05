@@ -5,16 +5,19 @@
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import Video from '$lib/components/element/Video.svelte';
-	import { getPageLink } from '$lib/utils';
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let { section, direction } = $props();
-	let gallery = $derived(section?.gallery?.items);
+	let { data } = $props();
+	let gallery = $derived(data?.items);
 
 	let emblaApi;
+	let isMobile = $state(false);
 
-	let options = { loop: true, align: 'start' };
+	let options = {
+		loop: true,
+		align: 'start'
+	};
 	let delay = 6000;
 	let selectedIndex = $state(0);
 
@@ -23,10 +26,10 @@
 	let cursorX = $state(0);
 	let cursorY = $state(0);
 	let showNext = $state(true);
+	let showPrev = $state(true);
 
-	// Current slide info
 	let currentSlide = $derived(gallery?.[selectedIndex]);
-	let isCurrentSlideVideo = $derived(currentSlide?._type === 'elementVideo');
+	let isCurrentSlideVideo = $derived(currentSlide?._type == 'elementVideo');
 
 	// Handle mouse movement for first gallery
 	function handleGalleryMouseMove(event) {
@@ -36,7 +39,8 @@
 
 		cursorX = x;
 		cursorY = y;
-		showNext = x > rect.width * 0.5;
+		showNext = !isCurrentSlideVideo ? x > rect.width * 0.5 : x > rect.width * 0.7;
+		showPrev = !isCurrentSlideVideo ? x < rect.width * 0.5 : x < rect.width * 0.3;
 	}
 
 	// Navigation functions
@@ -45,7 +49,8 @@
 
 		if (showNext) {
 			emblaApi.scrollNext();
-		} else {
+		}
+		if (showPrev) {
 			emblaApi.scrollPrev();
 		}
 	}
@@ -57,93 +62,69 @@
 		});
 	}
 
-	$effect(() => {
-		console.log(section);
+	onMount(() => {
+		isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 	});
 </script>
 
-{#if section}
-	<div class="md:grid-2 gap-2 md:h-screen w-full" dir={direction % 2 === 0 ? 'ltr' : 'rtl'}>
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div
-			class="embla gallery-container"
-			dir="ltr"
-			use:emblaCarouselSvelte={{ options }}
-			onemblaInit={initEmbla}
-			onmouseenter={() => (galleryHovered = true)}
-			onmouseleave={() => (galleryHovered = false)}
-			onmousemove={handleGalleryMouseMove}
-			onclick={navigateGallery}
-		>
-			<div class="embla__container flex">
-				{#each gallery as slide, index}
-					<div class="embla__slide">
-						{#if slide._type == 'elementImage'}
-							<div class="image-container">
-								<Image image={slide} />
-							</div>
-						{/if}
-						{#if slide._type == 'elementVideo'}
-							<div class="image-container">
-								<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
-							</div>
-						{/if}
-						{#if slide.caption}
-							<div class="caption">{slide?.caption}</div>
-						{/if}
-					</div>
-				{/each}
-			</div>
+{#if data}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div
+		class="embla gallery-container"
+		use:emblaCarouselSvelte={{ options }}
+		onemblaInit={initEmbla}
+		onmouseenter={() => (galleryHovered = true)}
+		onmouseleave={() => (galleryHovered = false)}
+		onmousemove={handleGalleryMouseMove}
+		onclick={navigateGallery}
+	>
+		<div class="embla__container flex">
+			{#each gallery as slide, index}
+				<div class="embla__slide">
+					{#if slide._type == 'elementImage'}
+						<div class="image-container">
+							<Image image={slide} />
+						</div>
+					{/if}
+					{#if slide._type == 'elementVideo'}
+						<div class="image-container video-container">
+							<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
+						</div>
+					{/if}
+					{#if slide.caption}
+						<div class="caption">{slide?.caption}</div>
+					{/if}
+				</div>
+			{/each}
+		</div>
 
-			<!-- Navigation button for first gallery -->
-			{#if galleryHovered && gallery.length > 1}
+		<!-- Navigation button for desktop only -->
+		{#if !isMobile && galleryHovered && gallery.length > 1}
+			{#if showNext || showPrev}
 				<div
 					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
-					class:video-slide={isCurrentSlideVideo}
 					style="left: {cursorX}px; top: {cursorY}px;"
 				>
 					{#if showNext}
 						<div class="flex gap-1 items-center">
-							<div>{isCurrentSlideVideo ? 'Play' : 'Next'}</div>
+							<div>Next</div>
 							<div><ArrowRight fill="black" /></div>
 						</div>
-					{:else}
+					{/if}
+					{#if showPrev}
 						<div class="flex gap-1 items-center">
 							<div class="rotate-180"><ArrowRight fill="black" /></div>
-							<div>{isCurrentSlideVideo ? 'Play' : 'Prev'}</div>
+							<div>Prev</div>
 						</div>
 					{/if}
 				</div>
 			{/if}
-		</div>
-
-		<div
-			class="h-full flex flex-col justify-between p-1.5 md:p-0"
-			class:pl-2={direction % 2 === 1}
-			dir="ltr"
-		>
-			<div class="flex items-center h-full uppercase">
-				<h3>{section.title}</h3>
-			</div>
-			<div>{section.description}</div>
-			<a
-				class="mt-2.5 uppercase w-fit flex gap-1 items-center"
-				href="/{getPageLink(section.cta.url)}"
-			>
-				<div>{section.cta.label}</div>
-				<ArrowRight fill="var(--color-green)" />
-			</a>
-		</div>
+		{/if}
 	</div>
 {/if}
 
 <style>
-	.gallery-container {
-		position: relative;
-		cursor: pointer;
-	}
-
 	.embla {
 		overflow: hidden;
 		width: 100%;
@@ -151,7 +132,7 @@
 
 	.embla__container {
 		display: flex;
-		touch-action: pan-y pinch-zoom;
+		touch-action: pan-x pinch-zoom;
 		min-height: 205px;
 		aspect-ratio: 4/5;
 		width: 100%;
@@ -167,6 +148,10 @@
 
 	.image-container {
 		height: 100%;
+	}
+
+	.video-container {
+		position: relative;
 	}
 
 	.caption {
@@ -185,21 +170,15 @@
 		transition: opacity 0.2s ease;
 	}
 
-	.nav-button.video-slide {
-		background-color: rgba(0, 0, 0, 0.6);
-		color: white;
-	}
-
 	@media (min-width: 768px) {
 		.gallery-container {
 			position: relative;
 			cursor: pointer;
-			height: 100svh;
+			width: 100%;
 		}
 		.embla__container {
 			min-height: 370px;
-			height: 100%;
-			width: 50vw;
+			width: 100%;
 			aspect-ratio: auto;
 		}
 
@@ -208,7 +187,7 @@
 			aspect-ratio: auto;
 			flex: 0 0 auto;
 			min-width: 0;
-			width: 50vw;
+			width: 100%;
 			min-height: 370px;
 			height: 100%;
 		}
@@ -220,10 +199,19 @@
 		}
 	}
 
-	/* Hide buttons on touch devices */
-	@media (hover: none) {
+	/* Hide navigation buttons on mobile */
+	@media (max-width: 767px) {
 		.nav-button {
 			display: none;
+		}
+
+		.gallery-container {
+			cursor: default;
+		}
+
+		/* Allow swiping on videos on mobile */
+		.video-container {
+			pointer-events: none;
 		}
 	}
 </style>

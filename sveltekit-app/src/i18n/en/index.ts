@@ -5,6 +5,7 @@ const en = {
 	gift: 'Gift',
 	language: 'Language',
 	ourMenus: 'Our Menus',
+	discoverOurMenus: 'Discover our menus',
 	eventsAndCatering: 'Events and Catering',
 	contacts: 'Contacts',
 	newsletter: 'Add your email',
