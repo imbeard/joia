@@ -17,7 +17,7 @@
 
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center uppercase text-center">
+		<div class="intro flex justify-center items-center small-caps text-center">
 			<PortableText data={document.heading} />
 		</div>
 		<div class="px-1.5 mx-auto w-full">
@@ -32,11 +32,11 @@
 		</div>
 
 		<div class="pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
-			<h3 class="uppercase text-center">{document.tastingNotes.infoSection.heading}</h3>
+			<h3 class="small-caps text-center">{document.tastingNotes.infoSection.heading}</h3>
 			<PortableText data={document.tastingNotes.infoSection.content} />
 			<a
 				href="/{getPageLink(document.tastingNotes.cta.url)}"
-				class="mt-2.5 flex gap-1 items-center uppercase mx-auto w-fit"
+				class="mt-2.5 flex gap-1 items-center small-caps mx-auto w-fit"
 				>{document.tastingNotes.cta.label}
 				<div><ArrowRight fill="var(--color-green)" /></div>
 			</a>

@@ -37,3 +37,7 @@
 @utility typo-s {
 	@apply text-s;
 }
+
+@utility small-caps {
+	@apply [font-variant:small-caps] lowercase;
+}

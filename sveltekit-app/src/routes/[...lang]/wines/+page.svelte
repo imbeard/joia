@@ -12,16 +12,16 @@
 
 {#if document}
 	<main class="p-1.5">
-		<div class="intro flex justify-center items-center uppercase">{document?.title}</div>
+		<div class="intro flex justify-center items-center small-caps">{document?.title}</div>
 		<div class="flex flex-col gap-10">
 			{#each document?.categories as category}
 				<div>
-					<h3 class="pb-3 uppercase text-center">{category?.title}</h3>
+					<h3 class="pb-3 small-caps text-center">{category?.title}</h3>
 					<ul>
 						{#each category?.groups as group}
 							<Accordion>
 								{#snippet head()}
-									<div class="uppercase text-center mx-auto">{group?.title}</div>
+									<div class="small-caps text-center mx-auto">{group?.title}</div>
 								{/snippet}
 								{#snippet details()}
 									<PortableText data={group?.wines} />
@@ -35,10 +35,10 @@
 		{#if document?.tastingNotes}
 			<div class="pt-40">
 				<div class="flex flex-col items-center justify-center text-center">
-					<h3 class="uppercase">{document?.tastingNotes?.heading}</h3>
+					<h3 class="small-caps">{document?.tastingNotes?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={document?.tastingNotes?.content} /></div>
 					<a
-						class="pt-2.5 flex items-center gap-0.5 uppercase hover:opacity-40 transition-opacity duration-350 ease-in-out"
+						class="pt-2.5 flex items-center gap-0.5 small-caps hover:opacity-40 transition-opacity duration-350 ease-in-out"
 						href={document?.link?.url}
 						><span>{document?.link?.label}</span><ArrowRight fill="var(--color-green)" /></a
 					>

@@ -99,7 +99,7 @@
 			<!-- Navigation button for first gallery -->
 			{#if galleryHovered && gallery.length > 1}
 				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
+					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
 					class:video-slide={isCurrentSlideVideo}
 					style="left: {cursorX}px; top: {cursorY}px;"
 				>
@@ -123,12 +123,12 @@
 			class:pl-2={direction % 2 === 1}
 			dir="ltr"
 		>
-			<div class="flex items-center h-full uppercase">
+			<div class="flex items-center h-full small-caps">
 				<h3>{section.title}</h3>
 			</div>
 			<div>{section.description}</div>
 			<a
-				class="mt-2.5 uppercase w-fit flex gap-1 items-center"
+				class="mt-2.5 small-caps w-fit flex gap-1 items-center"
 				href="/{getPageLink(section.cta.url)}"
 			>
 				<div>{section.cta.label}</div>

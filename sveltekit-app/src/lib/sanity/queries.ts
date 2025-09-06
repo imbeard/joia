@@ -28,7 +28,10 @@ export const menuPageQuery = groq`*[_type == "menuPage" && language == $language
 export const press = groq`*[_type == "press"]`;
 
 export const contactQuery = groq`*[_type == "contact" && language == $language][0]`;
-export const aboutQuery = groq`*[_type == "about" && language == $language][0]`;
+export const aboutQuery = groq`{
+  "about": *[_type == "about" && language == $language][0],
+  "press": *[_type == "press"]
+  }`;
 export const settingsQuery = groq`*[_type == "settings" && language == $language][0]`;
 export const academyQuery = groq`*[_type == "academy" && language == $language][0]`;
 export const eventsQuery = groq`*[_type == "events" && language == $language][0]`;

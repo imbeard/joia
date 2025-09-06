@@ -29,9 +29,8 @@ export const about = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'elementImage',
+      name: 'gallery',
+      type: 'gallery',
     }),
     defineField({
       name: 'description',
@@ -39,14 +38,10 @@ export const about = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'kitchen',
-      title: 'Kitchen',
-      type: 'infoSection',
-    }),
-    defineField({
-      name: 'philosophy',
-      title: 'Philosophy',
-      type: 'infoSection',
+      name: 'detailsSections',
+      title: 'Details Sections',
+      type: 'array',
+      of: [{type: 'infoSection'}],
     }),
     defineField({
       name: 'team',

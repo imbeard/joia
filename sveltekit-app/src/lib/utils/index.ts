@@ -10,7 +10,7 @@ export function slugToTitle(slug) {
 	return slug
 		.replace(/-/g, ' ')
 		.split(' ')
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.map((word) => word.charAt(0).tosmall - caps() + word.slice(1))
 		.join(' ');
 }
 
@@ -21,7 +21,7 @@ export function dateYear(date: string | null) {
 }
 
 export function capitalize(string: string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+	return string.charAt(0).tosmall - caps() + string.slice(1);
 }
 
 export function getPageLink(page: string) {

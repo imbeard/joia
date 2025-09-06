@@ -58,6 +58,14 @@ type RootTranslation = {
 	 * L​u​n​c​h​ ​a​t​ ​J​o​i​a
 	 */
 	lunchOffer: string
+	/**
+	 * T​h​e​ ​C​h​e​f​s
+	 */
+	theChefs: string
+	/**
+	 * T​h​e​ ​f​o​u​n​d​e​r
+	 */
+	theFounder: string
 }
 
 export type TranslationFunctions = {
@@ -105,6 +113,14 @@ export type TranslationFunctions = {
 	 * Lunch at Joia
 	 */
 	lunchOffer: () => LocalizedString
+	/**
+	 * The Chefs
+	 */
+	theChefs: () => LocalizedString
+	/**
+	 * The founder
+	 */
+	theFounder: () => LocalizedString
 }
 
 export type Formatters = {}

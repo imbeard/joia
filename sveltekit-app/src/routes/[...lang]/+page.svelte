@@ -34,9 +34,9 @@
 		</div>
 		<Gallery data={home?.gallery} />
 		<div class="px-1.5 md:w-1/2">
-			<h3 class="uppercase py-3">{home?.about?.heading}</h3>
+			<h3 class="small-caps py-3">{home?.about?.heading}</h3>
 			<PortableText data={home?.about?.content} />
-			<h3 class="uppercase py-3">{$LL.ourMenus()}</h3>
+			<h3 class="small-caps py-3">{$LL.ourMenus()}</h3>
 
 			{#if menus}
 				{#each menus as menu, index}
@@ -45,12 +45,12 @@
 						class="w-full py-1.5 border-green border-b flex justify-between items-center"
 						class:border-t={index === 0}
 					>
-						<h4 class="uppercase">{menu.title}</h4>
+						<h4 class="small-caps">{menu.title}</h4>
 						<ArrowRight fill="var(--color-green)" />
 					</button>
 				{/each}
 				<div class="pt-1.5">
-					<a class="uppercase w-fit flex gap-1 items-center" href="/menu">
+					<a class="small-caps w-fit flex gap-1 items-center" href="/menu">
 						<span>{$LL.discoverOurMenus()}</span>
 						<ArrowRight fill="var(--color-green)" />
 					</a>
@@ -60,9 +60,9 @@
 
 		{#if home.lunch}
 			<div class="pt-24 px-1.5 flex flex-col gap-1.5 items-center">
-				<h3 class="uppercase text-center">{home.lunch.heading}</h3>
+				<h3 class="small-caps text-center">{home.lunch.heading}</h3>
 				<PortableText data={home.lunch.content} />
-				<a class="w-fit uppercase flex gap-1 items-center" href="/lunch">
+				<a class="w-fit small-caps flex gap-1 items-center" href="/lunch">
 					<span>{$LL.lunchOffer()}</span>
 					<ArrowRight fill="var(--color-green)" />
 				</a>
@@ -74,7 +74,7 @@
 				<div class="image"><Image image={home.chefs.image} /></div>
 				<div class="info flex flex-col justify-between px-1.5 pt-2 md:pt-0 md:px-0 md:pr-1.5">
 					<div class="flex flex-col justify-center h-full">
-						<h3 class="uppercase pb-2 md:pb-0">
+						<h3 class="small-caps pb-2 md:pb-0">
 							{home.chefs.title}
 						</h3>
 					</div>
@@ -82,7 +82,7 @@
 						<PortableText data={home.chefs.content} />
 						<a
 							href="/{getPageLink(home.chefs.cta.url)}"
-							class="mt-2.5 flex gap-1 items-center uppercase w-fit"
+							class="mt-2.5 flex gap-1 items-center small-caps w-fit"
 							>{home.chefs.cta.label}
 							<div><ArrowRight fill="var(--color-green)" /></div>
 						</a>

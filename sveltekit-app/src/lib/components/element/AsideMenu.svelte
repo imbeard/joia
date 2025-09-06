@@ -12,28 +12,28 @@
 	class:open={$menuOpen}
 >
 	<div>
-		<div class="uppercase hidden md:block">{$LL.discover()}</div>
+		<div class="small-caps hidden md:block">{$LL.discover()}</div>
 		<button class="absolute right-2 top-2" onclick={() => ($menuOpen = false)}><CloseIcon /></button
 		>
 	</div>
 	<div class="w-full p-2 md:hidden"><Logo fill="var(--color-white)" /></div>
 	<ul class="flex flex-col gap-4.5 -mt-5">
-		<li><a href="/about" class="uppercase menu-btn">Joia</a></li>
-		<li><a href="/menu" class="uppercase menu-btn">{$LL.ourMenus()}</a></li>
-		<li><a href="/academy" class="uppercase menu-btn">Joia Academy</a></li>
-		<li><a href="/events" class="uppercase menu-btn">{$LL.eventsAndCatering()}</a></li>
-		<li><a href="/contacts" class="uppercase menu-btn">{$LL.contacts()}</a></li>
+		<li><a href="/about" class="small-caps menu-btn">Joia</a></li>
+		<li><a href="/menu" class="small-caps menu-btn">{$LL.ourMenus()}</a></li>
+		<li><a href="/academy" class="small-caps menu-btn">Joia Academy</a></li>
+		<li><a href="/events" class="small-caps menu-btn">{$LL.eventsAndCatering()}</a></li>
+		<li><a href="/contacts" class="small-caps menu-btn">{$LL.contacts()}</a></li>
 	</ul>
 	<div class="flex flex-col gap-2">
-		<button class="button border border-white w-12 uppercase menu-btn">{$LL.book()}</button>
-		<button class="button border border-white w-12 uppercase menu-btn">{$LL.gift()}</button>
+		<button class="button border border-white w-12 small-caps menu-btn">{$LL.book()}</button>
+		<button class="button border border-white w-12 small-caps menu-btn">{$LL.gift()}</button>
 	</div>
 	<div class="flex flex-col gap-1">
-		<div class="text-[12px] uppercase">{$LL.language()}</div>
+		<div class="text-[12px] small-caps">{$LL.language()}</div>
 		<LocaleSwitcher />
 	</div>
 	<div class="flex flex-col gap-2 w-full border-b border-b-white pb-0.5">
-		<div class="uppercase">Newsletter</div>
+		<div class="small-caps">Newsletter</div>
 		<div class="flex justify-between">
 			<input type="text" placeholder={$LL.newsletter()} />
 			<button><ArrowRight fill="var(--color-white)" /></button>

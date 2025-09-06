@@ -103,7 +103,7 @@
 		{#if !isMobile && galleryHovered && gallery.length > 1}
 			{#if showNext || showPrev}
 				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
+					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
 					style="left: {cursorX}px; top: {cursorY}px;"
 				>
 					{#if showNext}

@@ -119,7 +119,7 @@
 			<!-- Navigation button for first gallery -->
 			{#if firstGalleryHovered}
 				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
+					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
 					style="left: {firstCursorX}px; top: {firstCursorY}px;"
 				>
 					{#if firstShowNext}
@@ -167,7 +167,7 @@
 			<!-- Navigation button for second gallery -->
 			{#if secondGalleryHovered}
 				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl uppercase"
+					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
 					style="left: {secondCursorX}px; top: {secondCursorY}px;"
 				>
 					{#if secondShowNext}

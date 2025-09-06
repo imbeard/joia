@@ -62,7 +62,7 @@
 	{#each locales as l}
 		<li>
 			<a
-				class="menu-btn uppercase"
+				class="menu-btn small-caps"
 				class:active={l === $locale}
 				href={replaceLocaleInUrl(page.url, l)}
 			>

@@ -11,7 +11,9 @@ const en = {
 	newsletter: 'Add your email',
 	discover: 'Discover',
 	drinkSelection: 'Our drinks selection',
-	lunchOffer: 'Lunch at Joia'
+	lunchOffer: 'Lunch at Joia',
+	theChefs: 'The Chefs',
+	theFounder: 'The founder'
 } satisfies Translation;
 
 export default en;
