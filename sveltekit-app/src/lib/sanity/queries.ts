@@ -27,7 +27,7 @@ export const menuPageQuery = groq`*[_type == "menuPage" && language == $language
 }`;
 export const press = groq`*[_type == "press"]`;
 
-export const contactQuery = groq`*[_type == "contact" && language == $language][0]`;
+export const contactQuery = groq`*[_type == "contacts" && language == $language][0]`;
 export const aboutQuery = groq`{
   "about": *[_type == "about" && language == $language][0],
   "press": *[_type == "press"]
