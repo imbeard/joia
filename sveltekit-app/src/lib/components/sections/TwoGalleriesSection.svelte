@@ -124,13 +124,13 @@
 				>
 					{#if firstShowNext}
 						<div class="flex gap-1 items-center">
-							<div>Next</div>
-							<div><ArrowRight fill="black" /></div>
+							<div class="text-[rgba(0,0,0,0.3)]">Next</div>
+							<div><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
 						</div>
 					{:else}
 						<div class="flex gap-1 items-center">
-							<div class="rotate-180"><ArrowRight fill="black" /></div>
-							<div>Prev</div>
+							<div class="rotate-180"><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
+							<div class="text-[rgba(0,0,0,0.3)]">Prev</div>
 						</div>
 					{/if}
 				</div>

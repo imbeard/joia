@@ -20,11 +20,11 @@
 		<div class="hidden md:flex flex-col">
 			<a class="small-caps" href="/">Cookie Policy</a>
 			<a class="small-caps" href="/">Privacy Policy</a>
-			<a class="small-caps" href="/">Design by Parco</a>
+			<div class="small-caps">Design by Parco</div>
 		</div>
 		{#if data?.social}
 			<div class="hidden md:flex flex-col">
-				<a class="small-caps" href="/">Seguici su:</a>
+				<div class="small-caps">Seguici su:</div>
 				{#each data?.social as social}
 					<a class="small-caps" href={social?.url} target="_blank">{social?.label}</a>
 				{/each}
@@ -45,11 +45,11 @@
 			<div class="flex flex-col gap-0.5">
 				<a class="small-caps" href="/">Cookie Policy</a>
 				<a class="small-caps" href="/">Privacy Policy</a>
-				<a class="small-caps" href="/">Design by Parco</a>
+				<div class="small-caps">Design by Parco</div>
 			</div>
 			{#if data?.social}
 				<div class="flex flex-col gap-0.5">
-					<a class="small-caps" href="/">Seguici su:</a>
+					<div class="small-caps">Seguici su:</div>
 					{#each data?.social as social}
 						<a class="small-caps" href={social?.url} target="_blank">{social?.label}</a>
 					{/each}

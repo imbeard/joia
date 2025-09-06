@@ -19,14 +19,25 @@ export const academy = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'elementImage',
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'gallery',
     }),
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'blockContent',
+      name: 'details',
+      title: 'Details Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'infoSection',
+          type: 'infoSection',
+        }),
+        defineField({
+          name: 'cta',
+          title: 'Contact Link',
+          type: 'email',
+        }),
+      ],
     }),
     defineField({
       name: 'courses',

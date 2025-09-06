@@ -6,6 +6,7 @@ const it = {
 	language: 'Lingua',
 	ourMenus: 'I nostri menu',
 	discoverOurMenus: 'Scopri i nostri menu',
+	contactUs: 'Contattaci per saperne di più',
 	eventsAndCatering: 'Eventi e Catering',
 	contacts: 'Contatti',
 	newsletter: 'Inserisci mail',
@@ -13,7 +14,8 @@ const it = {
 	drinkSelection: 'La selezione di bevande',
 	lunchOffer: 'Il pranzo al Joia',
 	theChefs: 'Gli Chef',
-	theFounder: 'Il fondatore'
+	theFounder: 'Il fondatore',
+	enrolling: 'Iscrizioni Aperte'
 } satisfies BaseTranslation;
 
 export default it;

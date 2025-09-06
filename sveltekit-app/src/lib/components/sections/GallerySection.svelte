@@ -105,13 +105,13 @@
 				>
 					{#if showNext}
 						<div class="flex gap-1 items-center">
-							<div>{isCurrentSlideVideo ? 'Play' : 'Next'}</div>
-							<div><ArrowRight fill="black" /></div>
+							<div class="text-[rgba(0,0,0,0.3)]">{isCurrentSlideVideo ? 'Play' : 'Next'}</div>
+							<div><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
 						</div>
 					{:else}
 						<div class="flex gap-1 items-center">
-							<div class="rotate-180"><ArrowRight fill="black" /></div>
-							<div>{isCurrentSlideVideo ? 'Play' : 'Prev'}</div>
+							<div class="rotate-180"><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
+							<div class="text-[rgba(0,0,0,0.3)]">{isCurrentSlideVideo ? 'Play' : 'Prev'}</div>
 						</div>
 					{/if}
 				</div>
