@@ -20,10 +20,6 @@
 		sessionStorage.setItem('scrollToHash', slug);
 		goto(`/${currentLang}/menu`);
 	};
-
-	onMount(() => {
-		console.log(home);
-	});
 </script>
 
 {#if home}

@@ -12,9 +12,6 @@
 	let { data } = $props();
 	let page = $derived(data?.document?.data?.about);
 	let press = $derived(data?.document?.data?.press);
-	$effect(() => {
-		console.log(press);
-	});
 </script>
 
 {#if page}

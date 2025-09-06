@@ -15,7 +15,7 @@ const en = {
 	lunchOffer: 'Lunch at Joia',
 	theChefs: 'The Chefs',
 	theFounder: 'The founder',
-	iscrizioniAperte: 'Enrolling'
+	enrolling: 'Enrolling'
 } satisfies Translation;
 
 export default en;

@@ -19,9 +19,8 @@ export const events = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'elementImage',
+      name: 'gallery',
+      type: 'gallery',
     }),
     defineField({
       name: 'eventsBlock',
@@ -29,14 +28,8 @@ export const events = defineType({
       type: 'infoSection',
     }),
     defineField({
-      name: 'detailBlock',
-      title: 'Detail Block',
-      type: 'infoSection',
-    }),
-    defineField({
-      name: 'detailImage',
-      title: 'Detail Image',
-      type: 'elementImage',
+      name: 'gallerySection',
+      type: 'gallerySection',
     }),
   ],
   preview: {

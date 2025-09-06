@@ -128,13 +128,13 @@
 	.embla {
 		overflow: hidden;
 		width: 100%;
+		height: 100%;
 	}
 
 	.embla__container {
 		display: flex;
 		touch-action: pan-x pinch-zoom;
 		min-height: 205px;
-		aspect-ratio: 4/5;
 		width: 100%;
 	}
 
@@ -142,7 +142,6 @@
 		transform: translate3d(0, 0, 0);
 		flex: 0 0 auto;
 		min-width: 0;
-		aspect-ratio: 4/5;
 		width: 100%;
 	}
 

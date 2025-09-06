@@ -10,9 +10,6 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
-	$effect(() => {
-		console.log(document);
-	});
 </script>
 
 {#if document}

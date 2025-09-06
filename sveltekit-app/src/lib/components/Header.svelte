@@ -20,10 +20,6 @@
 	afterNavigate(() => {
 		menuOpen.set(false);
 	});
-
-	$effect(() => {
-		console.log($menuOpen);
-	});
 </script>
 
 <svelte:body use:lockscroll={locked} />

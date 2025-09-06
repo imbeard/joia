@@ -9,10 +9,6 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
-
-	onMount(() => {
-		console.log(document);
-	});
 </script>
 
 {#if document}
