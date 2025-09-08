@@ -9,5 +9,6 @@ export const client = createClient({
 	stega: {
 		enabled: true,
 		studioUrl
-	}
+	},
+	perspective: 'published'
 });

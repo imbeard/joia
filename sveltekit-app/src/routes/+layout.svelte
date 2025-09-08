@@ -37,7 +37,7 @@
 	</div>
 </div>
 
-{#if $isPreviewing && !dev}
+{#if $isPreviewing}
 	<VisualEditing />
 	<LiveMode />
 {/if}

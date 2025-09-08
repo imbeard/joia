@@ -37,11 +37,11 @@
 			{#if menus}
 				{#each menus as menu, index}
 					<button
-						onclick={() => handleMenuLinks(menu.slug)}
+						onclick={() => handleMenuLinks(menu?.slug)}
 						class="w-full py-1.5 border-green border-b flex justify-between items-center"
 						class:border-t={index === 0}
 					>
-						<h4 class="small-caps">{menu.title}</h4>
+						<h4 class="small-caps">{menu?.title}</h4>
 						<ArrowRight fill="var(--color-green)" />
 					</button>
 				{/each}
@@ -56,8 +56,8 @@
 
 		{#if home.lunch}
 			<div class="pt-24 px-1.5 flex flex-col gap-1.5 items-center">
-				<h3 class="small-caps text-center">{home.lunch.heading}</h3>
-				<PortableText data={home.lunch.content} />
+				<h3 class="small-caps text-center">{home?.lunch?.heading}</h3>
+				<PortableText data={home?.lunch?.content} />
 				<a class="w-fit small-caps flex gap-1 items-center" href="/lunch">
 					<span>{$LL.lunchOffer()}</span>
 					<ArrowRight fill="var(--color-green)" />
@@ -67,19 +67,19 @@
 
 		{#if home.chefs}
 			<div class="md:grid-2 gap-2 pt-24">
-				<div class="image"><Image image={home.chefs.image} /></div>
+				{#if home.chefs.image}<div class="image"><Image image={home?.chefs?.image} /></div>{/if}
 				<div class="info flex flex-col justify-between px-1.5 pt-2 md:pt-0 md:px-0 md:pr-1.5">
 					<div class="flex flex-col justify-center h-full">
 						<h3 class="small-caps pb-2 md:pb-0">
-							{home.chefs.title}
+							{home?.chefs?.title}
 						</h3>
 					</div>
 					<div>
-						<PortableText data={home.chefs.content} />
+						<PortableText data={home?.chefs?.content} />
 						<a
-							href="/{getPageLink(home.chefs.cta.url)}"
+							href="/{getPageLink(home?.chefs?.cta?.url)}"
 							class="mt-2.5 flex gap-1 items-center small-caps w-fit"
-							>{home.chefs.cta.label}
+							>{home?.chefs?.cta?.label}
 							<div><ArrowRight fill="var(--color-green)" /></div>
 						</a>
 					</div>
