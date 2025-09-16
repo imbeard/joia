@@ -29,6 +29,10 @@ button {
 	@apply cursor-pointer;
 }
 
+.embla {
+	cursor: none !important;
+}
+
 /* a {
 	display: inherit;
 	line-height: inherit;
