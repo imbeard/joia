@@ -32,11 +32,11 @@
 
 {#if pageData}
 	<main class="p-1.5">
-		<div class="intro flex justify-center items-center small-caps">{pageData?.heading}</div>
+		<div class="intro flex justify-center items-center small-caps fade-in">{pageData?.heading}</div>
 		{#if pageData?.menus.length > 0}
 			<div class="flex flex-col gap-16">
 				{#each pageData?.menus as menu, index}
-					<div id={menu.slug.current} class="md:grid-2 gap-1.5 pt-6">
+					<div id={menu.slug.current} class="md:grid-2 gap-1.5 pt-6 fade-in">
 						<div class="pb-2">
 							<h3 class="small-caps">
 								<span>{menu?.title}, {menu?.price}</span>
@@ -67,7 +67,7 @@
 
 		<div class="sm:grid-2 place-items-center pt-40">
 			{#if pageData?.drink}
-				<div class="w-1/2 flex flex-col items-center justify-center text-center">
+				<div class="fade-in w-1/2 flex flex-col items-center justify-center text-center">
 					<h3 class="small-caps">{pageData?.drink?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={pageData?.drink?.content} /></div>
 					<a
@@ -78,7 +78,9 @@
 				</div>
 			{/if}
 			{#if pageData?.lunch}
-				<div class="pt-10 sm:pt-0 w-1/2 flex flex-col items-center justify-center text-center">
+				<div
+					class="pt-10 sm:pt-0 w-1/2 flex flex-col items-center justify-center text-center fade-in"
+				>
 					<h3 class="small-caps">{pageData?.lunch?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={pageData?.lunch?.content} /></div>
 					<a

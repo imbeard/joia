@@ -114,6 +114,9 @@ importers:
       groq:
         specifier: ^3.95.0
         version: 3.95.0
+      gsap:
+        specifier: ^3.13.0
+        version: 3.13.0
       htm:
         specifier: ^3.1.1
         version: 3.1.1
@@ -3946,6 +3949,9 @@ packages:
   groq@4.6.0:
     resolution: {integrity: sha512-nQdkN9z5cCS51qOFk7wP+BpPgCOqVRpQF+U4hPezO5PrIA0HBIuPwwZayjnvP93CXsMnNJa0GnQn7/Xlam8DiQ==}
     engines: {node: '>=20.19 <22 || >=22.12'}
+
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
 
   gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
@@ -11229,6 +11235,8 @@ snapshots:
   groq@3.95.0: {}
 
   groq@4.6.0: {}
+
+  gsap@3.13.0: {}
 
   gunzip-maybe@1.4.2:
     dependencies:

@@ -5,11 +5,33 @@
 	import LocaleSwitcher from '$lib/components/LocaleSwitcher.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
+	import { clickoutside } from '@svelte-put/clickoutside';
+
+	let clickOutsideEnabled = $state(false);
+
+	function handleClickOutside() {
+		if ($menuOpen) {
+			$menuOpen = false;
+		}
+	}
+
+	// Enable clickoutside with a delay when menu opens
+	$effect(() => {
+		if ($menuOpen) {
+			setTimeout(() => {
+				clickOutsideEnabled = true;
+			}, 100);
+		} else {
+			clickOutsideEnabled = false;
+		}
+	});
 </script>
 
 <aside
 	class="fixed z-20 h-[100dvh] w-full md:w-1/2 right-0 top-0 bg-green text-white p-xs text-center p-1.5 flex flex-col md:justify-between items-center overflow-y-auto"
 	class:open={$menuOpen}
+	use:clickoutside={{ enabled: clickOutsideEnabled }}
+	onclickoutside={handleClickOutside}
 >
 	<div>
 		<div class="small-caps hidden md:block">{$LL.discover()}</div>
@@ -43,8 +65,9 @@
 
 <style lang="postcss">
 	aside {
+		will-change: transform;
 		transform: translateX(100%);
-		transition: transform 350ms cubic-bezier(0.25, 1, 0.45, 1);
+		transition: transform 600ms cubic-bezier(0.51, 0.19, 0.1, 1);
 		transition-delay: 200ms;
 	}
 
@@ -67,7 +90,8 @@
 
 	.menu-btn {
 		opacity: 1;
-		transition: opacity 350ms ease-in-out;
+		will-change: opacity;
+		transition: opacity 200ms cubic-bezier(0.51, 0.19, 0.1, 1);
 		&:hover {
 			opacity: 0.4;
 		}

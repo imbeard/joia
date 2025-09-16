@@ -21,6 +21,8 @@
 	}: Props = $props();
 
 	let innerWidth = $state(1280);
+	let imageElement: HTMLImageElement | undefined = $state();
+	let isLoaded = $state(false);
 
 	let src = $derived(
 		image ? (innerWidth < 768 && image.mobileImage ? image.mobileImage.asset : image.asset) : null
@@ -40,7 +42,8 @@
 
 {#if image && imageUrl}
 	<img
-		class="max-h-full max-w-full w-full
+		bind:this={imageElement}
+		class="image-blur-animate max-h-full max-w-full w-full
 		{fit === 'contain' ? 'object-contain' : 'object-cover h-full w-full'}
 		{height === 'full' ? 'h-full' : 'h-auto'}"
 		loading={lazy ? 'lazy' : 'eager'}
@@ -51,5 +54,8 @@
 		style="aspect-ratio: {aspectRatio}"
 		alt={src?.alt || alt}
 		src={imageUrl}
+		onload={() => {
+			isLoaded = true;
+		}}
 	/>
 {/if}

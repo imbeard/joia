@@ -63,7 +63,7 @@
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div
-			class="embla gallery-container"
+			class="embla gallery-container fade-in"
 			dir="ltr"
 			use:emblaCarouselSvelte={{ options }}
 			onemblaInit={initEmbla}
@@ -76,8 +76,10 @@
 				{#each gallery as slide, index}
 					<div class="embla__slide">
 						{#if slide._type == 'elementImage'}
-							<div class="image-container">
-								<Image image={slide} />
+							<div class="image-container {index === selectedIndex ? 'image-blur-animate' : ''}">
+								<div class="image-parallax">
+									<Image image={slide} />
+								</div>
 							</div>
 						{/if}
 						{#if slide._type == 'elementVideo'}
@@ -115,7 +117,7 @@
 		</div>
 
 		<div
-			class="h-full flex flex-col justify-between p-1.5 md:p-0"
+			class="h-full flex flex-col justify-between p-1.5 md:p-0 fade-in"
 			class:pl-2={direction % 2 === 1}
 			dir="ltr"
 		>
@@ -161,10 +163,17 @@
 		min-width: 0;
 		aspect-ratio: 4/5;
 		width: 100%;
+		overflow: hidden;
 	}
 
 	.image-container {
 		height: 100%;
+		overflow: hidden;
+	}
+
+	.image-parallax {
+		height: 110%;
+		width: 100%;
 	}
 
 	.caption {
@@ -209,6 +218,12 @@
 			width: 50vw;
 			min-height: 370px;
 			height: 100%;
+			overflow: hidden;
+		}
+
+		.image-parallax {
+			height: 120%;
+			width: 100%;
 		}
 	}
 

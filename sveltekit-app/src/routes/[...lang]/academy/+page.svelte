@@ -16,8 +16,8 @@
 
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center small-caps text-center">Joia</div>
-		<div class="px-1.5 mx-auto w-full">
+		<div class="intro flex justify-center items-center small-caps text-center fade-in">Joia</div>
+		<div class="px-1.5 mx-auto w-full fade-in">
 			<PortableText data={document.intro} />
 		</div>
 		{#if document.gallery}
@@ -29,12 +29,14 @@
 		<div class="md:grid-2 gap-1.5">
 			{#if document?.details?.infoSection}
 				<div class="pt-1.5 pl-1.5">
-					<div class="small-caps pb-1.5">
+					<div class="small-caps pb-1.5 fade-in">
 						{document?.details?.infoSection?.heading}
 					</div>
-					<div class="pb-2"><PortableText data={document?.details?.infoSection?.content} /></div>
+					<div class="pb-2 fade-in">
+						<PortableText data={document?.details?.infoSection?.content} />
+					</div>
 					<a
-						class="small-caps items-center gap-1 hidden md:flex"
+						class="small-caps items-center gap-1 hidden md:flex fade-in"
 						href="mailto:{document?.details?.cta}"
 						target="_blank"
 					>
@@ -44,7 +46,7 @@
 				</div>
 			{/if}
 			{#if document?.courses && document?.courses?.length > 0}
-				<div class="p-1.5 pt-25 md:pt-1.5 md:pl-0">
+				<div class="p-1.5 pt-25 md:pt-1.5 md:pl-0 fade-in">
 					{#each document?.courses as course}
 						<Accordion>
 							{#snippet head()}

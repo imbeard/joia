@@ -20,7 +20,7 @@
 
 {#if document}
 	<main>
-		<div class="intro flex flex-col justify-center items-center small-caps text-center">
+		<div class="fade-in intro flex flex-col justify-center items-center small-caps text-center">
 			<div>{$LL.contacts()}</div>
 			<div>{settings?.companyName}</div>
 			<div>{settings?.companyAddress}</div>
@@ -29,7 +29,7 @@
 				<a href="mailto:{settings?.email}">Email {settings?.email}</a>
 			</div>
 		</div>
-		<div class="flex flex-col gap-25 md:grid-2 p-1.5 md:gap-1.5">
+		<div class="fade-in flex flex-col gap-25 md:grid-2 p-1.5 md:gap-1.5">
 			<div class="flex flex-col gap-2">
 				<div class="small-caps">{document?.hours?.heading}</div>
 				<div class="max-w-xl"><PortableText data={document?.hours?.content} /></div>

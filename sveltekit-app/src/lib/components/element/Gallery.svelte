@@ -83,8 +83,10 @@
 			{#each gallery as slide, index}
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
-						<div class="image-container">
-							<Image image={slide} {fit} />
+						<div class="image-container {index === selectedIndex ? 'image-blur-animate' : ''}">
+							<div class="image-parallax">
+								<Image image={slide} {fit} />
+							</div>
 						</div>
 					{/if}
 					{#if slide._type == 'elementVideo'}
@@ -149,10 +151,17 @@
 		flex: 0 0 auto;
 		min-width: 0;
 		width: 100%;
+		overflow: hidden;
 	}
 
 	.image-container {
 		height: 100%;
+		overflow: hidden;
+	}
+
+	.image-parallax {
+		height: 110%;
+		width: 100%;
 	}
 
 	.video-container {
@@ -223,6 +232,12 @@
 			width: 100%;
 			min-height: 370px;
 			height: 100%;
+			overflow: hidden;
+		}
+
+		.image-parallax {
+			height: 120%;
+			width: 100%;
 		}
 	}
 

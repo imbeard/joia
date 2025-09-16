@@ -5,7 +5,7 @@
 	let currentYear = $derived(new Date().getFullYear());
 </script>
 
-<div class="h-screen w-full flex flex-col justify-between bg-white typo-s">
+<div class="fade-in h-screen w-full flex flex-col justify-between bg-white typo-s">
 	<div class="pl-[1.2rem] pt-[4.4rem] w-20"><Logo fill="var(--color-green)" /></div>
 
 	<div>

@@ -8,7 +8,7 @@
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import { fade } from 'svelte/transition';
 
-	let { section } = $props();
+	let { section, fit } = $props();
 	let firstGallery = $derived(section?.firstGallery);
 	let secondGallery = $derived(section?.secondGallery);
 
@@ -18,6 +18,10 @@
 
 	let options = { loop: true, align: 'start' };
 	let delay = 6000;
+
+	// Current slide tracking
+	let firstSelectedIndex = $state(0);
+	let secondSelectedIndex = $state(0);
 
 	// Cursor navigation state
 	let firstGalleryHovered = $state(false);
@@ -75,10 +79,16 @@
 	// Initialize embla APIs
 	function initFirstEmbla(embla) {
 		firstEmblaApi = embla.detail;
+		firstEmblaApi.on('select', () => {
+			firstSelectedIndex = firstEmblaApi.selectedScrollSnap();
+		});
 	}
 
 	function initSecondEmbla(embla) {
 		secondEmblaApi = embla.detail;
+		secondEmblaApi.on('select', () => {
+			secondSelectedIndex = secondEmblaApi.selectedScrollSnap();
+		});
 	}
 </script>
 
@@ -96,12 +106,16 @@
 			onmousemove={handleFirstGalleryMouseMove}
 			onclick={navigateFirstGallery}
 		>
-			<div class="embla__container flex">
+			<div class="embla__container flex" class:cover={fit == 'cover'}>
 				{#each firstGallery as slide, index}
 					<div class="embla__slide">
 						{#if slide._type == 'elementImage'}
-							<div class="image-container">
-								<Image image={slide} fit="cover" />
+							<div
+								class="image-container {index === firstSelectedIndex ? 'image-blur-animate' : ''}"
+							>
+								<div class="image-parallax">
+									<Image image={slide} fit="cover" />
+								</div>
 							</div>
 						{/if}
 						{#if slide._type == 'elementVideo'}
@@ -153,8 +167,12 @@
 				{#each secondGallery as slide, index}
 					<div class="embla__slide">
 						{#if slide._type == 'elementImage'}
-							<div class="image-container">
-								<Image image={slide} fit="cover" />
+							<div
+								class="image-container {index === secondSelectedIndex ? 'image-blur-animate' : ''}"
+							>
+								<div class="image-parallax">
+									<Image image={slide} fit="cover" />
+								</div>
 							</div>
 						{/if}
 						{#if slide.caption}
@@ -204,6 +222,9 @@
 		min-height: 205px;
 		aspect-ratio: 4/5;
 		width: 100%;
+		&.cover {
+			height: 100%;
+		}
 	}
 
 	.embla__slide {
@@ -212,10 +233,22 @@
 		min-width: 0;
 		aspect-ratio: 4/5;
 		width: 100%;
+		overflow: hidden;
 	}
 
 	.image-container {
 		height: 100%;
+		overflow: hidden;
+	}
+
+	.image-parallax {
+		height: 120%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		top: -10%;
 	}
 
 	.caption {
@@ -249,6 +282,17 @@
 			width: 50vw;
 			min-height: 370px;
 			height: 100svh;
+			overflow: hidden;
+		}
+
+		.image-parallax {
+			height: 120%;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			top: -10%;
 		}
 	}
 

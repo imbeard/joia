@@ -20,8 +20,8 @@
 
 {#if page}
 	<main>
-		<div class="intro flex justify-center items-center small-caps text-center">Joia</div>
-		<div class="px-1.5 mx-auto w-full">
+		<div class="fade-in intro flex justify-center items-center small-caps text-center">Joia</div>
+		<div class="fade-in px-1.5 mx-auto w-full">
 			<PortableText data={page?.intro} />
 		</div>
 		{#if page.gallery}
@@ -29,12 +29,12 @@
 				<Gallery data={page?.gallery} fit="cover" />
 			</div>
 		{/if}
-		<div class="md:w-1/2 p-1.5"><PortableText data={page?.description} /></div>
+		<div class="fade-in md:w-1/2 p-1.5"><PortableText data={page?.description} /></div>
 		{#if page?.detailsSections}
 			<div class="flex flex-col items-center w-full py-25">
 				<div class="md:w-1/2 flex flex-col gap-6 p-1.5">
 					{#each page?.detailsSections as section}
-						<div>
+						<div class="fade-in">
 							<div class="small-caps text-center pb-6">
 								{section.heading}
 							</div>
@@ -45,7 +45,7 @@
 			</div>
 		{/if}
 		{#if page?.team}
-			<div class="team p-1.5 w-full hidden md:block">
+			<div class="fade-in team p-1.5 w-full hidden md:block">
 				<div class="flex-col justify-between hidden md:flex">
 					<h3 class="small-caps">{$LL.theChefs()}</h3>
 					<div class="small-caps">
@@ -84,7 +84,7 @@
 		{/if}
 
 		{#if page?.founder}
-			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
+			<div class="fade-in pt-25 md:p-0 md:pt-25 md:grid-2">
 				<div class="flex flex-col justify-between p-1.5 md:pb-0">
 					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0">
 						{page?.founder?.infoSection?.heading}
@@ -96,7 +96,7 @@
 		{/if}
 
 		{#if page?.location}
-			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
+			<div class="fade-in pt-25 md:p-0 md:pt-25 md:grid-2">
 				{#if page?.location?.gallery}
 					<Gallery data={page?.location?.gallery} fit="cover" />
 				{/if}
@@ -110,9 +110,9 @@
 
 		{#if press && press.length > 0}
 			<div class="flex flex-col gap-3 p-1.5 pt-25">
-				<h3 class="small-caps text-center pb-25">Press</h3>
+				<h3 class="small-caps text-center pb-25 fade-in">Press</h3>
 				{#each press as item}
-					<div class="press-item">
+					<div class="press-item fade-in">
 						<div
 							class="small-caps flex w-full justify-between pb-3 md:pb-0 md:w-fit md:flex-col md:justify-normal"
 						>

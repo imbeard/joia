@@ -14,10 +14,10 @@
 
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center small-caps text-center">
+		<div class="fade-in intro flex justify-center items-center small-caps text-center">
 			<PortableText data={document.heading} />
 		</div>
-		<div class="px-1.5 mx-auto w-full">
+		<div class="fade-in px-1.5 mx-auto w-full">
 			<PortableText data={document.intro} />
 		</div>
 		<div class="flex flex-col pt-1.5 gap-24">
@@ -28,7 +28,7 @@
 			{/if}
 		</div>
 
-		<div class="pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
+		<div class="fade-in pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
 			<h3 class="small-caps text-center">{document.tastingNotes.infoSection.heading}</h3>
 			<PortableText data={document.tastingNotes.infoSection.content} />
 			<a

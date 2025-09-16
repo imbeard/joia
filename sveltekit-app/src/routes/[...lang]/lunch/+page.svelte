@@ -13,12 +13,12 @@
 
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center small-caps">{$LL.lunchOffer()}</div>
+		<div class="fade-in intro flex justify-center items-center small-caps">{$LL.lunchOffer()}</div>
 		<div class="px-1.5 mx-auto w-full md:w-1/2">
-			<PortableText data={document.description} />
+			<div class="fade-in"><PortableText data={document.description} /></div>
 			<div class="pt-15 pb-10 md:py-30 flex flex-col gap-6">
 				{#each document.choices as choice}
-					<div class="flex flex-col gap-6">
+					<div class="fade-in flex flex-col gap-6">
 						<div class="text-center small-caps">
 							<h3>{choice.title}</h3>
 							<h3>{choice.price}</h3>
@@ -29,9 +29,11 @@
 			</div>
 		</div>
 		<TwoGalleriesSection section={document.twoGalleries} />
-		<div class="pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
-			<h3 class="small-caps text-center">{document.tastingNotes.heading}</h3>
-			<PortableText data={document.tastingNotes.content} />
+		<div class="fade-in pb-10 md:py-40 px-1.5 w-full flex flex-col items-center">
+			<h3 class="small-caps text-center">{document.tastingNotes?.infoSection?.heading}</h3>
+			<div class="text-center max-w-2xl">
+				<PortableText data={document.tastingNotes?.infoSection?.content} />
+			</div>
 			<a href="/menu" class="mt-2.5 flex gap-1 items-center small-caps mx-auto w-fit"
 				>{$LL.ourMenus()}
 				<div><ArrowRight fill="var(--color-green)" /></div>

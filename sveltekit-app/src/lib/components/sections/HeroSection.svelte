@@ -2,7 +2,7 @@
 	import Image from '../element/Image.svelte';
 	import Video from '../element/Video.svelte';
 	import PortableText from '../element/PortableText.svelte';
-	
+
 	let { section } = $props();
 	let video = $derived(section?.video);
 	let image = $derived(section?.image);
