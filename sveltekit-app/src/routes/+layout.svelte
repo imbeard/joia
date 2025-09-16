@@ -117,9 +117,7 @@
 					// Watch for new .image-blur-animate elements being added
 					const observer = new MutationObserver(() => {
 						setTimeout(() => {
-							const newElements = document.querySelectorAll(
-								'.image-blur-animate:not([data-animated])'
-							);
+							const newElements = document.querySelectorAll('.image-blur-animate');
 							newElements.forEach((element) => {
 								const rect = element.getBoundingClientRect();
 								const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
