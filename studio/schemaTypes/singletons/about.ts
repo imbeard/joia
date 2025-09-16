@@ -51,9 +51,9 @@ export const about = defineType({
       of: [{name: 'member', title: 'Member', type: 'infoSection'}],
     }),
     defineField({
-      name: 'teamImage',
-      title: 'Team Image',
-      type: 'elementImage',
+      name: 'teamGallery',
+      title: 'Gallery',
+      type: 'gallery',
       fieldset: 'teamSection',
     }),
     defineField({
@@ -78,9 +78,9 @@ export const about = defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'elementImage',
+          name: 'gallery',
+          title: 'Gallery',
+          type: 'gallery',
         }),
         defineField({
           name: 'description',

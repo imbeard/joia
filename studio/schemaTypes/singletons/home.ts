@@ -62,9 +62,9 @@ export const home = defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'image',
-          title: 'Image',
-          type: 'image',
+          name: 'gallery',
+          title: 'Gallery',
+          type: 'gallery',
         }),
         defineField({
           name: 'title',

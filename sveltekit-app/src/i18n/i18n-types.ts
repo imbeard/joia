@@ -37,6 +37,10 @@ type RootTranslation = {
 	/**
 	 * C​o​n​t​a​c​t​ ​u​s​ ​t​o​ ​d​i​s​c​o​v​e​r​ ​m​o​r​e
 	 */
+	contactUsToKnowMore: string
+	/**
+	 * C​o​n​t​a​c​t​ ​u​s
+	 */
 	contactUs: string
 	/**
 	 * E​v​e​n​t​s​ ​a​n​d​ ​C​a​t​e​r​i​n​g
@@ -73,7 +77,7 @@ type RootTranslation = {
 	/**
 	 * E​n​r​o​l​l​i​n​g
 	 */
-	iscrizioniAperte: string
+	enrolling: string
 }
 
 export type TranslationFunctions = {
@@ -99,6 +103,10 @@ export type TranslationFunctions = {
 	discoverOurMenus: () => LocalizedString
 	/**
 	 * Contact us to discover more
+	 */
+	contactUsToKnowMore: () => LocalizedString
+	/**
+	 * Contact us
 	 */
 	contactUs: () => LocalizedString
 	/**
@@ -136,7 +144,7 @@ export type TranslationFunctions = {
 	/**
 	 * Enrolling
 	 */
-	iscrizioniAperte: () => LocalizedString
+	enrolling: () => LocalizedString
 }
 
 export type Formatters = {}

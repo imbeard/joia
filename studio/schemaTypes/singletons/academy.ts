@@ -72,6 +72,11 @@ export const academy = defineType({
               title: 'Description',
               type: 'blockContent',
             }),
+            defineField({
+              name: 'contact',
+              title: 'Contact',
+              type: 'email',
+            }),
           ],
           preview: {
             select: {

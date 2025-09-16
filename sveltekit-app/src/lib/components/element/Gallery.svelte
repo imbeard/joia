@@ -8,7 +8,7 @@
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let { data } = $props();
+	let { data, fit } = $props();
 	let gallery = $derived(data?.items);
 
 	let emblaApi;
@@ -79,17 +79,20 @@
 		onmousemove={handleGalleryMouseMove}
 		onclick={navigateGallery}
 	>
-		<div class="embla__container flex">
+		<div class="embla__container flex" class:cover={fit == 'cover'}>
 			{#each gallery as slide, index}
 				<div class="embla__slide">
 					{#if slide._type == 'elementImage'}
 						<div class="image-container">
-							<Image image={slide} />
+							<Image image={slide} {fit} />
 						</div>
 					{/if}
 					{#if slide._type == 'elementVideo'}
 						<div class="image-container video-container">
 							<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
+							<!-- Navigation overlay zones to prevent video clicks in nav areas -->
+							<div class="nav-overlay nav-overlay-left"></div>
+							<div class="nav-overlay nav-overlay-right"></div>
 						</div>
 					{/if}
 					{#if slide.caption}
@@ -124,7 +127,7 @@
 	</div>
 {/if}
 
-<style>
+<style lang="postcss">
 	.embla {
 		overflow: hidden;
 		width: 100%;
@@ -136,6 +139,9 @@
 		touch-action: pan-x pinch-zoom;
 		min-height: 205px;
 		width: 100%;
+		&.cover {
+			height: 100%;
+		}
 	}
 
 	.embla__slide {
@@ -151,6 +157,34 @@
 
 	.video-container {
 		position: relative;
+	}
+
+	.nav-overlay {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		z-index: 5;
+		pointer-events: auto;
+	}
+
+	.nav-overlay-left {
+		left: 0;
+		width: 30%;
+	}
+
+	.nav-overlay-right {
+		right: 0;
+		width: 30%;
+	}
+
+	.nav-overlay-left {
+		left: 0;
+		width: 30%;
+	}
+
+	.nav-overlay-right {
+		right: 0;
+		width: 30%;
 	}
 
 	.caption {

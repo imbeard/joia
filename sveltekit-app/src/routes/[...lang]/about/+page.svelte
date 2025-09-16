@@ -12,20 +12,24 @@
 	let { data } = $props();
 	let page = $derived(data?.document?.data?.about);
 	let press = $derived(data?.document?.data?.press);
+
+	onMount(() => {
+		console.log(page);
+	});
 </script>
 
 {#if page}
 	<main>
 		<div class="intro flex justify-center items-center small-caps text-center">Joia</div>
 		<div class="px-1.5 mx-auto w-full">
-			<PortableText data={page.intro} />
+			<PortableText data={page?.intro} />
 		</div>
 		{#if page.gallery}
 			<div class="pt-1.5">
-				<Gallery data={page.gallery} />
+				<Gallery data={page?.gallery} fit="cover" />
 			</div>
 		{/if}
-		<div class="md:w-1/2 p-1.5"><PortableText data={page.description} /></div>
+		<div class="md:w-1/2 p-1.5"><PortableText data={page?.description} /></div>
 		{#if page?.detailsSections}
 			<div class="flex flex-col items-center w-full py-25">
 				<div class="md:w-1/2 flex flex-col gap-6 p-1.5">
@@ -49,7 +53,9 @@
 					</div>
 					<PortableText data={page?.team[0]?.content} />
 				</div>
-				<Image image={page?.teamImage} alt={page?.teamImage?.alt} />
+				{#if page?.teamGallery}
+					<Gallery data={page.teamGallery} fit="cover" />
+				{/if}
 				<div class="flex flex-col justify-between hidden md:flex">
 					<div class="small-caps flex flex-col h-full justify-center">
 						{page?.team[1]?.heading}
@@ -58,9 +64,9 @@
 				</div>
 			</div>
 
-			<div class="p-1.5 w-full block md:hidden">
-				<Image image={page?.teamImage} alt={page?.teamImage?.alt} />
-				<div class="grid-2 gap-1 pt-1.5">
+			<div class="w-full block md:hidden">
+				<Gallery data={page?.teamGallery} fit="cover" />
+				<div class="p-1.5 grid-2 gap-1 pt-1.5">
 					<div class="flex flex-col">
 						<span class="small-caps pb-1.5">
 							{page?.team[0]?.heading}
@@ -91,7 +97,9 @@
 
 		{#if page?.location}
 			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
-				<Image image={page?.location?.image} alt={page?.founder?.image?.alt} />
+				{#if page?.location?.gallery}
+					<Gallery data={page?.location?.gallery} fit="cover" />
+				{/if}
 
 				<div class="flex flex-col justify-between p-1.5 md:pb-0">
 					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0">Location</h3>

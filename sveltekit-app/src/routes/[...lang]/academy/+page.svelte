@@ -34,11 +34,11 @@
 					</div>
 					<div class="pb-2"><PortableText data={document?.details?.infoSection?.content} /></div>
 					<a
-						class="small-caps flex items-center gap-1 hidden md:block"
+						class="small-caps items-center gap-1 hidden md:flex"
 						href="mailto:{document?.details?.cta}"
 						target="_blank"
 					>
-						<span>{$LL.contactUs()}</span>
+						<span>{$LL.contactUsToKnowMore()}</span>
 						<ArrowRight fill="var(--color-green)" />
 					</a>
 				</div>
@@ -58,7 +58,18 @@
 								</div>
 							{/snippet}
 							{#snippet details()}
-								<PortableText data={course?.description} />
+								<div class="flex flex-col">
+									<PortableText data={course?.description} />
+									{#if course?.contact}
+										<a
+											href="mailto:{course?.contact}"
+											class="py-4 small-caps flex items-center gap-1"
+										>
+											<span>{$LL.contactUs()}</span>
+											<ArrowRight fill="var(--color-green)" />
+										</a>
+									{/if}
+								</div>
 							{/snippet}
 						</Accordion>
 					{/each}

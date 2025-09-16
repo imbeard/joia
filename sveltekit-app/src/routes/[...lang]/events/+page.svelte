@@ -25,7 +25,7 @@
 		{#if document.gallery}
 			<div class="md:w-1/2 ml-auto">
 				<div class="pt-1.5">
-					<Gallery data={document.gallery} />
+					<Gallery data={document.gallery} fit="cover" />
 					<h3 class="py-25 small-caps">
 						{document.eventsBlock?.heading}
 					</h3>
