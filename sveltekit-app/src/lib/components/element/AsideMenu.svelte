@@ -28,29 +28,35 @@
 </script>
 
 <aside
-	class="fixed z-20 h-[100dvh] w-full md:w-1/2 right-0 top-0 bg-green text-white p-xs text-center p-1.5 flex flex-col md:justify-between items-center overflow-y-auto"
+	class="fixed z-20 h-[100dvh] w-full md:w-1/2 right-0 top-0 bg-green text-white p-xs text-center p-1.5 flex flex-col justify-between items-center overflow-y-auto"
 	class:open={$menuOpen}
 	use:clickoutside={{ enabled: clickOutsideEnabled }}
 	onclickoutside={handleClickOutside}
 >
-	<div>
-		<div class="small-caps hidden md:block">{$LL.discover()}</div>
-		<button class="absolute right-2 top-2" onclick={() => ($menuOpen = false)}><CloseIcon /></button
+	<button
+		class="fixed z-99 right-2 top-2 md:hidden"
+		class:hidden={!$menuOpen}
+		onclick={() => ($menuOpen = false)}><CloseIcon /></button
+	>
+	<div class="hidden md:block">
+		<div class="small-caps">{$LL.discover()}</div>
+		<button class="fixed z-99 right-2 top-2" onclick={() => ($menuOpen = false)}
+			><CloseIcon /></button
 		>
 	</div>
-	<div class="w-full p-2 md:hidden"><Logo fill="var(--color-white)" /></div>
-	<ul class="flex flex-col gap-4.5 -mt-5">
+	<div class="w-1/2 p-2 mb-4 md:w-full md:mb-0 md:hidden"><Logo fill="var(--color-white)" /></div>
+	<ul class="flex flex-col gap-1.5 md:pb-0 md:gap-4.5 -mt-5">
 		<li><a href="/about" class="small-caps menu-btn">Joia</a></li>
 		<li><a href="/menu" class="small-caps menu-btn">{$LL.ourMenus()}</a></li>
 		<li><a href="/academy" class="small-caps menu-btn">Joia Academy</a></li>
 		<li><a href="/events" class="small-caps menu-btn">{$LL.eventsAndCatering()}</a></li>
 		<li><a href="/contacts" class="small-caps menu-btn">{$LL.contacts()}</a></li>
 	</ul>
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col gap-1">
 		<button class="button border border-white w-12 small-caps menu-btn">{$LL.book()}</button>
 		<button class="button border border-white w-12 small-caps menu-btn">{$LL.gift()}</button>
 	</div>
-	<div class="flex flex-col gap-1">
+	<div class="flex flex-col gap-0.2 md:gap-1">
 		<div class="text-[12px] small-caps">{$LL.language()}</div>
 		<LocaleSwitcher />
 	</div>

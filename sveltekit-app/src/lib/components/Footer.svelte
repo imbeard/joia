@@ -19,7 +19,7 @@
 					<a href="mailto:{data?.email}">Email {data?.email}</a>
 				</div>
 			</div>
-			<div class="hidden md:block">©JOIA {currentYear}</div>
+			<div class="hidden md:block small-caps">©JOIA {currentYear}</div>
 			<div class="hidden md:flex flex-col">
 				<a class="small-caps" href="/">Cookie Policy</a>
 				<a class="small-caps" href="/">Privacy Policy</a>
@@ -57,7 +57,7 @@
 						{/each}
 					</div>
 				{/if}
-				<div class="block">©JOIA {currentYear}</div>
+				<div class="block small-caps">©JOIA {currentYear}</div>
 			</div>
 		</div>
 	</div>

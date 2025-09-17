@@ -28,10 +28,10 @@
 					<div class="fade-in">
 						<Gallery data={document.gallery} fit="cover" />
 					</div>
-					<h3 class="py-25 small-caps fade-in">
+					<h3 class="px-1.5 md:px-0 py-25 small-caps fade-in">
 						{document.eventsBlock?.heading}
 					</h3>
-					<div class="fade-in">
+					<div class="px-1.5 md:px-0 fade-in">
 						<PortableText data={document.eventsBlock?.content} />
 					</div>
 				</div>

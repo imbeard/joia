@@ -65,7 +65,7 @@
 			</div>
 		{/if}
 
-		<div class="sm:grid-2 place-items-center pt-40">
+		<div class="flex flex-col sm:grid-2 place-items-center pt-40">
 			{#if pageData?.drink}
 				<div class="fade-in w-1/2 flex flex-col items-center justify-center text-center">
 					<h3 class="small-caps">{pageData?.drink?.heading}</h3>
