@@ -45,6 +45,29 @@ export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
     }
     }
   }`;
+
+export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $language][0] {
+  ...,
+  tastingNotes {
+    ...,
+    cta {
+      label,
+      "url": url->_id
+    }
+    }
+  }`;
+
+export const herbalTeasQuery = groq`*[_type == "herbalTeas" && language == $language][0] {
+  ...,
+  tastingNotes {
+    ...,
+    cta {
+      label,
+      "url": url->_id
+    }
+    }
+  }`;
+
 export const lunchQuery = groq`*[_type == "lunch" && language == $language][0]`;
 export const drinkingQuery = groq`*[_type == "drinking" && language == $language][0] {
   ...,

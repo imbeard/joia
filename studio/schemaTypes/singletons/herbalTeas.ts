@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import {BottleIcon} from '@sanity/icons'
 
-export const softDrinks = defineType({
-  name: 'softDrinks',
-  title: 'Soft Drinks',
+export const herbalTeas = defineType({
+  name: 'herbalTeas',
+  title: 'Herbal Teas',
   type: 'document',
   icon: BottleIcon,
   fields: [
@@ -97,7 +97,7 @@ export const softDrinks = defineType({
     },
     prepare({lang}) {
       return {
-        title: 'Soft Drinks',
+        title: 'Herbal Teas',
         subtitle: lang || '—',
       }
     },

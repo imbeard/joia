@@ -9,10 +9,9 @@ export const blockContent = defineType({
       type: 'block',
       styles: [
         {title: 'Normal', value: 'normal'},
+        {title: 'Small Caps', value: 'small-caps'},
       ],
-      lists: [
-        {title: 'Bullet', value: 'bullet'},
-      ],
+      lists: [{title: 'Bullet', value: 'bullet'}],
       marks: {
         decorators: [],
         annotations: [

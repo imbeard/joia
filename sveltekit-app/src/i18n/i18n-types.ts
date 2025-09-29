@@ -63,6 +63,10 @@ type RootTranslation = {
 	 */
 	drinkSelection: string
 	/**
+	 * D​r​i​n​k​i​n​g​ ​a​t​ ​J​o​i​a
+	 */
+	drinkAtJoia: string
+	/**
 	 * L​u​n​c​h​ ​a​t​ ​J​o​i​a
 	 */
 	lunchOffer: string
@@ -129,6 +133,10 @@ export type TranslationFunctions = {
 	 * Our drinks selection
 	 */
 	drinkSelection: () => LocalizedString
+	/**
+	 * Drinking at Joia
+	 */
+	drinkAtJoia: () => LocalizedString
 	/**
 	 * Lunch at Joia
 	 */

@@ -59,6 +59,8 @@ export default defineConfig({
         'settings',
         'academy',
         'menuPage',
+        'softDrinks',
+        'herbalTeas',
       ],
     }),
   ],

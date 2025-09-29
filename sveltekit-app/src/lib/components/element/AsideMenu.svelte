@@ -48,6 +48,7 @@
 	<ul class="flex flex-col gap-1.5 md:pb-0 md:gap-4.5 -mt-5">
 		<li><a href="/about" class="small-caps menu-btn">Joia</a></li>
 		<li><a href="/menu" class="small-caps menu-btn">{$LL.ourMenus()}</a></li>
+		<li><a href="/drinking" class="small-caps menu-btn">{$LL.drinkAtJoia()}</a></li>
 		<li><a href="/academy" class="small-caps menu-btn">Joia Academy</a></li>
 		<li><a href="/events" class="small-caps menu-btn">{$LL.eventsAndCatering()}</a></li>
 		<li><a href="/contacts" class="small-caps menu-btn">{$LL.contacts()}</a></li>

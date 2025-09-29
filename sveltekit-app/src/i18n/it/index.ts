@@ -13,6 +13,7 @@ const it = {
 	newsletter: 'Inserisci mail',
 	discover: 'Scopri',
 	drinkSelection: 'La selezione di bevande',
+	drinkAtJoia: 'Il bere al Joia',
 	lunchOffer: 'Il pranzo al Joia',
 	theChefs: 'Gli Chef',
 	theFounder: 'Il fondatore',

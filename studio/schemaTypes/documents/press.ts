@@ -43,6 +43,11 @@ export const press = defineType({
       title: 'Description',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'link',
+      title: 'Link',
+      type: 'url',
+    }),
   ],
   preview: {
     select: {

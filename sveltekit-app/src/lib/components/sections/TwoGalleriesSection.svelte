@@ -1,6 +1,7 @@
 <script lang="ts">
 	// @ts-nocheck
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+	import { setupTweenParallax } from '$lib/utils/emblaCarouselTweenParallax.ts';
 	import { onMount } from 'svelte';
 
 	import Image from '$lib/components/element/Image.svelte';
@@ -82,6 +83,10 @@
 		firstEmblaApi.on('select', () => {
 			firstSelectedIndex = firstEmblaApi.selectedScrollSnap();
 		});
+
+		// Setup parallax effect
+		const removeTweenParallax = setupTweenParallax(firstEmblaApi);
+		firstEmblaApi.on('destroy', removeTweenParallax);
 	}
 
 	function initSecondEmbla(embla) {
@@ -89,6 +94,10 @@
 		secondEmblaApi.on('select', () => {
 			secondSelectedIndex = secondEmblaApi.selectedScrollSnap();
 		});
+
+		// Setup parallax effect
+		const removeTweenParallax = setupTweenParallax(secondEmblaApi);
+		secondEmblaApi.on('destroy', removeTweenParallax);
 	}
 </script>
 
@@ -97,37 +106,43 @@
 		<!-- First Gallery -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div
-			class="embla gallery-container"
-			use:emblaCarouselSvelte={{ options }}
-			onemblaInit={initFirstEmbla}
-			onmouseenter={() => (firstGalleryHovered = true)}
-			onmouseleave={() => (firstGalleryHovered = false)}
-			onmousemove={handleFirstGalleryMouseMove}
-			onclick={navigateFirstGallery}
-		>
-			<div class="embla__container flex" class:cover={fit == 'cover'}>
-				{#each firstGallery as slide, index}
-					<div class="embla__slide">
-						{#if slide._type == 'elementImage'}
-							<div
-								class="image-container {index === firstSelectedIndex ? 'image-blur-animate' : ''}"
-							>
-								<div class="image-parallax">
-									<Image image={slide} fit="cover" />
+		<div class="embla gallery-container">
+			<div
+				class="embla__viewport"
+				use:emblaCarouselSvelte={{ options }}
+				onemblaInit={initFirstEmbla}
+				onmouseenter={() => (firstGalleryHovered = true)}
+				onmouseleave={() => (firstGalleryHovered = false)}
+				onmousemove={handleFirstGalleryMouseMove}
+				onclick={navigateFirstGallery}
+			>
+				<div class="embla__container flex" class:cover={fit == 'cover'}>
+					{#each firstGallery as slide, index}
+						<div class="embla__slide">
+							{#if slide._type == 'elementImage'}
+								<div class="embla__parallax">
+									<div class="embla__parallax__layer">
+										<div
+											class="image-parallax embla__parallax__img {index === firstSelectedIndex
+												? 'image-blur-animate'
+												: ''}"
+										>
+											<Image image={slide} fit="cover" />
+										</div>
+									</div>
 								</div>
-							</div>
-						{/if}
-						{#if slide._type == 'elementVideo'}
-							<div class="image-container">
-								<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
-							</div>
-						{/if}
-						{#if slide.caption}
-							<div class="caption">{slide?.caption}</div>
-						{/if}
-					</div>
-				{/each}
+							{/if}
+							{#if slide._type == 'elementVideo'}
+								<div class="image-container">
+									<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
+								</div>
+							{/if}
+							{#if slide.caption}
+								<div class="caption">{slide?.caption}</div>
+							{/if}
+						</div>
+					{/each}
+				</div>
 			</div>
 
 			<!-- Navigation button for first gallery -->
@@ -154,32 +169,38 @@
 		<!-- Second Gallery -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div
-			class="embla gallery-container"
-			use:emblaCarouselSvelte={{ options }}
-			onemblaInit={initSecondEmbla}
-			onmouseenter={() => (secondGalleryHovered = true)}
-			onmouseleave={() => (secondGalleryHovered = false)}
-			onmousemove={handleSecondGalleryMouseMove}
-			onclick={navigateSecondGallery}
-		>
-			<div class="embla__container flex">
-				{#each secondGallery as slide, index}
-					<div class="embla__slide">
-						{#if slide._type == 'elementImage'}
-							<div
-								class="image-container {index === secondSelectedIndex ? 'image-blur-animate' : ''}"
-							>
-								<div class="image-parallax">
-									<Image image={slide} fit="cover" />
+		<div class="embla gallery-container">
+			<div
+				class="embla__viewport"
+				use:emblaCarouselSvelte={{ options }}
+				onemblaInit={initSecondEmbla}
+				onmouseenter={() => (secondGalleryHovered = true)}
+				onmouseleave={() => (secondGalleryHovered = false)}
+				onmousemove={handleSecondGalleryMouseMove}
+				onclick={navigateSecondGallery}
+			>
+				<div class="embla__container flex">
+					{#each secondGallery as slide, index}
+						<div class="embla__slide">
+							{#if slide._type == 'elementImage'}
+								<div class="embla__parallax">
+									<div class="embla__parallax__layer">
+										<div
+											class="image-parallax embla__parallax__img {index === secondSelectedIndex
+												? 'image-blur-animate'
+												: ''}"
+										>
+											<Image image={slide} fit="cover" />
+										</div>
+									</div>
 								</div>
-							</div>
-						{/if}
-						{#if slide.caption}
-							<div class="caption">{slide?.caption}</div>
-						{/if}
-					</div>
-				{/each}
+							{/if}
+							{#if slide.caption}
+								<div class="caption">{slide?.caption}</div>
+							{/if}
+						</div>
+					{/each}
+				</div>
 			</div>
 
 			<!-- Navigation button for second gallery -->
@@ -216,6 +237,11 @@
 		width: 100%;
 	}
 
+	.embla__viewport {
+		overflow: hidden;
+		height: 100%;
+	}
+
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
@@ -236,19 +262,35 @@
 		overflow: hidden;
 	}
 
+	.embla__parallax {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.embla__parallax__layer {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.image-container {
 		height: 100%;
 		overflow: hidden;
 	}
 
 	.image-parallax {
-		height: 120%;
+		height: 110%;
 		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		top: -10%;
+	}
+
+	:global(.embla__parallax__img) {
+		max-width: none;
+		width: 115%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.caption {
@@ -288,11 +330,10 @@
 		.image-parallax {
 			height: 120%;
 			width: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-			top: -10%;
+		}
+
+		:global(.embla__parallax__img) {
+			width: 120%;
 		}
 	}
 

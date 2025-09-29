@@ -54,7 +54,7 @@
 									<span>{course?.title}</span>
 									{#if course?.enrollmentOpen == 'yes'}
 										<span
-											class="bg-green text-white px-[3px] py-[1px] font-sans rounded-[2px] whitespace-nowrap mr-1"
+											class="bg-green text-white px-[3px] pb-[1px] font-sans rounded-[2px] whitespace-nowrap mr-1"
 											>{$LL.enrolling()}</span
 										>
 									{/if}

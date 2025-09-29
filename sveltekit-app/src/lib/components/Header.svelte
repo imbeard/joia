@@ -35,7 +35,7 @@
 >
 	<a href="/" class="py-0.5 px-1 backdrop-blur-xl md:hidden">Joia</a>
 	<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{name}</a>
-	<div class="absolute left-1/2 -translate-x-1/2 py-0.5 px-1 w-auto">{season}</div>
+	<div class="absolute left-1/2 -translate-x-1/2 backdrop-blur-xl py-0.5 px-1 w-auto">{season}</div>
 	<div class="flex gap-3 items-center">
 		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.book()}</a>
 		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a>

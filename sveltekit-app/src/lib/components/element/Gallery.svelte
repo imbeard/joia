@@ -1,13 +1,13 @@
 <script lang="ts">
 	// @ts-nocheck
+	import { onMount } from 'svelte';
+	import { slide } from 'svelte/transition';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+	import { setupTweenParallax } from '$lib/utils/emblaCarouselTweenParallax';
 	import Autoplay from 'embla-carousel-autoplay';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import Video from '$lib/components/element/Video.svelte';
-	import { slide } from 'svelte/transition';
-	import { onMount } from 'svelte';
-
 	let { data, fit } = $props();
 	let gallery = $derived(data?.items);
 
@@ -60,6 +60,9 @@
 		emblaApi.on('select', () => {
 			selectedIndex = emblaApi.selectedScrollSnap();
 		});
+
+		// Setup parallax effect
+		setupTweenParallax(emblaApi);
 	}
 
 	onMount(() => {
@@ -70,38 +73,46 @@
 {#if data}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div
-		class="embla gallery-container"
-		use:emblaCarouselSvelte={{ options }}
-		onemblaInit={initEmbla}
-		onmouseenter={() => (galleryHovered = true)}
-		onmouseleave={() => (galleryHovered = false)}
-		onmousemove={handleGalleryMouseMove}
-		onclick={navigateGallery}
-	>
-		<div class="embla__container flex" class:cover={fit == 'cover'}>
-			{#each gallery as slide, index}
-				<div class="embla__slide">
-					{#if slide._type == 'elementImage'}
-						<div class="image-container {index === selectedIndex ? 'image-blur-animate' : ''}">
-							<div class="image-parallax">
-								<Image image={slide} {fit} />
+	<div class="embla gallery-container">
+		<div
+			class="embla__viewport"
+			use:emblaCarouselSvelte={{ options }}
+			onemblaInit={initEmbla}
+			onmouseenter={() => (galleryHovered = true)}
+			onmouseleave={() => (galleryHovered = false)}
+			onmousemove={handleGalleryMouseMove}
+			onclick={navigateGallery}
+		>
+			<div class="embla__container flex" class:cover={fit == 'cover'}>
+				{#each gallery as slide, index}
+					<div class="embla__slide">
+						{#if slide._type == 'elementImage'}
+							<div class="embla__parallax">
+								<div class="embla__parallax__layer">
+									<div
+										class="image-parallax embla__parallax__img {index === selectedIndex
+											? 'image-blur-animate'
+											: ''}"
+									>
+										<Image image={slide} {fit} />
+									</div>
+								</div>
 							</div>
-						</div>
-					{/if}
-					{#if slide._type == 'elementVideo'}
-						<div class="image-container video-container">
-							<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
-							<!-- Navigation overlay zones to prevent video clicks in nav areas -->
-							<div class="nav-overlay nav-overlay-left"></div>
-							<div class="nav-overlay nav-overlay-right"></div>
-						</div>
-					{/if}
-					{#if slide.caption}
-						<div class="caption">{slide?.caption}</div>
-					{/if}
-				</div>
-			{/each}
+						{/if}
+						{#if slide._type == 'elementVideo'}
+							<div class="image-container video-container">
+								<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
+								<!-- Navigation overlay zones to prevent video clicks in nav areas -->
+								<div class="nav-overlay nav-overlay-left"></div>
+								<div class="nav-overlay nav-overlay-right"></div>
+							</div>
+						{/if}
+						{#if slide.caption}
+							<div class="caption">{slide?.caption}</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
 		</div>
 
 		<!-- Navigation button for desktop only -->
@@ -133,6 +144,10 @@
 	.embla {
 		overflow: hidden;
 		width: 100%;
+	}
+
+	.embla__viewport {
+		overflow: hidden;
 		height: 100%;
 	}
 
@@ -151,10 +166,10 @@
 		flex: 0 0 auto;
 		min-width: 0;
 		width: 100%;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 
-	.image-container {
+	.embla__parallax {
 		height: 100%;
 		overflow: hidden;
 	}
@@ -162,6 +177,27 @@
 	.image-parallax {
 		height: 110%;
 		width: 100%;
+	}
+
+	.embla__parallax__layer {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image-container {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	:global(.embla__parallax__img) {
+		max-width: none;
+		width: 115%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.video-container {
@@ -213,6 +249,11 @@
 	}
 
 	@media (min-width: 768px) {
+		.image-parallax {
+			height: 120%;
+			width: 100%;
+		}
+
 		.gallery-container {
 			position: relative;
 			cursor: pointer;
@@ -235,9 +276,8 @@
 			overflow: hidden;
 		}
 
-		.image-parallax {
-			height: 120%;
-			width: 100%;
+		:global(.embla__parallax__img) {
+			width: 120%;
 		}
 	}
 

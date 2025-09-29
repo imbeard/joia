@@ -1,6 +1,7 @@
 <script lang="ts">
 	// @ts-nocheck
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+	import { setupTweenParallax } from '$lib/utils/emblaCarouselTweenParallax.ts';
 	import Autoplay from 'embla-carousel-autoplay';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Image from '$lib/components/element/Image.svelte';
@@ -55,43 +56,59 @@
 		emblaApi.on('select', () => {
 			selectedIndex = emblaApi.selectedScrollSnap();
 		});
+
+		// Setup parallax effect
+		const removeTweenParallax = setupTweenParallax(emblaApi);
+		emblaApi.on('destroy', removeTweenParallax);
 	}
 </script>
 
 {#if section}
-	<div class="md:grid-2 gap-2 md:h-screen w-full" dir={direction % 2 === 0 ? 'ltr' : 'rtl'}>
+	<div
+		class="md:grid-2 md:h-screen w-full"
+		class:gap-1={direction % 2 === 0}
+		class:gap-2={direction % 2 === 1}
+		dir={direction % 2 === 0 ? 'ltr' : 'rtl'}
+	>
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div
-			class="embla gallery-container fade-in"
-			dir="ltr"
-			use:emblaCarouselSvelte={{ options }}
-			onemblaInit={initEmbla}
-			onmouseenter={() => (galleryHovered = true)}
-			onmouseleave={() => (galleryHovered = false)}
-			onmousemove={handleGalleryMouseMove}
-			onclick={navigateGallery}
-		>
-			<div class="embla__container flex">
-				{#each gallery as slide, index}
-					<div class="embla__slide">
-						{#if slide._type == 'elementImage'}
-							<div class="image-container {index === selectedIndex ? 'image-blur-animate' : ''}">
-								<div class="image-parallax">
-									<Image image={slide} />
+		<div class="embla gallery-container fade-in" dir="ltr">
+			<div
+				class="embla__viewport"
+				use:emblaCarouselSvelte={{ options }}
+				onemblaInit={initEmbla}
+				onmouseenter={() => (galleryHovered = true)}
+				onmouseleave={() => (galleryHovered = false)}
+				onmousemove={handleGalleryMouseMove}
+				onclick={navigateGallery}
+			>
+				<div class="embla__container flex">
+					{#each gallery as slide, index}
+						<div class="embla__slide">
+							{#if slide._type == 'elementImage'}
+								<div class="embla__parallax">
+									<div class="embla__parallax__layer">
+										<div
+											class="image-parallax embla__parallax__img {index === selectedIndex
+												? 'image-blur-animate'
+												: ''}"
+										>
+											<Image image={slide} />
+										</div>
+									</div>
 								</div>
-							</div>
-						{/if}
-						{#if slide._type == 'elementVideo'}
-							<div class="image-container">
-								<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
-							</div>
-						{/if}
-						{#if slide.caption}
-							<div class="caption">{slide?.caption}</div>
-						{/if}
-					</div>
-				{/each}
+							{/if}
+							{#if slide._type == 'elementVideo'}
+								<div class="image-container">
+									<Video src={slide.url} alt={slide.alt} poster={slide.poster} />
+								</div>
+							{/if}
+							{#if slide.caption}
+								<div class="caption">{slide?.caption}</div>
+							{/if}
+						</div>
+					{/each}
+				</div>
 			</div>
 
 			<!-- Navigation button for first gallery -->
@@ -116,18 +133,15 @@
 			{/if}
 		</div>
 
-		<div
-			class="h-full flex flex-col justify-between p-1.5 md:p-0 fade-in"
-			class:pl-2={direction % 2 === 1}
-			dir="ltr"
-		>
-			<div class="flex items-center h-full small-caps">
+		<div class="h-full flex flex-col justify-between md:p-0 fade-in" dir="ltr">
+			<div class="flex items-center h-full small-caps pl-1">
 				<h3>{section.title}</h3>
 			</div>
-			<div>{section.description}</div>
+			<div class="pl-1">{section.description}</div>
 			{#if section?.cta && section?.cta.url}
 				<a
-					class="mt-2.5 small-caps w-fit flex gap-1 items-center"
+					class="pl-1 mt-2.5 small-caps w-fit flex gap-1 items-center"
+					class:pr-1={direction % 2 === 0}
 					href="/{getPageLink(section.cta.url)}"
 				>
 					<div>{section.cta.label}</div>
@@ -149,6 +163,11 @@
 		width: 100%;
 	}
 
+	.embla__viewport {
+		overflow: hidden;
+		height: 100%;
+	}
+
 	.embla__container {
 		display: flex;
 		touch-action: pan-y pinch-zoom;
@@ -166,6 +185,20 @@
 		overflow: hidden;
 	}
 
+	.embla__parallax {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.embla__parallax__layer {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.image-container {
 		height: 100%;
 		overflow: hidden;
@@ -174,6 +207,13 @@
 	.image-parallax {
 		height: 110%;
 		width: 100%;
+	}
+
+	:global(.embla__parallax__img) {
+		max-width: none;
+		width: 115%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.caption {
@@ -224,6 +264,10 @@
 		.image-parallax {
 			height: 120%;
 			width: 100%;
+		}
+
+		:global(.embla__parallax__img) {
+			width: 120%;
 		}
 	}
 

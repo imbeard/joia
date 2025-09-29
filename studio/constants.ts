@@ -9,4 +9,6 @@ export const PAGE_REFERENCES = [
   {type: 'menuPage'},
   {type: 'drinking'},
   {type: 'academy'},
+  {type: 'softDrinks'},
+  {type: 'herbalTeas'},
 ]

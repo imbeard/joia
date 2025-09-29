@@ -2,7 +2,7 @@
 	font-family: 'ABC Marist';
 	src: url('/fonts/ABCMarist-Book-Trial.woff') format('woff');
 	font-weight: 350;
-	font-display: swap;
+	font-display: block;
 	font-style: normal;
 }
 
@@ -10,7 +10,7 @@
 	font-family: 'ABC Marist';
 	src: url('/fonts/ABCMarist-BookItalic-Trial.woff') format('woff');
 	font-weight: 350;
-	font-display: swap;
+	font-display: block;
 	font-style: italic;
 }
 

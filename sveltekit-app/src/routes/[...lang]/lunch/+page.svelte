@@ -26,6 +26,7 @@
 						<PortableText data={choice.description} />
 					</div>
 				{/each}
+				<div class="text-center typo-s"><PortableText data={document.notes} /></div>
 			</div>
 		</div>
 		<TwoGalleriesSection section={document.twoGalleries} />

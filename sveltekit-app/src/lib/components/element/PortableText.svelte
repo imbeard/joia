@@ -20,6 +20,9 @@
 			</li>`,
 
 		block: {
+			'small-caps': ({ children }) => {
+				return html`<p class="small-caps">${children}</p>`;
+			},
 			h2: ({ children }) => {
 				return html`<h2 class="text-xl">${children}</h2>`;
 			},
@@ -33,7 +36,6 @@
 				const slug = value.url.slug || '';
 
 				let category = '';
-
 
 				if (value.url.category === 'performance') {
 					category = 'performances';
@@ -92,9 +94,8 @@
 					>`;
 				}
 				return children;
-			},
+			}
 			// em: ({ children }) => html`<em>${children}</em>`,
-			
 		}
 	});
 </script>
@@ -103,8 +104,8 @@
 	{@html toHTML(data, { components })}
 </div>
 
-<style>
-:global(.rich-text p:not(:last-child)) {
-	padding-bottom: var(--spacing-s);
-}
+<style lang="postcss">
+	:global(.rich-text p:not(:last-child)) {
+		padding-bottom: var(--spacing-s);
+	}
 </style>

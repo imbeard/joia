@@ -20,9 +20,21 @@ export const structure = (S, context) =>
         .title('Menu Page')
         .child(S.document().schemaType('menuPage').title('Menu Page').documentId('menuPage')),
 
+      S.divider(),
+
       S.documentTypeListItem('wines')
         .title('Wines')
         .child(S.document().schemaType('wines').title('Wines').documentId('wines')),
+
+      S.documentTypeListItem('softDrinks')
+        .title('Soft Drinks')
+        .child(S.document().schemaType('softDrinks').title('Soft Drinks').documentId('soft-drinks')),
+
+      S.documentTypeListItem('herbalTeas')
+        .title('Herbal Teas')
+        .child(S.document().schemaType('herbalTeas').title('Herbal Teas').documentId('herbal-teas')),
+
+      S.divider(),
 
       S.documentTypeListItem('drinking')
         .title('Drinking')
