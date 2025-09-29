@@ -106,6 +106,6 @@
 
 <style lang="postcss">
 	:global(.rich-text p:not(:last-child)) {
-		padding-bottom: var(--spacing-s);
+		padding-bottom: var(--spacing);
 	}
 </style>
