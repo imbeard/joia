@@ -84,14 +84,16 @@
 		{/if}
 
 		{#if page?.founder}
-			<div class="fade-in pt-25 md:p-0 md:pt-25 md:grid-2">
-				<div class="flex flex-col justify-between p-1.5 md:pb-0">
+			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
+				<div class="fade-in flex flex-col justify-between p-1.5 md:pb-0">
 					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0">
 						{page?.founder?.infoSection?.heading}
 					</h3>
 					<PortableText data={page?.founder?.infoSection?.content} />
 				</div>
-				<Image image={page?.founder?.image} alt={page?.founder?.image?.alt} />
+				<div class="fade-in overflow-hidden">
+					<Image image={page?.founder?.image} alt={page?.founder?.image?.alt} />
+				</div>
 			</div>
 		{/if}
 

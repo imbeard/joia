@@ -11,8 +11,6 @@
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-	import { dev } from '$app/environment';
-
 	let { data, children } = $props();
 	setLocale(data.locale);
 
@@ -53,12 +51,11 @@
 
 			requestAnimationFrame(() => {
 				// Initialize fade-in animations
-				gsap.set('.fade-in', { opacity: 0, y: 10 });
+				gsap.set('.fade-in', { opacity: 0 });
 				ScrollTrigger.batch('.fade-in', {
 					onEnter: (elements) => {
 						gsap.to(elements, {
 							opacity: 1,
-							y: 0,
 							stagger: 0.2
 						});
 					},
@@ -66,12 +63,11 @@
 				});
 
 				// Initialize image blur animations
-				gsap.set('.image-blur-animate', { filter: 'blur(20px)', scale: 1.05 });
+				gsap.set('.image-blur-animate', { filter: 'blur(20px)' });
 				ScrollTrigger.batch('.image-blur-animate', {
 					onEnter: (elements) => {
 						gsap.to(elements, {
 							filter: 'blur(0px)',
-							scale: 1,
 							duration: 1.2,
 							ease: 'power3.out',
 							stagger: 0.15
