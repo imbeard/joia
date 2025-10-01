@@ -14,6 +14,7 @@
 	let { data } = $props();
 	let home = $derived(data?.document?.data?.home);
 	let menus = $derived(data?.document?.data?.menus);
+	let aboutHeight = $state(0);
 
 	const handleMenuLinks = (slug) => {
 		const currentLang = data?.params?.lang || 'en';
@@ -30,30 +31,34 @@
 		</div>
 		<div class="fade-in"><Gallery data={home?.gallery} fit="cover" /></div>
 		<div class="px-1.5 md:w-1/2">
-			<h3 class="fade-in small-caps py-3">{home?.about?.heading}</h3>
-			<PortableText data={home?.about?.content} />
-			<h3 class="small-caps py-3">{$LL.ourMenus()}</h3>
+			<h3 class="fade-in small-caps py-3 pb-2">{home?.about?.heading}</h3>
+			<div bind:clientHeight={aboutHeight}><PortableText data={home?.about?.content} /></div>
 
-			{#if menus}
-				<div class="fade-in">
-					{#each menus as menu, index}
-						<button
-							onclick={() => handleMenuLinks(menu?.slug)}
-							class="w-full py-1.5 border-green border-b flex justify-between items-center"
-							class:border-t={index === 0}
-						>
-							<h4 class="small-caps">{menu?.title}</h4>
-							<ArrowRight fill="var(--color-green)" />
-						</button>
-					{/each}
-					<div class="pt-1.5">
-						<a class="small-caps w-fit flex gap-1 items-center" href="/menu">
-							<span>{$LL.discoverOurMenus()}</span>
-							<ArrowRight fill="var(--color-green)" />
-						</a>
-					</div>
+			<div class="sticky bottom-2 flex flex-col" style="padding-top: {aboutHeight * 1.40}px">
+				<h3 class="small-caps"  style="padding-bottom: {aboutHeight * 1.12}px">{$LL.ourMenus()}</h3>
+				<div  class="sticky bottom-2 pt-4">
+					{#if menus}
+						<div>
+							{#each menus as menu, index}
+								<button
+									onclick={() => handleMenuLinks(menu?.slug)}
+									class="w-full py-1.5 border-green border-b flex justify-between items-center"
+									class:border-t={index === 0}
+								>
+									<h4 class="small-caps">{menu?.title}</h4>
+									<ArrowRight fill="var(--color-green)" />
+								</button>
+							{/each}
+							<div class="pt-1.5">
+								<a class="small-caps w-fit flex gap-1 items-center" href="/menu">
+									<span>{$LL.discoverOurMenus()}</span>
+									<ArrowRight fill="var(--color-green)" />
+								</a>
+							</div>
+						</div>
+					{/if}
 				</div>
-			{/if}
+			</div>
 		</div>
 
 		{#if home.lunch}

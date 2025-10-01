@@ -9,6 +9,9 @@ html {
 	font-size: 10px;
 	font-family: var(--font-serif);
 	color: var(--color-green);
+	text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -117,4 +120,8 @@ button {
 
 .image-blur-animate.loaded {
 	filter: blur(0px);
+}
+
+svg {
+	shape-rendering: geometricPrecision;
 }

@@ -12,7 +12,14 @@
 	let { data } = $props();
 	let page = $derived(data?.document?.data?.about);
 	let press = $derived(data?.document?.data?.press);
+	let teamHeight = $state(0);
+	let teamHeight2 = $state(0);
+	let galleryHeight = $state(0);
+	let differenceHeight = $derived(Math.abs(teamHeight - galleryHeight));
+	let differenceHeight2 = $derived(Math.abs(teamHeight2 - galleryHeight));
 </script>
+
+<svelte:window bind:innerHeight={galleryHeight} />
 
 {#if page}
 	<main>
@@ -42,21 +49,31 @@
 		{/if}
 		{#if page?.team}
 			<div class="fade-in team p-1.5 w-full hidden md:block">
-				<div class="flex-col justify-between hidden md:flex">
-					<h3 class="small-caps">{$LL.theChefs()}</h3>
-					<div class="small-caps">
-						{page?.team[0]?.heading}
+				<div class="flex-col hidden md:flex">
+					<h3 class="small-caps" style="padding-bottom: {differenceHeight}px">{$LL.theChefs()}</h3>
+					<div class="sticky bottom-0 pt-3">
+						<div class="small-caps" style="padding-bottom: {differenceHeight / 2}px">
+							{page?.team[0]?.heading}
+						</div>
+						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight}>
+							<PortableText data={page?.team[0]?.content} />
+						</div>
 					</div>
-					<PortableText data={page?.team[0]?.content} />
 				</div>
 				{#if page?.teamGallery}
 					<Gallery data={page.teamGallery} fit="cover" />
 				{/if}
-				<div class="flex flex-col justify-between hidden md:flex">
-					<div class="small-caps flex flex-col h-full justify-center">
-						{page?.team[1]?.heading}
+
+				<div class="flex-col hidden md:flex">
+					<div class="small-caps" style="padding-bottom: {differenceHeight2}px"></div>
+					<div class="sticky bottom-0 pt-3">
+						<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2}px">
+							{page?.team[1]?.heading}
+						</div>
+						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight2}>
+							<PortableText data={page?.team[1]?.content} />
+						</div>
 					</div>
-					<PortableText data={page?.team[1]?.content} />
 				</div>
 			</div>
 
