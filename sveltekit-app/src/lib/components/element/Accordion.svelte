@@ -4,11 +4,16 @@ https://svelte.dev/e/node_invalid_placement -->
 	import { text } from '@sveltejs/kit';
 	import { slide } from 'svelte/transition';
 
-	export let open = false;
-	export let sticky = false;
-	export let arrow = true;
-	export let lineColor = '';
-	export let aboutPage = false;
+	let {
+		head,
+		details,
+		open = false,
+		sticky = false,
+		arrow = true,
+		lineColor = '',
+		openHeight = 0,
+		aboutPage = false
+	} = $props();
 
 	const handleClick = () => (open = !open);
 </script>
@@ -20,7 +25,7 @@ https://svelte.dev/e/node_invalid_placement -->
 >
 	<div class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
 		<div class="flex justify-between w-full">
-			<slot name="head"></slot>
+			{@render head()}
 		</div>
 		<button
 			class:button={aboutPage}
@@ -39,8 +44,8 @@ https://svelte.dev/e/node_invalid_placement -->
 	</div>
 
 	{#if open}
-		<div class="details pt-2" transition:slide>
-			<slot name="details"></slot>
+		<div class="details pt-2" style="min-height: {openHeight}px" transition:slide>
+			{@render details()}
 		</div>
 	{/if}
 </div>

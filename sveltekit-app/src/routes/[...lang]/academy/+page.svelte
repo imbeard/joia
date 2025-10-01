@@ -12,7 +12,12 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
+	let viewportHeight = $state(0);
+	let detailsHeight = $state(0);
+	let courseDescriptionHeight = $state(Array(document?.courses?.length || 0).fill(0));
 </script>
+
+<svelte:window bind:innerHeight={viewportHeight} />
 
 {#if document}
 	<main>
@@ -28,15 +33,18 @@
 
 		<div class="md:grid-2 gap-1.5">
 			{#if document?.details?.infoSection}
-				<div class="pt-1.5 pl-1.5">
-					<div class="small-caps pb-1.5 fade-in">
-						{document?.details?.infoSection?.heading}
-					</div>
-					<div class="pb-2 fade-in">
-						<PortableText data={document?.details?.infoSection?.content} />
+				<div class="pt-1.5 pl-1.5 fade-in">
+					<div bind:clientHeight={detailsHeight}>
+						<div class="small-caps pb-1.5">
+							{document?.details?.infoSection?.heading}
+						</div>
+						<div class="pb-2">
+							<PortableText data={document?.details?.infoSection?.content} />
+						</div>
 					</div>
 					<a
-						class="small-caps items-center gap-1 hidden md:flex fade-in"
+						class="sticky bottom-2 small-caps items-center gap-1 hidden md:flex"
+						style="padding-top: {detailsHeight}px"
 						href="mailto:{document?.details?.cta}"
 						target="_blank"
 					>
@@ -47,14 +55,14 @@
 			{/if}
 			{#if document?.courses && document?.courses?.length > 0}
 				<div class="p-1.5 pt-25 md:pt-1.5 md:pl-0 fade-in">
-					{#each document?.courses as course}
+					{#each document?.courses as course, index}
 						<Accordion>
 							{#snippet head()}
-								<div class="small-caps flex items-center gap-1">
+								<div class="enrolling small-caps flex items-center gap-1">
 									<span>{course?.title}</span>
 									{#if course?.enrollmentOpen == 'yes'}
 										<span
-											class="bg-green text-white px-[3px] pb-[1px] font-sans rounded-[2px] whitespace-nowrap mr-1"
+											class="bg-green text-white px-[3px] font-sans rounded-[2px] whitespace-nowrap mr-1"
 											>{$LL.enrolling()}</span
 										>
 									{/if}
@@ -62,11 +70,17 @@
 							{/snippet}
 							{#snippet details()}
 								<div class="flex flex-col">
-									<PortableText data={course?.description} />
+									<div
+										class="course-description"
+										bind:clientHeight={courseDescriptionHeight[index]}
+									>
+										<PortableText data={course?.description} />
+									</div>
 									{#if course?.contact}
 										<a
 											href="mailto:{course?.contact}"
-											class="py-4 small-caps flex items-center gap-1"
+											class="small-caps flex items-center gap-1"
+											style="padding-block: {viewportHeight / 2 - 150}px"
 										>
 											<span>{$LL.contactUs()}</span>
 											<ArrowRight fill="var(--color-green)" />
@@ -100,5 +114,8 @@
 		.intro {
 			height: 65vh;
 		}
+	}
+	.enrolling span {
+		text-box-trim: trim-start;
 	}
 </style>

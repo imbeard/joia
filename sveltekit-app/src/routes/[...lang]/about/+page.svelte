@@ -98,13 +98,13 @@
 
 		{#if page?.founder}
 			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
-				<div class="fade-in flex flex-col justify-between p-1.5 md:pb-0">
-					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0">
+				<div class="fade-in flex flex-col justify-between p-1.5 md:pb-0 md:items-end">
+					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0 md:w-1/2">
 						{page?.founder?.infoSection?.heading}
 					</h3>
-					<PortableText data={page?.founder?.infoSection?.content} />
+					<div class="md:w-1/2"><PortableText data={page?.founder?.infoSection?.content} /></div>
 				</div>
-				<div class="fade-in overflow-hidden">
+				<div class="fade-in overflow-hidden hidden md:block">
 					<Image image={page?.founder?.image} alt={page?.founder?.image?.alt} />
 				</div>
 			</div>
