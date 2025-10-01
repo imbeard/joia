@@ -60,7 +60,7 @@
 						<Accordion>
 							{#snippet head()}
 								<div class="enrolling small-caps flex items-center gap-1">
-									<span>{course?.title}</span>
+									<span class="head">{course?.title}</span>
 									{#if course?.enrollmentOpen == 'yes'}
 										<span
 											class="bg-green text-white px-[3px] font-sans rounded-[2px] whitespace-nowrap mr-1"
@@ -118,7 +118,10 @@
 			height: 65vh;
 		}
 	}
-	.enrolling span {
+	.enrolling {
+		text-box-edge: cap alphabetic;
+	}
+	.enrolling span:not(.head) {
 		text-box-trim: trim-start;
 	}
 </style>
