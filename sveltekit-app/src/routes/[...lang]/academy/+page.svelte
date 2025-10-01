@@ -13,11 +13,12 @@
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
 	let viewportHeight = $state(0);
+	let viewportWidth = $state(0);
 	let detailsHeight = $state(0);
 	let courseDescriptionHeight = $state(Array(document?.courses?.length || 0).fill(0));
 </script>
 
-<svelte:window bind:innerHeight={viewportHeight} />
+<svelte:window bind:innerHeight={viewportHeight} bind:innerWidth={viewportWidth} />
 
 {#if document}
 	<main>
@@ -80,7 +81,9 @@
 										<a
 											href="mailto:{course?.contact}"
 											class="small-caps flex items-center gap-1"
-											style="padding-block: {viewportHeight / 2 - 150}px"
+											style="padding-block: {viewportWidth > 768
+												? viewportHeight / 2 - 150
+												: viewportHeight / 5}px"
 										>
 											<span>{$LL.contactUs()}</span>
 											<ArrowRight fill="var(--color-green)" />
