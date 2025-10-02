@@ -8,7 +8,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { createRequestHandler, setServerClient } from '@sanity/svelte-loader';
 import { serverClient } from '$lib/server/sanity/client';
 import { getPathnameWithoutBase } from './utils.js';
-import { LOCALE_COOKIE_NAME, DEFAULT_COOKIE_OPTIONS } from '$lib/constants.js';
+import { LOCALE_COOKIE_NAME, DEFAULT_COOKIE_OPTIONS } from '$lib/constants';
 
 // Initialize i18n
 loadAllLocales();
