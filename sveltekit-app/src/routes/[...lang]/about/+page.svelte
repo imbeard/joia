@@ -7,6 +7,7 @@
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Image from '$lib/components/element/Image.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
@@ -20,6 +21,8 @@
 </script>
 
 <svelte:window bind:innerHeight={galleryHeight} />
+
+<SEO data={page?.seo} pageTitle="About" />
 
 {#if page}
 	<main>

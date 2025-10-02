@@ -7,6 +7,7 @@
 	import { page } from '$app/stores';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	let { data } = $props();
 	let pageData = $derived(data?.document?.data);
@@ -29,6 +30,8 @@
 		}
 	});
 </script>
+
+<SEO data={pageData?.seo} pageTitle={pageData?.heading} />
 
 {#if pageData}
 	<main class="p-1.5">

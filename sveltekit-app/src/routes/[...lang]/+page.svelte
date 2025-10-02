@@ -1,15 +1,17 @@
 <script>
 	import LL from '$i18n/i18n-svelte';
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
-	import Accordion from '$lib/components/element/Accordion.svelte';
 	import Gallery from '$lib/components/element/Gallery.svelte';
-	import Image from '$lib/components/element/Image.svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	import { getPageLink } from '$lib/utils';
+
+	$effect(() => {
+		console.log(page);
+	});
 
 	let { data } = $props();
 	let home = $derived(data?.document?.data?.home);
@@ -23,6 +25,8 @@
 	};
 </script>
 
+<SEO data={home?.seo} />
+
 {#if home}
 	<main>
 		<div class="fade-in p-2 pt-6 w-full h-screen flex flex-col justify-between">
@@ -34,9 +38,9 @@
 			<h3 class="fade-in small-caps py-3 pb-2">{home?.about?.heading}</h3>
 			<div bind:clientHeight={aboutHeight}><PortableText data={home?.about?.content} /></div>
 
-			<div class="sticky bottom-2 flex flex-col" style="padding-top: {aboutHeight * 1.40}px">
-				<h3 class="small-caps"  style="padding-bottom: {aboutHeight * 1.12}px">{$LL.ourMenus()}</h3>
-				<div  class="sticky bottom-2 pt-4">
+			<div class="sticky bottom-2 flex flex-col" style="padding-top: {aboutHeight * 1.4}px">
+				<h3 class="small-caps" style="padding-bottom: {aboutHeight * 1.12}px">{$LL.ourMenus()}</h3>
+				<div class="sticky bottom-2 pt-4">
 					{#if menus}
 						<div>
 							{#each menus as menu, index}

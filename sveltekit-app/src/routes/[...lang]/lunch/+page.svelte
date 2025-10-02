@@ -6,10 +6,13 @@
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
 </script>
+
+<SEO data={document?.seo} pageTitle={$LL.lunchOffer()} />
 
 {#if document}
 	<main>

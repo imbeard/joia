@@ -6,11 +6,14 @@
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
 	import GallerySection from '$lib/components/sections/GallerySection.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
 </script>
+
+<SEO data={document?.seo} pageTitle="Drinking" />
 
 {#if document}
 	<main>

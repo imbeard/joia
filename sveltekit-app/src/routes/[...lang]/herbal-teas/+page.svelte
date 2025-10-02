@@ -6,9 +6,14 @@
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Accordion from '$lib/components/element/Accordion.svelte';
 
+	import SEO from '$lib/components/seo/SEO.svelte';
+
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
 </script>
+
+<SEO data={document?.seo} pageTitle={document?.title} />
+
 
 {#if document}
 	<main class="p-1.5">

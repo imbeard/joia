@@ -8,6 +8,7 @@
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Image from '$lib/components/element/Image.svelte';
+	import SEO from '$lib/components/seo/SEO.svelte';
 	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
@@ -20,9 +21,11 @@
 
 <svelte:window bind:innerHeight={viewportHeight} bind:innerWidth={viewportWidth} />
 
+<SEO data={document?.seo} pageTitle="Academy" />
+
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center small-caps text-center fade-in">Joia</div>
+		<div class="intro flex justify-center items-center small-caps text-center fade-in">Joia Academy</div>
 		<div class="px-1.5 mx-auto w-full fade-in">
 			<PortableText data={document.intro} />
 		</div>
