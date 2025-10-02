@@ -6,7 +6,7 @@
 	// Default values
 	const defaults = {
 		ogType: 'website',
-		twitterCard: '/images/ogImage.png',
+		ogImage: '/images/ogImage.png',
 		siteName: 'Joia',
 		siteDescription: 'Joia: alta cucina vegetariana',
 		locale: 'it_IT'
@@ -22,7 +22,7 @@
 	const description = data?.description || defaults.siteDescription;
 	const ogImage = data?.ogImage || '/images/ogImage.png';
 	const ogType = data?.ogType || defaults.ogType;
-	const twitterCard = data?.twitterCard || defaults.twitterCard;
+	const twitterCard = data?.twitterCard || defaults.ogImage;
 	const siteName = data?.siteName || defaults.siteName;
 	const locale = page?.params?.lang || defaults.locale;
 	const canonical = data?.canonical || page?.url?.href;

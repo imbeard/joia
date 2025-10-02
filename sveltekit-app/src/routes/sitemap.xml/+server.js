@@ -2,7 +2,7 @@ import { client } from '$lib/sanity/client';
 import groq from 'groq';
 
 // Configuration
-const BASE_URL = 'https://your-domain.com'; // Update with your actual domain
+const BASE_URL = 'https://joia.it';
 const LANGUAGES = ['en', 'it'];
 
 // Static routes that exist for both languages
