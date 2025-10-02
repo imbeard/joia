@@ -3,10 +3,6 @@
 
 	let { data, pageTitle } = $props();
 
-	$effect(() => {
-		console.log(page);
-	})
-
 	// Default values
 	const defaults = {
 		ogType: 'website',

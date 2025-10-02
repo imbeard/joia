@@ -9,9 +9,6 @@
 	import SEO from '$lib/components/seo/SEO.svelte';
 	import { getPageLink } from '$lib/utils';
 
-	$effect(() => {
-		console.log(page);
-	});
 
 	let { data } = $props();
 	let home = $derived(data?.document?.data?.home);
