@@ -14,7 +14,6 @@ export const twoGalleries = defineType({
       options: {
         layout: 'grid',
       },
-      validation: (Rule) => Rule.max(2),
     }),
     defineField({
       name: 'secondGallery',
@@ -24,7 +23,6 @@ export const twoGalleries = defineType({
       options: {
         layout: 'grid',
       },
-      validation: (Rule) => Rule.max(2),
     }),
   ],
   preview: {
