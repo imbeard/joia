@@ -29,15 +29,15 @@ export default defineConfig({
 
     media(),
 
-    presentationTool({
-      previewUrl: {
-        origin: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:5173',
-        previewMode: {
-          enable: '/preview/enable',
-          disable: '/preview/disable',
-        },
-      },
-    }),
+    // presentationTool({
+    //   previewUrl: {
+    //     origin: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:5173',
+    //     previewMode: {
+    //       enable: '/preview/enable',
+    //       disable: '/preview/disable',
+    //     },
+    //   },
+    // }),
 
     visionTool(),
     singletonTools(),
