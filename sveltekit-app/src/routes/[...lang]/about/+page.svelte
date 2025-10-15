@@ -64,7 +64,7 @@
 					</div>
 				</div>
 				{#if page?.teamGallery}
-					<Gallery data={page.teamGallery} fit="cover" />
+					<Gallery data={page.teamGallery} fit="contain" />
 				{/if}
 
 				<div class="flex-col hidden md:flex">
@@ -81,7 +81,7 @@
 			</div>
 
 			<div class="w-full block md:hidden">
-				<Gallery data={page?.teamGallery} fit="cover" />
+				<Gallery data={page?.teamGallery} fit="contain" />
 				<div class="p-1.5 grid-2 gap-1 pt-1.5">
 					<div class="flex flex-col">
 						<span class="small-caps pb-1.5">
@@ -116,7 +116,7 @@
 		{#if page?.location}
 			<div class="fade-in pt-25 md:p-0 md:pt-25 md:grid-2">
 				{#if page?.location?.gallery}
-					<Gallery data={page?.location?.gallery} fit="cover" />
+					<Gallery data={page?.location?.gallery} fit="contain" />
 				{/if}
 
 				<div class="flex flex-col justify-between p-1.5 md:pb-0">

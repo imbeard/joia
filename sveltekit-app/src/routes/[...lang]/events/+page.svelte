@@ -30,7 +30,7 @@
 			<div class="md:w-1/2 ml-auto">
 				<div class="pt-1.5">
 					<div class="fade-in">
-						<Gallery data={document.gallery} fit="cover" />
+						<Gallery data={document.gallery} fit="contain" />
 					</div>
 					<h3 class="px-1.5 md:px-0 py-40 small-caps fade-in">
 						{document.eventsBlock?.heading}
@@ -43,7 +43,7 @@
 		{/if}
 		{#if document?.gallerySection}
 			<div class="pt-25">
-				<GallerySection direction={2} section={document.gallerySection} fit="cover" />
+				<GallerySection direction={2} section={document.gallerySection} fit="contain" />
 			</div>
 		{/if}
 	</main>
