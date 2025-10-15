@@ -47,12 +47,12 @@ export const softDrinks = defineType({
               type: 'string',
             }),
             defineField({
-              name: 'groups',
-              title: 'Groups',
+              name: 'subCategories',
+              title: 'Sub Categories',
               type: 'array',
               of: [
                 {
-                  name: 'origin',
+                  name: 'subCategory',
                   type: 'object',
                   fields: [
                     defineField({
@@ -61,9 +61,10 @@ export const softDrinks = defineType({
                       type: 'string',
                     }),
                     defineField({
-                      name: 'drinks',
-                      title: 'Drinks',
-                      type: 'blockContent',
+                      name: 'drink',
+                      title: 'Drink',
+                      type: 'array',
+                      of: [{type: 'reference', to: [{type: 'softDrink'}]}],
                     }),
                   ],
                 },

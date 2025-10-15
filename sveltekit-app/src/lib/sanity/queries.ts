@@ -37,6 +37,13 @@ export const academyQuery = groq`*[_type == "academy" && language == $language][
 export const eventsQuery = groq`*[_type == "events" && language == $language][0]`;
 export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
   ...,
+  categories[] {
+  title,
+  subCategories[] {
+      title,
+      wines[]->
+    }
+  },
   tastingNotes {
     ...,
     cta {
@@ -48,6 +55,13 @@ export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
 
 export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $language][0] {
   ...,
+  categories[] {
+  title,
+    subCategories[] {
+      title,
+      drink[]->
+    }
+  },
   tastingNotes {
     ...,
     cta {
@@ -59,6 +73,13 @@ export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $lang
 
 export const herbalTeasQuery = groq`*[_type == "herbalTeas" && language == $language][0] {
   ...,
+  categories[] {
+  title,
+    subCategories[] {
+      title,
+      drink[]->
+    }
+  },
   tastingNotes {
     ...,
     cta {

@@ -9,6 +9,9 @@
 
 	let { data } = $props();
 	let document = $derived(data?.document?.data);
+	$effect(() => {
+		console.log(document);
+	});
 </script>
 
 <SEO data={document?.seo} pageTitle={document?.title} />
@@ -16,24 +19,53 @@
 {#if document}
 	<main class="p-1.5">
 		<div class="intro flex justify-center items-center small-caps fade-in">{document?.title}</div>
-		<div class="flex flex-col gap-10">
-			{#each document?.categories as category}
-				<div>
-					<h3 class="pb-3 small-caps text-center fade-in">{category?.title}</h3>
-					<ul class="fade-in">
-						{#each category?.groups as group}
-							<Accordion>
-								{#snippet head()}
-									<div class="small-caps text-center mx-auto">{group?.title}</div>
-								{/snippet}
-								{#snippet details()}
-									<PortableText data={group?.wines} />
-								{/snippet}
-							</Accordion>
-						{/each}
-					</ul>
-				</div>
-			{/each}
+		<div class="grid-12 w-full gap-1">
+			<div class="col-start-1 col-end-13 md:col-start-2 md:col-end-12 flex flex-col gap-10">
+				{#each document?.categories as category}
+					<div>
+						<h3 class="pb-1.5 small-caps text-center fade-in">{category?.title}</h3>
+						<ul class="fade-in">
+							{#each category?.subCategories as group}
+								<Accordion>
+									{#snippet head()}
+										<div class="small-caps text-center mx-auto">{group?.title}</div>
+									{/snippet}
+									{#snippet details()}
+										{#if group?.wines && group?.wines.length > 0}
+											{#each group?.wines as drink}
+												<div class="w-full">
+													<li class="grid-10 gap-1 w-full py-1.5">
+														<div class="col-start-1 col-end-11 md:col-end-2 small-caps">
+															{drink?.region}
+														</div>
+														<div class="col-start-2 col-end-11 md:col-end-4 small-caps">
+															{drink?.winery}
+														</div>
+														<div class="col-start-2 col-end-11 md:col-end-8">
+															<div>{drink?.title}</div>
+															<div>({drink?.secondaryTitle})</div>
+														</div>
+														{#if drink?.bottles && drink?.bottles.length > 0}
+															<div class="col-start-2 md:col-start-8 col-end-11 flex flex-col">
+																{#each drink?.bottles as bottle}
+																	<div class="w-full flex justify-between">
+																		<div>{bottle?.year}</div>
+																		<div>{bottle?.price}</div>
+																	</div>
+																{/each}
+															</div>
+														{/if}
+													</li>
+												</div>
+											{/each}
+										{/if}
+									{/snippet}
+								</Accordion>
+							{/each}
+						</ul>
+					</div>
+				{/each}
+			</div>
 		</div>
 		{#if document?.tastingNotes}
 			<div class="pt-40">

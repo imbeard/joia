@@ -37,8 +37,16 @@
 	<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{name}</a>
 	<div class="absolute left-1/2 -translate-x-1/2 backdrop-blur-xl py-0.5 px-1 w-auto">{season}</div>
 	<div class="flex gap-3 items-center">
-		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.book()}</a>
-		<a href="/" class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a>
+		<a
+			href="https://widget.thefork.com/en/29bf668f-ed19-4b43-ae1b-c6505084fecc"
+			target="_blank"
+			class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.book()}</a
+		>
+		<a
+			href="https://joia.bonkdo.com/en/"
+			target="_blank"
+			class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a
+		>
 		<button class="py-0.5 px-1" onclick={() => ($menuOpen = !$menuOpen)}>
 			<MenuIcon />
 		</button>

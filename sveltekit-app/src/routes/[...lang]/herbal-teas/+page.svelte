@@ -14,22 +14,33 @@
 
 <SEO data={document?.seo} pageTitle={document?.title} />
 
-
 {#if document}
 	<main class="p-1.5">
 		<div class="intro flex justify-center items-center small-caps fade-in">{document?.title}</div>
 		<div class="flex flex-col gap-10">
 			{#each document?.categories as category}
 				<div>
-					<h3 class="pb-3 small-caps text-center fade-in">{category?.title}</h3>
+					<h3 class="pb-1.5 small-caps text-center fade-in">{category?.title}</h3>
 					<ul class="fade-in">
-						{#each category?.groups as group}
+						{#each category?.subCategories as group}
 							<Accordion>
 								{#snippet head()}
 									<div class="small-caps text-center mx-auto">{group?.title}</div>
 								{/snippet}
 								{#snippet details()}
-									<PortableText data={group?.wines} />
+									{#if group?.drink && group?.drink.length > 0}
+										{#each group?.drink as drink}
+											<li class="flex justify-between py-1.5 w-full">
+												<div class="w-full">
+													<div class="small-caps">{drink?.title}</div>
+													<div class="max-w-4/5 md:max-w-1/2">
+														{drink?.description}
+													</div>
+												</div>
+												<div>{drink?.price}</div>
+											</li>
+										{/each}
+									{/if}
 								{/snippet}
 							</Accordion>
 						{/each}

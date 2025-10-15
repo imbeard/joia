@@ -1,6 +1,9 @@
 // documents
 import {menu} from './documents/menu'
 import {press} from './documents/press'
+import {wine} from './documents/wine'
+import {softDrink} from './documents/softDrink'
+import {herbalTea} from './documents/herbalTea'
 
 // objects
 import {blockContent} from './objects/blockContent'
@@ -40,6 +43,9 @@ export const schemaTypes = [
   // documents
   menu,
   press,
+  wine,
+  softDrink,
+  herbalTea,
 
   // objects
   blockContent,

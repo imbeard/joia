@@ -12,27 +12,39 @@ export const structure = (S, context) =>
 
       S.divider(),
 
-      S.documentTypeListItem('menu').title('Menus'),
-
-      S.divider(),
-
       S.documentTypeListItem('menuPage')
         .title('Menu Page')
         .child(S.document().schemaType('menuPage').title('Menu Page').documentId('menuPage')),
 
+      S.documentTypeListItem('menu').title('Menus'),
+
       S.divider(),
 
       S.documentTypeListItem('wines')
-        .title('Wines')
+        .title('Wines Page')
         .child(S.document().schemaType('wines').title('Wines').documentId('wines')),
 
+      S.documentTypeListItem('wine').title('Wine List'),
+
+      S.divider(),
+
       S.documentTypeListItem('softDrinks')
-        .title('Soft Drinks')
-        .child(S.document().schemaType('softDrinks').title('Soft Drinks').documentId('soft-drinks')),
+        .title('Soft Drinks Page')
+        .child(
+          S.document().schemaType('softDrinks').title('Soft Drinks').documentId('soft-drinks'),
+        ),
+
+      S.documentTypeListItem('softDrink').title('Soft Drink List'),
+
+      S.divider(),
 
       S.documentTypeListItem('herbalTeas')
-        .title('Herbal Teas')
-        .child(S.document().schemaType('herbalTeas').title('Herbal Teas').documentId('herbal-teas')),
+        .title('Herbal Teas Page')
+        .child(
+          S.document().schemaType('herbalTeas').title('Herbal Teas').documentId('herbal-teas'),
+        ),
+
+      S.documentTypeListItem('herbalTea').title('Herbal Tea List'),
 
       S.divider(),
 
