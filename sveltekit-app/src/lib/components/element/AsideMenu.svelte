@@ -54,8 +54,18 @@
 		<li><a href="/contacts" class="small-caps menu-btn">{$LL.contacts()}</a></li>
 	</ul>
 	<div class="flex flex-col gap-1">
-		<button class="button border border-white w-12 small-caps menu-btn">{$LL.book()}</button>
-		<button class="button border border-white w-12 small-caps menu-btn">{$LL.gift()}</button>
+		<a
+			href="https://widget.thefork.com/en/29bf668f-ed19-4b43-ae1b-c6505084fecc"
+			target="_blank"
+			class="button border border-white w-fit small-caps menu-btn"
+			><div class="w-12 h-full">{$LL.book()}</div></a
+		>
+		<a
+			href="https://joia.bonkdo.com/en/"
+			target="_blank"
+			class="button border border-white w-fit small-caps menu-btn"
+			><div class="w-12 h-full">{$LL.gift()}</div></a
+		>
 	</div>
 	<div class="flex flex-col gap-0.2 md:gap-1">
 		<div class="text-[12px] small-caps">{$LL.language()}</div>

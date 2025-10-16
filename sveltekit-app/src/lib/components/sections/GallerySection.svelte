@@ -10,7 +10,7 @@
 	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let { section, direction } = $props();
+	let { section, direction, fit } = $props();
 	let gallery = $derived(section?.gallery?.items);
 
 	let emblaApi;
@@ -93,7 +93,7 @@
 												? 'image-blur-animate'
 												: ''}"
 										>
-											<Image image={slide} />
+											<Image image={slide} {fit} />
 										</div>
 									</div>
 								</div>

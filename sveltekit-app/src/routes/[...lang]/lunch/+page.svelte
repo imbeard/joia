@@ -32,7 +32,7 @@
 				<div class="text-center typo-s"><PortableText data={document.notes} /></div>
 			</div>
 		</div>
-		<TwoGalleriesSection section={document.twoGalleries} />
+		<TwoGalleriesSection section={document.twoGalleries} fit="contain" />
 		<div class="fade-in pb-10 md:py-40 px-1.5 w-full flex flex-col items-center">
 			<h3 class="small-caps text-center">{document.tastingNotes?.infoSection?.heading}</h3>
 			<div class="text-center max-w-2xl">

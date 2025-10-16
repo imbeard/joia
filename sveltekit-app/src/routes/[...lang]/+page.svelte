@@ -29,7 +29,7 @@
 			<div class="w-1/3 min-w-30"><Logo fill="var(--color-green)" /></div>
 			<PortableText data={home?.intro} />
 		</div>
-		<div class="fade-in"><Gallery data={home?.gallery} fit="contain" /></div>
+		<div class="fade-in"><Gallery data={home?.gallery} /></div>
 		<div class="px-1.5 md:w-1/2">
 			<h3 class="fade-in small-caps py-3 pb-2">{home?.about?.heading}</h3>
 			<div bind:clientHeight={aboutHeight}><PortableText data={home?.about?.content} /></div>

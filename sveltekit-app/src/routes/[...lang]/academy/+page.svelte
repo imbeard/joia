@@ -25,7 +25,9 @@
 
 {#if document}
 	<main>
-		<div class="intro flex justify-center items-center small-caps text-center fade-in">Joia Academy</div>
+		<div class="intro flex justify-center items-center small-caps text-center fade-in">
+			Joia Academy
+		</div>
 		<div class="px-1.5 mx-auto w-full fade-in">
 			<PortableText data={document.intro} />
 		</div>

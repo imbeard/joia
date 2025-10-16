@@ -127,7 +127,7 @@
 												? 'image-blur-animate'
 												: ''}"
 										>
-											<Image image={slide} fit="contain" />
+											<Image image={slide} {fit} />
 										</div>
 									</div>
 								</div>

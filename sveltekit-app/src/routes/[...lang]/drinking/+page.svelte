@@ -26,7 +26,7 @@
 		<div class="flex flex-col pt-1.5 gap-24">
 			{#if document.gallerySections && document.gallerySections.length > 0}
 				{#each document.gallerySections as gallerySection, i}
-					<GallerySection direction={i} section={gallerySection} />
+					<GallerySection direction={i} section={gallerySection} fit="contain" />
 				{/each}
 			{/if}
 		</div>
