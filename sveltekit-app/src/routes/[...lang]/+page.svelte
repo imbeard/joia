@@ -15,7 +15,7 @@
 	let aboutHeight = $state(0);
 
 	const handleMenuLinks = (slug) => {
-		const currentLang = data?.params?.lang || 'en';
+		const currentLang = page?.params?.lang || 'en';
 		sessionStorage.setItem('scrollToHash', slug);
 		goto(`/${currentLang}/menu`);
 	};
