@@ -32,7 +32,7 @@
 		</div>
 		{#if page.gallery}
 			<div class="pt-1.5">
-				<Gallery data={page?.gallery} />
+				<TwoGalleriesSection section={page?.twoGalleries} fit="contain" />
 			</div>
 		{/if}
 		<div class="fade-in md:w-1/2 p-1.5"><PortableText data={page?.description} /></div>

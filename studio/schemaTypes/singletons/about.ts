@@ -29,9 +29,14 @@ export const about = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'gallery',
-      type: 'gallery',
+      name: 'twoGalleries',
+      title: 'Two Galleries',
+      type: 'twoGalleries',
     }),
+    // defineField({
+    //   name: 'gallery',
+    //   type: 'gallery',
+    // }),
     defineField({
       name: 'description',
       title: 'Description',
