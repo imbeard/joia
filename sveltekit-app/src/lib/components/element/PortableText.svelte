@@ -3,6 +3,7 @@
 	import htm from 'htm';
 	import vhtml from 'vhtml';
 	import { toHTML, uriLooksSafe } from '@portabletext/to-html';
+	import { decodeHtmlEntities } from '$lib/utils/portableText';
 
 	interface Props {
 		data: any;
@@ -93,7 +94,7 @@
 </script>
 
 <div class="rich-text">
-	{@html toHTML(data, { components })}
+	{@html decodeHtmlEntities(toHTML(data, { components }))}
 </div>
 
 <style lang="postcss">
