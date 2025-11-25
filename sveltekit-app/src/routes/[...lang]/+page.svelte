@@ -50,7 +50,10 @@
 								</button>
 							{/each}
 							<div class="pt-1.5">
-								<a class="small-caps w-fit flex gap-1 items-center" href="/menu">
+								<a
+									class="small-caps w-fit flex gap-1 items-center"
+									href="/{page?.params?.lang}/menu"
+								>
 									<span>{$LL.discoverOurMenus()}</span>
 									<ArrowRight fill="var(--color-green)" />
 								</a>
@@ -65,7 +68,7 @@
 			<div class="fade-in pt-24 px-1.5 flex flex-col gap-1.5 items-center">
 				<h3 class="small-caps text-center">{home?.lunch?.heading}</h3>
 				<PortableText data={home?.lunch?.content} />
-				<a class="w-fit small-caps flex gap-1 items-center" href="/lunch">
+				<a class="w-fit small-caps flex gap-1 items-center" href="/{page?.params?.lang}/lunch">
 					<span>{$LL.lunchOffer()}</span>
 					<ArrowRight fill="var(--color-green)" />
 				</a>
@@ -84,10 +87,9 @@
 					<div class="fade-in">
 						<PortableText data={home?.chefs?.content} />
 						<a
-							href="/{getPageLink(home?.chefs?.cta?.url)}"
+							href={getPageLink(home?.chefs?.cta?.url)}
 							class="mt-2.5 flex gap-1 items-center small-caps w-fit"
 							>{home?.chefs?.cta?.label}
-							<div><ArrowRight fill="var(--color-green)" /></div>
 						</a>
 					</div>
 				</div>

@@ -6,6 +6,7 @@
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
+	import { getPageLink } from '$lib/utils';
 	import SEO from '$lib/components/seo/SEO.svelte';
 
 	let { data } = $props();
@@ -38,9 +39,11 @@
 			<div class="text-center max-w-2xl">
 				<PortableText data={document.tastingNotes?.infoSection?.content} />
 			</div>
-			<a href="/menu" class="mt-2.5 flex gap-1 items-center small-caps mx-auto w-fit"
-				>{$LL.ourMenus()}
-				<div><ArrowRight fill="var(--color-green)" /></div>
+			<a
+				href={getPageLink(document.tastingNotes?.cta?.url)}
+				class="mt-2.5 flex gap-1 items-center small-caps mx-auto w-fit"
+				><span>{document.tastingNotes?.cta?.label}</span>
+				<ArrowRight fill="var(--color-green)" />
 			</a>
 		</div>
 	</main>

@@ -5,6 +5,7 @@
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Accordion from '$lib/components/element/Accordion.svelte';
+	import { getPageLink } from '$lib/utils';
 	import SEO from '$lib/components/seo/SEO.svelte';
 
 	let { data } = $props();
@@ -56,7 +57,7 @@
 					</div>
 					<a
 						class="pt-2.5 flex items-center gap-0.5 small-caps hover:opacity-40 transition-opacity duration-350 ease-in-out"
-						href={document?.tastingNotes?.cta?.url}
+						href={getPageLink(document?.tastingNotes?.cta?.url)}
 						><span>{document?.tastingNotes?.cta?.label}</span><ArrowRight
 							fill="var(--color-green)"
 						/></a

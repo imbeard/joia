@@ -18,26 +18,26 @@
 {#if document}
 	<main>
 		<div class="fade-in intro flex justify-center items-center small-caps text-center">
-			<PortableText data={document.heading} />
+			<PortableText data={document?.heading} />
 		</div>
 		<div class="fade-in px-1.5 mx-auto w-full">
-			<PortableText data={document.intro} />
+			<PortableText data={document?.intro} />
 		</div>
 		<div class="flex flex-col pt-1.5 gap-24">
-			{#if document.gallerySections && document.gallerySections.length > 0}
-				{#each document.gallerySections as gallerySection, i}
+			{#if document?.gallerySections && document?.gallerySections.length > 0}
+				{#each document?.gallerySections as gallerySection, i}
 					<GallerySection direction={i} section={gallerySection} fit="contain" />
 				{/each}
 			{/if}
 		</div>
 
 		<div class="fade-in pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
-			<h3 class="small-caps text-center">{document.tastingNotes.infoSection.heading}</h3>
-			<PortableText data={document.tastingNotes.infoSection.content} />
+			<h3 class="small-caps text-center">{document?.tastingNotes?.infoSection?.heading}</h3>
+			<PortableText data={document?.tastingNotes?.infoSection?.content} />
 			<a
-				href="/{getPageLink(document.tastingNotes.cta.url)}"
+				href={getPageLink(document?.tastingNotes?.cta?.url)}
 				class="mt-2.5 flex gap-1 items-center small-caps mx-auto w-fit"
-				>{document.tastingNotes.cta.label}
+				>{document?.tastingNotes?.cta?.label}
 				<div><ArrowRight fill="var(--color-green)" /></div>
 			</a>
 		</div>

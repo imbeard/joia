@@ -4,7 +4,7 @@
 	import LL from '$i18n/i18n-svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
@@ -73,11 +73,6 @@
 				<div class="fade-in w-1/2 flex flex-col items-center justify-center text-center">
 					<h3 class="small-caps">{pageData?.drink?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={pageData?.drink?.content} /></div>
-					<a
-						class="pt-2.5 flex items-center gap-0.5 small-caps hover:opacity-40 transition-opacity duration-350 ease-in-out"
-						href="/wines"
-						><span>{$LL.drinkSelection()}</span><ArrowRight fill="var(--color-green)" /></a
-					>
 				</div>
 			{/if}
 			{#if pageData?.lunch}
@@ -86,10 +81,6 @@
 				>
 					<h3 class="small-caps">{pageData?.lunch?.heading}</h3>
 					<div class="max-w-lg"><PortableText data={pageData?.lunch?.content} /></div>
-					<a
-						class="pt-2.5 flex items-center gap-0.5 small-caps hover:opacity-40 transition-opacity duration-350 ease-in-out"
-						href="/lunch"><span>{$LL.lunchOffer()}</span><ArrowRight fill="var(--color-green)" /></a
-					>
 				</div>
 			{/if}
 		</div>

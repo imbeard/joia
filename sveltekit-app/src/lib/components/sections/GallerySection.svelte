@@ -142,9 +142,9 @@
 				<a
 					class="pl-1 mt-2.5 small-caps w-fit flex gap-1 items-center"
 					class:pr-1={direction % 2 === 0}
-					href="/{getPageLink(section.cta.url)}"
+					href={getPageLink(section?.cta?.url)}
 				>
-					<div>{section.cta.label}</div>
+					<div>{section?.cta?.label}</div>
 					<ArrowRight fill="var(--color-green)" />
 				</a>
 			{/if}

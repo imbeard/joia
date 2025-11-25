@@ -9,11 +9,19 @@ export const blockContent = defineType({
       type: 'block',
       styles: [
         {title: 'Normal', value: 'normal'},
-        {title: 'Small Caps', value: 'small-caps'},
+        // {title: 'Small Caps', value: 'small-caps'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
       marks: {
-        decorators: [],
+        decorators: [
+          {
+            title: 'Small Caps',
+            value: 'small-caps',
+            component: (props) => (
+              <span style={{textTransform: 'uppercase'}}>{props.children}</span>
+            ),
+          },
+        ],
         annotations: [
           {
             name: 'linkEmail',

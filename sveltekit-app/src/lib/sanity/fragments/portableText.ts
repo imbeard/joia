@@ -4,10 +4,8 @@ export const portableText = /* groq */ `
         ...,
        _type == 'linkInternal' => {
         url->{
-            "category": _type,
-            "slug": slug.current,
-            "typology": typology,
-            "label": label
+            "_type": _type,
+            language,
         }
     },
     }

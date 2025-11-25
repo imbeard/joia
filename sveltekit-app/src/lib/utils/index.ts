@@ -24,12 +24,27 @@ export function capitalize(string: string) {
 	return string.charAt(0).tosmall - caps() + string.slice(1);
 }
 
-export function getPageLink(page: string) {
+export function getPageLink(url: any) {
+	let language = url.language || '';
+	let documentType = url._type || '';
+	let slug = '';
 	let link = '';
-	if (page === 'menuPage') {
-		link = 'menu';
+
+	if (documentType == 'menuPage') {
+		slug = 'menu';
+	} else if (documentType == 'herbalTeas') {
+		slug = 'herbal-teas';
+	} else if (documentType == 'softDrinks') {
+		slug = 'soft-drinks';
 	} else {
-		link = page;
+		slug = documentType;
 	}
+
+	if (documentType !== '' && language !== '') {
+		link = `/${language}/${slug}`;
+	} else if (documentType !== '' && language == '') {
+		link = slug;
+	}
+
 	return link;
 }

@@ -22,8 +22,9 @@ https://svelte.dev/e/node_invalid_placement -->
 	class="accordion py-1 border-y {lineColor} cursor-pointer"
 	class:py-xs={aboutPage}
 	class:border-t-0={aboutPage}
+	on:click={handleClick}
 >
-	<div class="w-full flex items-center" class:sticky class:top-0={sticky} on:click={handleClick}>
+	<div class="w-full flex items-center" class:sticky class:top-0={sticky}>
 		<div class="flex justify-between w-full">
 			{@render head()}
 		</div>

@@ -20,9 +20,9 @@
 			</li>`,
 
 		block: {
-			'small-caps': ({ children }) => {
-				return html`<p class="small-caps">${children}</p>`;
-			},
+			// 'small-caps': ({ children }) => {
+			// 	return html`<p class="small-caps">${children}</p>`;
+			// },
 			h2: ({ children }) => {
 				return html`<h2 class="text-xl">${children}</h2>`;
 			},
@@ -32,35 +32,27 @@
 		},
 
 		marks: {
+			'small-caps': ({ children }) => {
+				return html`<span class="small-caps">${children}</span>`;
+			},
 			linkInternal: ({ children, value }) => {
-				const slug = value.url.slug || '';
+				const documentType = value.url._type || '';
+				const language = value.url.language || '';
 
-				let category = '';
+				let slug = '';
 
-				if (value.url.category === 'performance') {
-					category = 'performances';
-				}
-
-				if (value.url.category === 'partner') {
-					category = 'partners';
-				}
-
-				if (value.url.category === 'people') {
-					category = 'people';
-				}
-
-				if (value.url.category === 'event') {
-					category = 'events';
-				}
-
-				if (value.url.category === 'resource') {
-					category = 'resources';
+				if (documentType == 'menuPage') {
+					slug = 'menu';
+				} else if (documentType == 'herbalTeas') {
+					slug = 'herbal-teas';
+				} else if (documentType == 'softDrinks') {
+					slug = 'soft-drinks';
+				} else {
+					slug = documentType;
 				}
 
 				if (slug) {
-					return html`<a
-						class="leading-0 cursor-pointer px-[2px] theme-pink-blue hover:theme-blue-pink ${theme}"
-						href="/${category}/${slug}"
+					return html`<a class="leading-0 cursor-pointer" href="/${language}/${slug}"
 						>${children}</a
 					>`;
 				}
