@@ -7,7 +7,6 @@
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
-	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
 	let home = $derived(data?.document?.data?.home);
@@ -18,6 +17,11 @@
 		const currentLang = page?.params?.lang || 'en';
 		sessionStorage.setItem('scrollToHash', slug);
 		goto(`/${currentLang}/menu`);
+	};
+
+	const gotoChefs = () => {
+		const currentLang = page?.params?.lang || 'en';
+		goto(`/${currentLang}/about#chefs`);
 	};
 </script>
 
@@ -32,11 +36,15 @@
 		<div class="fade-in"><Gallery data={home?.gallery} /></div>
 		<div class="px-1.5 md:w-1/2">
 			<h3 class="fade-in small-caps py-3 pb-2">{home?.about?.heading}</h3>
-			<div bind:clientHeight={aboutHeight}><PortableText data={home?.about?.content} /></div>
+			<div class="fade-in" bind:clientHeight={aboutHeight}>
+				<PortableText data={home?.about?.content} />
+			</div>
 
 			<div class="sticky bottom-2 flex flex-col" style="padding-top: {aboutHeight * 1.4}px">
-				<h3 class="small-caps" style="padding-bottom: {aboutHeight * 1.12}px">{$LL.ourMenus()}</h3>
-				<div class="sticky bottom-2 pt-4">
+				<h3 class="small-caps fade-in" style="padding-bottom: {aboutHeight * 1.12}px">
+					{$LL.ourMenus()}
+				</h3>
+				<div class="sticky bottom-2 pt-4 fade-in">
 					{#if menus}
 						<div>
 							{#each menus as menu, index}
@@ -86,11 +94,9 @@
 					</div>
 					<div class="fade-in">
 						<PortableText data={home?.chefs?.content} />
-						<a
-							href={getPageLink(home?.chefs?.cta?.url)}
-							class="mt-2.5 flex gap-1 items-center small-caps w-fit"
+						<button onclick={gotoChefs} class="mt-2.5 flex gap-1 items-center small-caps w-fit"
 							>{home?.chefs?.cta?.label}
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>

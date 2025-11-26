@@ -2,44 +2,48 @@
 	// @ts-nocheck
 	import LL from '$i18n/i18n-svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import TwoGalleriesSection from '$lib/components/sections/TwoGalleriesSection.svelte';
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
-	import { getPageLink } from '$lib/utils';
 
 	let { data } = $props();
-	let page = $derived(data?.document?.data?.about);
+	let about = $derived(data?.document?.data?.about);
 	let press = $derived(data?.document?.data?.press);
+
+	let viewportHeight = $state(0);
 	let teamHeight = $state(0);
 	let teamHeight2 = $state(0);
+	let gallery = $state();
 	let galleryHeight = $state(0);
-	let differenceHeight = $derived(Math.abs(teamHeight - galleryHeight));
-	let differenceHeight2 = $derived(Math.abs(teamHeight2 - galleryHeight));
+
+	let differenceHeight = $derived(Math.abs(gallery?.clientHeight - teamHeight));
+	let differenceHeight2 = $derived(Math.abs(gallery?.clientHeight - teamHeight2));
 </script>
 
-<svelte:window bind:innerHeight={galleryHeight} />
+<svelte:window bind:innerHeight={viewportHeight} />
 
-<SEO data={page?.seo} pageTitle="About" />
+<SEO data={about?.seo} aboutTitle="About" />
 
-{#if page}
+{#if about}
 	<main>
 		<div class="fade-in intro flex justify-center items-center small-caps text-center">Joia</div>
 		<div class="fade-in px-1.5 mx-auto w-full">
-			<PortableText data={page?.intro} />
+			<PortableText data={about?.intro} />
 		</div>
-		{#if page.gallery}
+		{#if about.gallery}
 			<div class="pt-1.5">
-				<TwoGalleriesSection section={page?.twoGalleries} fit="contain" />
+				<TwoGalleriesSection section={about?.twoGalleries} fit="contain" />
 			</div>
 		{/if}
-		<div class="fade-in md:w-1/2 p-1.5"><PortableText data={page?.description} /></div>
-		{#if page?.detailsSections}
+		<div class="fade-in md:w-1/2 p-1.5"><PortableText data={about?.description} /></div>
+		{#if about?.detailsSections}
 			<div class="flex flex-col items-center w-full py-25">
 				<div class="md:w-1/2 flex flex-col gap-6 p-1.5">
-					{#each page?.detailsSections as section}
+					{#each about?.detailsSections as section}
 						<div class="fade-in">
 							<div class="small-caps text-center pb-6">
 								{section.heading}
@@ -50,78 +54,84 @@
 				</div>
 			</div>
 		{/if}
-		{#if page?.team}
-			<div class="fade-in team p-1.5 w-full hidden md:block">
-				<div class="flex-col hidden md:flex">
-					<h3 class="small-caps" style="padding-bottom: {differenceHeight}px">{$LL.theChefs()}</h3>
+
+		{#if about?.team}
+			<div id="chefs" class="fade-in team p-1.5 w-full hidden lg:block">
+				<div class="flex-col hidden lg:flex">
+					<h3 class="small-caps" style="padding-bottom: {differenceHeight / 2}px">
+						{$LL.theChefs()}
+					</h3>
 					<div class="sticky bottom-0 pt-3">
-						<div class="small-caps" style="padding-bottom: {differenceHeight / 2}px">
-							{page?.team[0]?.heading}
+						<div class="small-caps" style="padding-bottom: {differenceHeight / 2 - 70}px">
+							{about?.team[0]?.heading}
 						</div>
 						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight}>
-							<PortableText data={page?.team[0]?.content} />
+							<PortableText data={about?.team[0]?.content} />
 						</div>
 					</div>
 				</div>
-				{#if page?.teamGallery}
-					<Gallery data={page.teamGallery} fit="contain" />
+
+				{#if about?.teamGallery}
+					<div class="hidden lg:block" bind:this={gallery}>
+						<Gallery data={about.teamGallery} fit="contain" />
+					</div>
 				{/if}
 
-				<div class="flex-col hidden md:flex">
-					<div class="small-caps" style="padding-bottom: {differenceHeight2}px"></div>
+				<div class="flex-col hidden lg:flex">
+					<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2}px"></div>
 					<div class="sticky bottom-0 pt-3">
-						<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2}px">
-							{page?.team[1]?.heading}
+						<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2 - 70}px">
+							{about?.team[1]?.heading}
 						</div>
 						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight2}>
-							<PortableText data={page?.team[1]?.content} />
+							<PortableText data={about?.team[1]?.content} />
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="w-full block md:hidden">
-				<Gallery data={page?.teamGallery} fit="contain" />
+			<div class="w-full block lg:hidden">
+				<Gallery data={about?.teamGallery} fit="contain" />
 				<div class="p-1.5 grid-2 gap-1 pt-1.5">
 					<div class="flex flex-col">
 						<span class="small-caps pb-1.5">
-							{page?.team[0]?.heading}
+							{about?.team[0]?.heading}
 						</span>
-						<PortableText data={page?.team[0]?.content} />
+						<PortableText data={about?.team[0]?.content} />
 					</div>
 					<div class="flex flex-col">
 						<span class="small-caps pb-1.5">
-							{page?.team[1]?.heading}
+							{about?.team[1]?.heading}
 						</span>
-						<PortableText data={page?.team[1]?.content} />
+						<PortableText data={about?.team[1]?.content} />
 					</div>
 				</div>
 			</div>
 		{/if}
 
-		{#if page?.founder}
+		{#if about?.founder}
 			<div class="pt-25 md:p-0 md:pt-25 md:grid-2">
 				<div class="fade-in flex flex-col justify-between p-1.5 md:pb-0 md:items-end">
 					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0 md:w-1/2">
-						{page?.founder?.infoSection?.heading}
+						{about?.founder?.infoSection?.heading}
 					</h3>
-					<div class="md:w-1/2"><PortableText data={page?.founder?.infoSection?.content} /></div>
+					<div class="md:w-1/2"><PortableText data={about?.founder?.infoSection?.content} /></div>
 				</div>
 				<div class="fade-in overflow-hidden hidden md:block">
-					<Image image={page?.founder?.image} alt={page?.founder?.image?.alt} />
+					<Image image={about?.founder?.image} alt={about?.founder?.image?.alt} />
 				</div>
 			</div>
 		{/if}
 
-		{#if page?.location}
+		{#if about?.location}
 			<div class="fade-in pt-25 md:p-0 md:pt-25 md:grid-2">
-				{#if page?.location?.gallery}
-					<Gallery data={page?.location?.gallery} fit="contain" />
+				{#if about?.location?.gallery}
+					<Gallery data={about?.location?.gallery} fit="contain" />
 				{/if}
 
 				<div class="flex flex-col justify-between p-1.5 md:pb-0">
 					<h3 class="small-caps h-full flex flex-col justify-center pb-2 md:pb-0">Location</h3>
-					<PortableText data={page?.location?.description} />
+					<PortableText data={about?.location?.description} />
 				</div>
 			</div>
 		{/if}

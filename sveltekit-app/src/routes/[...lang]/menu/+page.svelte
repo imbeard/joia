@@ -21,12 +21,12 @@
 
 				if (element) {
 					element.scrollIntoView({
-						behavior: 'smooth',
+						behavior: 'instant',
 						block: 'start'
 					});
 				}
 				sessionStorage.removeItem('scrollToHash');
-			}, 300);
+			}, 10);
 		}
 	});
 </script>
@@ -37,9 +37,9 @@
 	<main class="p-1.5">
 		<div class="intro flex justify-center items-center small-caps fade-in">{pageData?.heading}</div>
 		{#if pageData?.menus.length > 0}
-			<div class="flex flex-col gap-16">
+			<div class="flex flex-col gap-8">
 				{#each pageData?.menus as menu, index}
-					<div id={menu.slug.current} class="md:grid-2 gap-1.5 pt-6 fade-in">
+					<div id={menu.slug.current} class="md:grid-2 gap-1.5 pt-12 fade-in">
 						<div class="pb-2">
 							<h3 class="small-caps">
 								<span>{menu?.title}, {menu?.price}</span>

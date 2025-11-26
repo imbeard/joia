@@ -39,7 +39,10 @@
 
 		<div class="md:grid-2 gap-1.5">
 			{#if document?.details?.infoSection}
-				<div class="pt-1.5 pl-1.5 fade-in">
+				<div
+					class="pt-1.5 pl-1.5 fade-in flex flex-col justify-between"
+					style="height: {viewportHeight - 10}px"
+				>
 					<div bind:clientHeight={detailsHeight}>
 						<div class="small-caps pb-1.5">
 							{document?.details?.infoSection?.heading}
@@ -50,7 +53,7 @@
 					</div>
 					<a
 						class="sticky bottom-2 small-caps items-center gap-1 hidden md:flex"
-						style="padding-top: {detailsHeight}px"
+						style="padding-top: 200px"
 						href="mailto:{document?.details?.cta}"
 						target="_blank"
 					>
@@ -83,12 +86,21 @@
 										<PortableText data={course?.description} />
 									</div>
 									{#if course?.contact}
-										<a
+										<!-- OLD VERSION WITH BIG SPACING -->
+										<!-- <a
 											href="mailto:{course?.contact}"
 											class="small-caps flex items-center gap-1"
 											style="padding-block: {viewportWidth > 768
 												? viewportHeight / 2 - 150
 												: viewportHeight / 5}px"
+										>
+											<span>{$LL.contactUs()}</span>
+											<ArrowRight fill="var(--color-green)" />
+										</a> -->
+
+										<a
+											href="mailto:{course?.contact}"
+											class="small-caps flex items-center gap-1 py-5"
 										>
 											<span>{$LL.contactUs()}</span>
 											<ArrowRight fill="var(--color-green)" />
