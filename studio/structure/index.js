@@ -70,7 +70,13 @@ export const structure = (S, context) =>
         .title('Academy')
         .child(S.document().schemaType('academy').title('Academy').documentId('academy')),
 
-      S.documentTypeListItem('press').title('Press'),
+      orderableDocumentListDeskItem({
+        type: 'press',
+        title: 'Press',
+        icon: FolderIcon,
+        S,
+        context,
+      }),
 
       S.divider(),
 

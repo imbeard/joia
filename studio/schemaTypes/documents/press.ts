@@ -1,4 +1,6 @@
 import {defineField, defineType} from 'sanity'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
+
 import {VersionsIcon} from '@sanity/icons'
 
 export const press = defineType({
@@ -6,7 +8,13 @@ export const press = defineType({
   title: 'Press',
   type: 'document',
   icon: VersionsIcon,
+  orderings: [orderRankOrdering],
+
   fields: [
+    orderRankField({
+      type: 'press',
+      newItemPosition: 'before',
+    }),
     defineField({
       name: 'language',
       type: 'string',

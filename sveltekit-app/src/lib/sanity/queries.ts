@@ -133,7 +133,7 @@ export const aboutQuery = groq`{
       }
     }
   },
-  "press": *[_type == "press"] {
+  "press": *[_type == "press" && language == $language] {
     ...,
     description[]{
       ${portableText}

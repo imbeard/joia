@@ -61,6 +61,7 @@ export default defineConfig({
         'menuPage',
         'softDrinks',
         'herbalTeas',
+        'press',
       ],
     }),
   ],

@@ -26,6 +26,10 @@ body {
 a {
 	width: fit-content;
 	height: fit-content;
+	transition: opacity 100ms ease-in;
+	&:hover {
+		opacity: 0.4;
+	}
 }
 
 button {
