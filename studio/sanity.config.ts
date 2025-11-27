@@ -63,6 +63,7 @@ export default defineConfig({
         'softDrinks',
         'softDrink',
         'herbalTeas',
+        'herbalTea',
         'press',
       ],
     }),

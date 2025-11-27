@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {FilterIcon} from '@sanity/icons'
+import {isUniqueOtherThanLanguage} from '../../utils/i18n'
 
 export const herbalTea = defineType({
   name: 'herbalTea',
@@ -7,6 +8,12 @@ export const herbalTea = defineType({
   type: 'document',
   icon: FilterIcon,
   fields: [
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -20,6 +27,7 @@ export const herbalTea = defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: isUniqueOtherThanLanguage,
       },
     }),
     defineField({
@@ -36,7 +44,15 @@ export const herbalTea = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'price',
+      language: 'language',
+      price: 'price',
+    },
+    prepare(selection) {
+      const {title, language, price} = selection
+      return {
+        title: language ? `${title} – ${language}` : title,
+        subtitle: price,
+      }
     },
   },
 })

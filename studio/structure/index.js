@@ -3,6 +3,7 @@ import {FolderIcon} from '@sanity/icons'
 import {wineList} from './translations/wine-list'
 import {pressList} from './translations/press-list'
 import {softDrinksList} from './translations/soft-drinks-list'
+import {herbalTeaList} from './translations/herbal-tea-list'
 
 export const structure = (S, context) =>
   S.list()
@@ -71,7 +72,9 @@ export const structure = (S, context) =>
 
       softDrinksList(S),
 
-      S.documentTypeListItem('herbalTea').title('Herbal Tea List'),
+      // S.documentTypeListItem('herbalTea').title('Herbal Tea List'),
+
+      herbalTeaList(S),
 
       pressList(S, context),
 
