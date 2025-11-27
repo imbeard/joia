@@ -34,6 +34,7 @@ import {contacts} from './singletons/contacts'
 import {events} from './singletons/events'
 import {academy} from './singletons/academy'
 import {menuPage} from './singletons/menuPage'
+import {popup} from './singletons/popup'
 
 export const schemaTypes = [
   linkInternal,
@@ -72,4 +73,5 @@ export const schemaTypes = [
   contacts,
   academy,
   menuPage,
+  popup,
 ]

@@ -44,7 +44,15 @@ export const softDrink = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'price',
+      language: 'language',
+      price: 'price',
+    },
+    prepare(selection) {
+      const {title, language, price} = selection
+      return {
+        title: language ? `${title} – ${language}` : title,
+        subtitle: price,
+      }
     },
   },
 })

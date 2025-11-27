@@ -15,11 +15,11 @@ export const wineList = (S) =>
                 .filter('_type == "wine"'),
             ),
           S.listItem()
-            .title('Vini – IT')
+            .title('Wines – IT')
             .child(
               S.documentList()
                 .apiVersion('2024-06-01')
-                .title('Vini – IT')
+                .title('Wines – IT')
                 .schemaType('wine')
                 .filter('_type == "wine" && language == "it"'),
             ),

@@ -65,6 +65,7 @@ export default defineConfig({
         'herbalTeas',
         'herbalTea',
         'press',
+        'popup',
       ],
     }),
   ],

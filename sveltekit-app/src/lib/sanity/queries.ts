@@ -140,7 +140,6 @@ export const aboutQuery = groq`{
     }
   }
   }`;
-export const settingsQuery = groq`*[_type == "settings" && language == $language][0]`;
 
 export const academyQuery = groq`*[_type == "academy" && language == $language][0]{
   ...,
@@ -317,3 +316,9 @@ export const drinkingQuery = groq`*[_type == "drinking" && language == $language
       }
     }
   }`;
+
+export const settingsQuery = groq`{
+  "settings" : *[_type == "settings" && language == $language][0],
+  "popup" : *[_type == "popup" && language == $language][0]
+  }`;
+// export const popupQuery = groq`*[_type == "popup" && language == $language][0]`;
