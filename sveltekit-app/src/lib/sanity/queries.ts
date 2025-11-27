@@ -319,6 +319,11 @@ export const drinkingQuery = groq`*[_type == "drinking" && language == $language
 
 export const settingsQuery = groq`{
   "settings" : *[_type == "settings" && language == $language][0],
-  "popup" : *[_type == "popup" && language == $language][0]
+  "popup" : *[_type == "popup" && language == $language][0] {
+    ...,
+    content[]{
+      ${portableText}
+    }
+  }
   }`;
 // export const popupQuery = groq`*[_type == "popup" && language == $language][0]`;

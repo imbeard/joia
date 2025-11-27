@@ -24,12 +24,13 @@
 	let name = $derived(settings?.companyName);
 	let season = $derived(settings?.season);
 	let mounted = $state(false);
+	let initialUrl = $state('');
 	let showPopup = $derived(
 		mounted &&
 			$popupToOpen &&
 			browser &&
 			sessionStorage &&
-			sessionStorage.getItem('popupShown') == 'false'
+			sessionStorage.getItem('popupShown') === 'false'
 	);
 
 	let pluginsInitialized = $state(false);
@@ -54,11 +55,18 @@
 		}
 
 		mounted = true;
+		initialUrl = page.url.pathname;
 	});
 
 	$effect(() => {
 		// Access page.url to make this reactive to route changes
 		const currentUrl = page.url.pathname;
+
+		// Close popup on navigation (but not on initial load)
+		if (mounted && $popupToOpen && currentUrl !== initialUrl) {
+			popupToOpen.set(false);
+		}
+
 		if (!pluginsInitialized) return;
 
 		// Scroll to top on route changes
@@ -79,7 +87,7 @@
 		if (showPopup && browser) {
 			document.body.classList.add('overflow-hidden');
 		} else {
-			document.body.classList.remove('overflow-auto');
+			document.body.classList.remove('overflow-hidden');
 		}
 	});
 </script>

@@ -4,13 +4,17 @@
 	import CloseIcon from '$lib/components/svg/CloseIcon.svelte';
 	import { clickoutside } from '@svelte-put/clickoutside';
 	import { popupToOpen } from '$lib/stores/popup';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
 	function closePopup() {
 		popupToOpen.set(false);
-		sessionStorage.setItem('popupShown', 'true');
 	}
+
+	onMount(() => {
+		sessionStorage.setItem('popupShown', 'true');
+	});
 </script>
 
 <div
