@@ -14,6 +14,11 @@ export const popup = defineType({
       hidden: true,
     }),
     defineField({
+      name: 'isActive',
+      title: 'Is Active',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',

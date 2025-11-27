@@ -25,9 +25,11 @@
 	let season = $derived(settings?.season);
 	let mounted = $state(false);
 	let initialUrl = $state('');
+	let popupActive = $derived(popup?.isActive === true);
 	let showPopup = $derived(
 		mounted &&
 			$popupToOpen &&
+			popupActive &&
 			browser &&
 			sessionStorage &&
 			sessionStorage.getItem('popupShown') === 'false'
