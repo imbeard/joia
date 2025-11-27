@@ -20,8 +20,30 @@
 	let gallery = $state();
 	let galleryHeight = $state(0);
 
-	let differenceHeight = $derived(Math.abs(gallery?.clientHeight - teamHeight));
-	let differenceHeight2 = $derived(Math.abs(gallery?.clientHeight - teamHeight2));
+	// Make gallery height reactive to resize
+	let galleryClientHeight = $state(0);
+
+	let differenceHeight = $derived(Math.abs(galleryClientHeight - teamHeight));
+	let differenceHeight2 = $derived(Math.abs(galleryClientHeight - teamHeight2));
+
+	$effect(() => {
+		if (gallery) {
+			const resizeObserver = new ResizeObserver((entries) => {
+				for (let entry of entries) {
+					galleryClientHeight = entry.contentRect.height;
+				}
+			});
+
+			resizeObserver.observe(gallery);
+
+			// Initial measurement
+			galleryClientHeight = gallery.clientHeight;
+
+			return () => {
+				resizeObserver.disconnect();
+			};
+		}
+	});
 </script>
 
 <svelte:window bind:innerHeight={viewportHeight} />
@@ -58,32 +80,34 @@
 		{#if about?.team}
 			<div id="chefs" class="fade-in team p-1.5 w-full hidden lg:block">
 				<div class="flex-col hidden lg:flex">
-					<h3 class="small-caps" style="padding-bottom: {differenceHeight / 2}px">
+					<h3 class="small-caps" style="padding-bottom: {differenceHeight / 2 - 30}px">
 						{$LL.theChefs()}
 					</h3>
 					<div class="sticky bottom-0 pt-3">
-						<div class="small-caps" style="padding-bottom: {differenceHeight / 2 - 70}px">
+						<div class="small-caps" style="padding-bottom: {differenceHeight / 2 - 30}px">
 							{about?.team[0]?.heading}
 						</div>
-						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight}>
+						<div class="sticky bottom-2 pt-3" bind:clientHeight={teamHeight}>
 							<PortableText data={about?.team[0]?.content} />
 						</div>
 					</div>
 				</div>
 
 				{#if about?.teamGallery}
-					<div class="hidden lg:block" bind:this={gallery}>
+					<div class="hidden lg:block h-fit" bind:this={gallery}>
 						<Gallery data={about.teamGallery} fit="contain" />
 					</div>
 				{/if}
 
 				<div class="flex-col hidden lg:flex">
-					<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2}px"></div>
+					<h3 class="small-caps opacity-0" style="padding-bottom: {differenceHeight / 2 - 30}px">
+						{$LL.theChefs()}
+					</h3>
 					<div class="sticky bottom-0 pt-3">
-						<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2 - 70}px">
+						<div class="small-caps" style="padding-bottom: {differenceHeight2 / 2 - 30}px">
 							{about?.team[1]?.heading}
 						</div>
-						<div class="sticky bottom-2 pt-4" bind:clientHeight={teamHeight2}>
+						<div class="sticky bottom-2 pt-3" bind:clientHeight={teamHeight2}>
 							<PortableText data={about?.team[1]?.content} />
 						</div>
 					</div>

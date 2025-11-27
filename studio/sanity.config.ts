@@ -51,6 +51,7 @@ export default defineConfig({
         'menu',
         'home',
         'wines',
+        'wine',
         'about',
         'events',
         'contacts',
