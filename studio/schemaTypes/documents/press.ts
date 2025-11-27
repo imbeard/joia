@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
+import {isUniqueOtherThanLanguage} from '../../utils/i18n'
 
 import {VersionsIcon} from '@sanity/icons'
 
@@ -44,6 +45,7 @@ export const press = defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: isUniqueOtherThanLanguage,
       },
     }),
     defineField({
@@ -60,7 +62,15 @@ export const press = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'magazine',
+      language: 'language',
+      magazine: 'magazine',
+    },
+    prepare(selection) {
+      const {title, language, magazine} = selection
+      return {
+        title: language ? `${title} – ${language}` : title,
+        subtitle: magazine,
+      }
     },
   },
 })

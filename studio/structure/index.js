@@ -1,5 +1,8 @@
 import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {FolderIcon} from '@sanity/icons'
+import {wineList} from './translations/wine-list'
+import {pressList} from './translations/press-list'
+import {softDrinksList} from './translations/soft-drinks-list'
 
 export const structure = (S, context) =>
   S.list()
@@ -64,19 +67,13 @@ export const structure = (S, context) =>
 
       S.documentTypeListItem('menu').title('Menu List'),
 
-      S.documentTypeListItem('wine').title('Wine List'),
+      wineList(S),
 
-      S.documentTypeListItem('softDrink').title('Soft Drink List'),
+      softDrinksList(S),
 
       S.documentTypeListItem('herbalTea').title('Herbal Tea List'),
 
-      orderableDocumentListDeskItem({
-        type: 'press',
-        title: 'Press List',
-        icon: FolderIcon,
-        S,
-        context,
-      }),
+      pressList(S, context),
 
       S.divider(),
 

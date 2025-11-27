@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {FilterIcon} from '@sanity/icons'
+import {isUniqueOtherThanLanguage} from '../../utils/i18n'
 
 export const softDrink = defineType({
   name: 'softDrink',
@@ -7,6 +8,12 @@ export const softDrink = defineType({
   type: 'document',
   icon: FilterIcon,
   fields: [
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -20,6 +27,7 @@ export const softDrink = defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: isUniqueOtherThanLanguage,
       },
     }),
     defineField({

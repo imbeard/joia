@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {FilterIcon} from '@sanity/icons'
+import {isUniqueOtherThanLanguage} from '../../utils/i18n'
 
 export const wine = defineType({
   name: 'wine',
@@ -31,6 +32,7 @@ export const wine = defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: isUniqueOtherThanLanguage,
       },
     }),
     defineField({
@@ -77,7 +79,13 @@ export const wine = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'price',
+      language: 'language',
+    },
+    prepare(selection) {
+      const {title, language} = selection
+      return {
+        title: language ? `${title} – ${language}` : title,
+      }
     },
   },
 })

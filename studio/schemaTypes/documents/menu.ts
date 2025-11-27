@@ -78,7 +78,15 @@ export const menu = defineType({
   preview: {
     select: {
       title: 'title',
-      subtitle: 'price',
+      price: 'price',
+      language: 'language',
+    },
+    prepare(selection) {
+      const {title, language, price} = selection
+      return {
+        title: language ? `${title} – ${language}` : title,
+        subtitle: price,
+      }
     },
   },
 })
