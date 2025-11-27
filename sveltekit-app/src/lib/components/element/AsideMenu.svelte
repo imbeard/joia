@@ -36,12 +36,12 @@
 	<button
 		class="fixed z-99 right-2 top-2 md:hidden"
 		class:hidden={!$menuOpen}
-		onclick={() => ($menuOpen = false)}><CloseIcon /></button
+		onclick={() => ($menuOpen = false)}><CloseIcon stroke="var(--color-white)" /></button
 	>
 	<div class="hidden md:block">
 		<div class="small-caps">{$LL.discover()}</div>
 		<button class="fixed z-99 right-2 top-2" onclick={() => ($menuOpen = false)}
-			><CloseIcon /></button
+			><CloseIcon stroke="var(--color-white)" /></button
 		>
 	</div>
 	<div class="w-1/2 p-2 mb-4 md:w-full md:mb-0 md:hidden"><Logo fill="var(--color-white)" /></div>
