@@ -3,8 +3,8 @@
 	import { menuOpen } from '$lib/stores/header';
 	import CloseIcon from '$lib/components/svg/CloseIcon.svelte';
 	import LocaleSwitcher from '$lib/components/LocaleSwitcher.svelte';
-	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
+	import NewsletterForm from '$lib/components/NewsletterForm.svelte';
 	import { clickoutside } from '@svelte-put/clickoutside';
 
 	let clickOutsideEnabled = $state(false);
@@ -73,10 +73,7 @@
 	</div>
 	<div class="flex flex-col gap-2 w-full border-b border-b-white pb-0.5">
 		<div class="small-caps">Newsletter</div>
-		<div class="flex justify-between">
-			<input type="text" placeholder={$LL.newsletter()} />
-			<button><ArrowRight fill="var(--color-white)" /></button>
-		</div>
+		<NewsletterForm />
 	</div>
 </aside>
 
@@ -94,15 +91,6 @@
 
 	.button {
 		border-radius: 3px;
-	}
-
-	input::placeholder {
-		color: var(--color-white);
-	}
-	input {
-		outline: none;
-		appearance: none;
-		width: 100%;
 	}
 
 	.menu-btn {
