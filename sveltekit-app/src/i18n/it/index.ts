@@ -15,7 +15,7 @@ const it = {
 	followUs: 'Seguici su:',
 	discover: 'Scopri',
 	drinkSelection: 'La selezione di bevande',
-	drinkAtJoia: 'Il bere al Joia',
+	drinkAtJoia: 'Vino e Bevande',
 	lunchOffer: 'Il pranzo al Joia',
 	theChefs: 'Gli Chef',
 	theFounder: 'Il fondatore',
