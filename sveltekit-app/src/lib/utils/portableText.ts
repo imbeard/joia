@@ -19,7 +19,8 @@ const HTML_ENTITIES: Record<string, string> = {
 	'&euro;': '€',
 	'&pound;': '£',
 	'&yen;': '¥',
-	'&cent;': '¢'
+	'&cent;': '¢',
+	'&rarr;': '→'
 };
 
 /**

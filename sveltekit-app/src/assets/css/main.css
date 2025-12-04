@@ -5,11 +5,19 @@
 
 @source inline("grid-cols-{0..12}");
 
-/*.iub__us-widget,
+.iub__us-widget,
 .iub__us-widget__wrapper {
 	display: none !important;
-	opacity: 0;
-}*/
+	opacity: 0 !important;
+	visibility: hidden;
+}
+
+.iubenda-tp-btn,
+.iubenda-cs-preferences-link {
+	display: none !important;
+	opacity: 0 !important;
+	visibility: hidden;
+}
 
 html {
 	font-size: 10px;
