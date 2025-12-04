@@ -144,7 +144,7 @@
 		<!-- First Gallery -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="embla gallery-container">
+		<div class="embla gallery-container" class:default={!firstShowNext && !firstShowPrev}>
 			<div
 				class="embla__viewport"
 				use:emblaCarouselSvelte={{ options }}
@@ -205,7 +205,7 @@
 		<!-- Second Gallery -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="embla gallery-container">
+		<div class="embla gallery-container" class:default={!secondShowNext && !secondShowPrev}>
 			<div
 				class="embla__viewport"
 				use:emblaCarouselSvelte={{ options }}

@@ -5,8 +5,8 @@
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 </script>
 
-<div class="grid grid-cols-[auto_20px] items-center relative">
-	<input id="newsletter-aside" type="text" name="sr_email" placeholder={$LL.newsletter()} />
+<div class="grid grid-cols-[auto_20px] items-center relative border-b border-green">
+	<input id="newsletter-footer" type="text" name="sr_email" placeholder={$LL.newsletter()} />
 	<input
 		class="w-full cursor-pointer"
 		type="submit"
@@ -21,13 +21,13 @@
 		onclick={submit}
 	/>
 	<div class="absolute right-0 pointer-events-none">
-		<ArrowRight fill="var(--color-white)" />
+		<ArrowRight fill="var(--color-green)" />
 	</div>
 </div>
 
-<style lang="postcss">
+<style>
 	input::placeholder {
-		color: var(--color-white);
+		color: var(--color-green);
 	}
 	input {
 		outline: none;

@@ -11,6 +11,8 @@ const it = {
 	eventsAndCatering: 'Eventi e Catering',
 	contacts: 'Contatti',
 	newsletter: 'Inserisci mail',
+	newsletterSubscribe: 'Iscriviti alla newsletter',
+	followUs: 'Seguici su:',
 	discover: 'Scopri',
 	drinkSelection: 'La selezione di bevande',
 	drinkAtJoia: 'Il bere al Joia',

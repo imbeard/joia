@@ -11,6 +11,8 @@ const en = {
 	eventsAndCatering: 'Events and Catering',
 	contacts: 'Contacts',
 	newsletter: 'Add your email',
+	newsletterSubscribe: 'Subscribe to the newsletter',
+	followUs: 'Follow us:',
 	discover: 'Discover',
 	drinkSelection: 'Our drinks selection',
 	drinkAtJoia: 'Drinking at Joia',

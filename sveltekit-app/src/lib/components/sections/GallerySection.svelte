@@ -86,7 +86,7 @@
 	>
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="embla gallery-container fade-in" dir="ltr">
+		<div class="embla gallery-container fade-in" class:default={!showNext && !showPrev} dir="ltr">
 			<div
 				class="embla__viewport"
 				use:emblaCarouselSvelte={{ options }}

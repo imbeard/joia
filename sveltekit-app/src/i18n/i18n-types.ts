@@ -55,6 +55,14 @@ type RootTranslation = {
 	 */
 	newsletter: string
 	/**
+	 * S​u​b​s​c​r​i​b​e​ ​t​o​ ​t​h​e​ ​n​e​w​s​l​e​t​t​e​r
+	 */
+	newsletterSubscribe: string
+	/**
+	 * F​o​l​l​o​w​ ​u​s​:
+	 */
+	followUs: string
+	/**
 	 * D​i​s​c​o​v​e​r
 	 */
 	discover: string
@@ -125,6 +133,14 @@ export type TranslationFunctions = {
 	 * Add your email
 	 */
 	newsletter: () => LocalizedString
+	/**
+	 * Subscribe to the newsletter
+	 */
+	newsletterSubscribe: () => LocalizedString
+	/**
+	 * Follow us:
+	 */
+	followUs: () => LocalizedString
 	/**
 	 * Discover
 	 */

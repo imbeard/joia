@@ -1,6 +1,8 @@
 <script lang="ts">
+	import LL from '$i18n/i18n-svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
+	import NewsletterFormFooter from '$lib/components/NewsletterFormFooter.svelte';
 	let { data } = $props();
 	let currentYear = $derived(new Date().getFullYear());
 </script>
@@ -31,20 +33,15 @@
 			</div>
 			{#if data?.social}
 				<div class="hidden md:flex flex-col">
-					<div class="small-caps">Seguici su:</div>
+					<div class="small-caps">{$LL.followUs()}</div>
 					{#each data?.social as social}
 						<a class="small-caps" href={social?.url} target="_blank">{social?.label}</a>
 					{/each}
 				</div>
 			{/if}
 			<div class="flex flex-col justify-between">
-				<div class="small-caps">Iscriviti alla newsletter:</div>
-				<div class="flex justify-between border-b border-b-green">
-					<input type="text" placeholder="Inserisci email" />
-					<button class="small-caps w-fit">
-						<ArrowRight fill="var(--color-green)" />
-					</button>
-				</div>
+				<div class="small-caps">{$LL.newsletterSubscribe()}</div>
+				<NewsletterFormFooter />
 			</div>
 			<!-- MOBILE VERSION -->
 			<div class="flex justify-between place-items-end pb-1 md:hidden">

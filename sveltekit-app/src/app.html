@@ -34,17 +34,73 @@
 		></script>
 		<script type="text/javascript" src="https://www.stampready.net/api2/api.js"></script>
 		<script async="false">
+			// Track which input was last focused
+			let lastFocusedInput = null;
+
+			// Add event listeners when page loads
+			document.addEventListener('DOMContentLoaded', function () {
+				const asideInput = document.getElementById('newsletter-aside');
+				const footerInput = document.getElementById('newsletter-footer');
+
+				if (asideInput) {
+					asideInput.addEventListener('focus', function () {
+						lastFocusedInput = 'newsletter-aside';
+					});
+				}
+				if (footerInput) {
+					footerInput.addEventListener('focus', function () {
+						lastFocusedInput = 'newsletter-footer';
+					});
+				}
+			});
+
+			function updateNewsletterInput(message) {
+				// Try to use the last focused input, otherwise update both
+				if (lastFocusedInput) {
+					const input = document.getElementById(lastFocusedInput);
+					if (input) {
+						const originalPlaceholder = input.placeholder;
+						input.value = '';
+						input.placeholder = message;
+						setTimeout(() => {
+							input.placeholder = originalPlaceholder;
+						}, 3000);
+						return;
+					}
+				}
+
+				// Fallback: update all newsletter inputs
+				const inputs = [
+					document.getElementById('newsletter-aside'),
+					document.getElementById('newsletter-footer')
+				];
+
+				inputs.forEach((input) => {
+					if (input) {
+						const originalPlaceholder = input.placeholder;
+						input.value = '';
+						input.placeholder = message;
+						setTimeout(() => {
+							input.placeholder = originalPlaceholder;
+						}, 3000);
+					}
+				});
+			}
+
 			function error() {
-				alert('error');
+				updateNewsletterInput('Error occurred, please try again');
 			}
+
 			function exists() {
-				alert('email exists already');
+				updateNewsletterInput('Email already exists');
 			}
+
 			function success() {
-				alert('Email submitted correctly');
+				updateNewsletterInput('Email submitted correctly!');
 			}
+
 			function confirm() {
-				alert('Please, confirm by email');
+				updateNewsletterInput('Please confirm by email');
 			}
 		</script>
 
