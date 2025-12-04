@@ -25,7 +25,14 @@ export const press = defineType({
     defineField({
       name: 'date',
       title: 'Date',
+      description: 'Use only if no precise date is given',
       type: 'string',
+    }),
+    defineField({
+      name: 'releaseDate',
+      title: 'Release Date',
+      description: 'If a precise date is given, use this field instead of the "Date" field',
+      type: 'date',
     }),
     defineField({
       name: 'magazine',

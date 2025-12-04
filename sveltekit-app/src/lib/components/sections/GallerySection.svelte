@@ -24,6 +24,7 @@
 	let cursorX = $state(0);
 	let cursorY = $state(0);
 	let showNext = $state(true);
+	let showPrev = $state(true);
 
 	// Current slide info
 	let currentSlide = $derived(gallery?.[selectedIndex]);
@@ -37,7 +38,16 @@
 
 		cursorX = x;
 		cursorY = y;
-		showNext = x > rect.width * 0.5;
+		showNext =
+			(gallery?.[selectedIndex + 1] && !isCurrentSlideVideo && x > rect.width * 0.5) ||
+			(gallery?.[selectedIndex + 1] && isCurrentSlideVideo && x > rect.width * 0.7)
+				? true
+				: false;
+		showPrev =
+			(gallery?.[selectedIndex - 1] && !isCurrentSlideVideo && x < rect.width * 0.5) ||
+			(gallery?.[selectedIndex - 1] && isCurrentSlideVideo && x < rect.width * 0.3)
+				? true
+				: false;
 	}
 
 	// Navigation functions
@@ -61,6 +71,10 @@
 		const removeTweenParallax = setupTweenParallax(emblaApi);
 		emblaApi.on('destroy', removeTweenParallax);
 	}
+
+	$effect(() => {
+		console.log(showNext);
+	});
 </script>
 
 {#if section}
@@ -114,17 +128,18 @@
 			<!-- Navigation button for first gallery -->
 			{#if galleryHovered && gallery.length > 0}
 				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
+					class="absolute"
 					class:video-slide={isCurrentSlideVideo}
 					style="left: {cursorX}px; top: {cursorY}px;"
 				>
 					{#if showNext}
-						<div class="flex gap-1 items-center">
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
 							<div class="text-[rgba(0,0,0,0.3)]">{isCurrentSlideVideo ? 'Play' : 'Next'}</div>
 							<div><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
 						</div>
-					{:else}
-						<div class="flex gap-1 items-center">
+					{/if}
+					{#if showPrev}
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
 							<div class="rotate-180"><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
 							<div class="text-[rgba(0,0,0,0.3)]">{isCurrentSlideVideo ? 'Play' : 'Prev'}</div>
 						</div>

@@ -9,6 +9,7 @@
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Image from '$lib/components/element/Image.svelte';
 	import SEO from '$lib/components/seo/SEO.svelte';
+	import { formatDate } from '$lib/utils';
 
 	let { data } = $props();
 	let about = $derived(data?.document?.data?.about);
@@ -169,7 +170,13 @@
 							class="small-caps flex w-full justify-between pb-3 md:pb-0 md:w-fit md:flex-col md:justify-normal"
 						>
 							<div>{item?.magazine}</div>
-							<div>{item?.date}</div>
+							{#if item?.releaseDate}
+								<div>{formatDate(item?.releaseDate)}</div>
+							{:else if item?.date}
+								<div>{item?.date}</div>
+							{:else}
+								<div></div>
+							{/if}
 						</div>
 						<div class="small-caps pb-3 md:pb-0">{item?.title}</div>
 						<div><PortableText data={item?.description} /></div>

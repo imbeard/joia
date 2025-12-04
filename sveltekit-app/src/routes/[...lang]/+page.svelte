@@ -1,4 +1,5 @@
 <script>
+	//@ts-nocheck
 	import LL from '$i18n/i18n-svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
@@ -50,7 +51,7 @@
 							{#each menus as menu, index}
 								<button
 									onclick={() => handleMenuLinks(menu?.slug)}
-									class="w-full py-1.5 border-green border-b flex justify-between items-center"
+									class="w-full py-1.5 border-green border-b flex justify-between items-center hover:opacity-50 transition-opacity transition-fast"
 									class:border-t={index === 0}
 								>
 									<h4 class="small-caps">{menu?.title}</h4>

@@ -22,11 +22,11 @@
 	<main>
 		<div class="fade-in intro flex flex-col justify-center items-center small-caps text-center">
 			<div>{$LL.contacts()}</div>
-			<div>{settings?.companyName}</div>
-			<div>{settings?.companyAddress}</div>
+			<div>{settings?.settings?.companyName}</div>
+			<div>{settings?.settings?.companyAddress}</div>
 			<div class="flex gap-1">
-				<a href="tel:{settings?.phone}">Tel {settings?.phone}</a>
-				<a href="mailto:{settings?.email}">Email {settings?.email}</a>
+				<a href="tel:{settings?.settings?.phone}">Tel {settings?.settings?.phone}</a>
+				<a href="mailto:{settings?.settings?.email}">Email {settings?.settings?.email}</a>
 			</div>
 		</div>
 		<div class="fade-in flex flex-col gap-25 md:grid-2 p-1.5 md:gap-1.5">

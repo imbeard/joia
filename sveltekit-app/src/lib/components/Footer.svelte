@@ -6,7 +6,7 @@
 </script>
 
 <div class="fade-in h-screen w-full flex flex-col justify-between bg-white typo-s">
-	<div class="pl-[1.2rem] pt-[4.4rem] w-20"><Logo fill="var(--color-green)" /></div>
+	<div class="pl-[1.2rem] pt-[8.4rem] w-20"><Logo fill="var(--color-green)" /></div>
 
 	<div>
 		<img class="pl-1.5 hidden md:block" src="/michelin.png" alt="" />
@@ -21,9 +21,13 @@
 			</div>
 			<div class="hidden md:block small-caps">©JOIA {currentYear}</div>
 			<div class="hidden md:flex flex-col">
-				<a class="small-caps" href="/">Cookie Policy</a>
-				<a class="small-caps" href="/">Privacy Policy</a>
-				<div class="small-caps">Design by Parco</div>
+				<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559/cookie-policy"
+					>Cookie Policy</a
+				>
+				<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559" target="_blank"
+					>Privacy Policy</a
+				>
+				<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
 			</div>
 			{#if data?.social}
 				<div class="hidden md:flex flex-col">
@@ -45,9 +49,15 @@
 			<!-- MOBILE VERSION -->
 			<div class="flex justify-between place-items-end pb-1 md:hidden">
 				<div class="flex flex-col gap-0.5">
-					<a class="small-caps" href="/">Cookie Policy</a>
-					<a class="small-caps" href="/">Privacy Policy</a>
-					<div class="small-caps">Design by Parco</div>
+					<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559/cookie-policy"
+						>Cookie Policy</a
+					>
+					<a
+						class="small-caps"
+						href="https://www.iubenda.com/privacy-policy/65841559"
+						target="_blank">Privacy Policy</a
+					>
+					<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
 				</div>
 				{#if data?.social}
 					<div class="flex flex-col gap-0.5">

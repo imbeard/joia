@@ -5,6 +5,12 @@
 
 @source inline("grid-cols-{0..12}");
 
+/*.iub__us-widget,
+.iub__us-widget__wrapper {
+	display: none !important;
+	opacity: 0;
+}*/
+
 html {
 	font-size: 10px;
 	font-family: var(--font-serif);

@@ -32,16 +32,21 @@
 										{#if group?.wines && group?.wines.length > 0}
 											{#each group?.wines as drink}
 												<div class="w-full">
-													<li class="grid-10 gap-1 w-full py-1.5">
-														<div class="col-start-1 col-end-11 md:col-end-2 small-caps">
-															{drink?.region}
-														</div>
-														<div class="col-start-2 col-end-11 md:col-end-4 small-caps">
-															{drink?.winery}
-														</div>
-														<div class="col-start-2 col-end-11 md:col-end-8">
+													<li class="grid-10 gap-1 gap-y-0 w-full py-0 items-baseline">
+														{#if drink?.region}
+															<div class="col-start-1 col-end-11 md:col-end-3 small-caps pt-1.5">
+																{drink?.region}
+															</div>
+														{/if}
+														{#if drink?.winery}
+															<div
+																class="col-start-2 col-end-11 md:col-start-3 md:col-end-6 small-caps pt-1.5"
+															>
+																{drink?.winery}
+															</div>
+														{/if}
+														<div class="col-start-2 col-end-11 md:col-start-3 md:col-end-8">
 															<div>{drink?.title}</div>
-															<div>({drink?.secondaryTitle})</div>
 														</div>
 														{#if drink?.bottles && drink?.bottles.length > 0}
 															<div class="col-start-2 md:col-start-8 col-end-11 flex flex-col">

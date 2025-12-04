@@ -39,8 +39,16 @@
 
 		cursorX = x;
 		cursorY = y;
-		showNext = !isCurrentSlideVideo ? x > rect.width * 0.5 : x > rect.width * 0.7;
-		showPrev = !isCurrentSlideVideo ? x < rect.width * 0.5 : x < rect.width * 0.3;
+		showNext =
+			(gallery?.[selectedIndex + 1] && !isCurrentSlideVideo && x > rect.width * 0.5) ||
+			(gallery?.[selectedIndex + 1] && isCurrentSlideVideo && x > rect.width * 0.7)
+				? true
+				: false;
+		showPrev =
+			(gallery?.[selectedIndex - 1] && !isCurrentSlideVideo && x < rect.width * 0.5) ||
+			(gallery?.[selectedIndex - 1] && isCurrentSlideVideo && x < rect.width * 0.3)
+				? true
+				: false;
 	}
 
 	// Navigation functions

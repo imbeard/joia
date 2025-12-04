@@ -32,7 +32,15 @@
 	let firstCursorY = $state(0);
 	let secondCursorY = $state(0);
 	let firstShowNext = $state(true);
+	let firstShowPrev = $state(true);
 	let secondShowNext = $state(true);
+	let secondShowPrev = $state(true);
+	let isFirstCurrentSlideVideo = $derived(
+		firstGallery?.[firstSelectedIndex]._type === 'elementVideo'
+	);
+	let isSecondCurrentSlideVideo = $derived(
+		secondGallery?.[secondSelectedIndex]._type === 'elementVideo'
+	);
 
 	// Handle mouse movement for first gallery
 	function handleFirstGalleryMouseMove(event) {
@@ -42,7 +50,20 @@
 
 		firstCursorX = x;
 		firstCursorY = y;
-		firstShowNext = x > rect.width * 0.5;
+		firstShowNext =
+			(firstGallery?.[firstSelectedIndex + 1] &&
+				!isFirstCurrentSlideVideo &&
+				x > rect.width * 0.5) ||
+			(firstGallery?.[firstSelectedIndex + 1] && isFirstCurrentSlideVideo && x > rect.width * 0.7)
+				? true
+				: false;
+		firstShowPrev =
+			(firstGallery?.[firstSelectedIndex - 1] &&
+				!isFirstCurrentSlideVideo &&
+				x < rect.width * 0.5) ||
+			(firstGallery?.[firstSelectedIndex - 1] && isFirstCurrentSlideVideo && x < rect.width * 0.3)
+				? true
+				: false;
 	}
 
 	// Handle mouse movement for second gallery
@@ -53,7 +74,24 @@
 
 		secondCursorX = x;
 		secondCursorY = y;
-		secondShowNext = x > rect.width * 0.5;
+		secondShowNext =
+			(secondGallery?.[secondSelectedIndex + 1] &&
+				!isSecondCurrentSlideVideo &&
+				x > rect.width * 0.5) ||
+			(secondGallery?.[secondSelectedIndex + 1] &&
+				isSecondCurrentSlideVideo &&
+				x > rect.width * 0.7)
+				? true
+				: false;
+		secondShowPrev =
+			(secondGallery?.[secondSelectedIndex - 1] &&
+				!isSecondCurrentSlideVideo &&
+				x < rect.width * 0.5) ||
+			(secondGallery?.[secondSelectedIndex - 1] &&
+				isSecondCurrentSlideVideo &&
+				x < rect.width * 0.3)
+				? true
+				: false;
 	}
 
 	// Navigation functions
@@ -147,19 +185,17 @@
 
 			<!-- Navigation button for first gallery -->
 			{#if firstGalleryHovered}
-				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
-					style="left: {firstCursorX}px; top: {firstCursorY}px;"
-				>
+				<div class="absolute" style="left: {firstCursorX}px; top: {firstCursorY}px;">
 					{#if firstShowNext}
-						<div class="flex gap-1 items-center">
-							<div class="text-[rgba(0,0,0,0.3)]">Next</div>
-							<div><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
+							<div class="text-[rgba(0,0,0,1)]">Next</div>
+							<div><ArrowRight fill="rgba(0,0,0,1)" /></div>
 						</div>
-					{:else}
-						<div class="flex gap-1 items-center">
-							<div class="rotate-180"><ArrowRight fill="rgba(0,0,0,0.3)" /></div>
-							<div class="text-[rgba(0,0,0,0.3)]">Prev</div>
+					{/if}
+					{#if firstShowPrev}
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
+							<div class="rotate-180"><ArrowRight fill="rgba(0,0,0,1)" /></div>
+							<div class="text-[rgba(0,0,0,1)]">Prev</div>
 						</div>
 					{/if}
 				</div>
@@ -205,17 +241,15 @@
 
 			<!-- Navigation button for second gallery -->
 			{#if secondGalleryHovered}
-				<div
-					class="nav-button py-0.5 px-1 backdrop-blur-xl small-caps"
-					style="left: {secondCursorX}px; top: {secondCursorY}px;"
-				>
+				<div class="absolute" style="left: {secondCursorX}px; top: {secondCursorY}px;">
 					{#if secondShowNext}
-						<div class="flex gap-1 items-center">
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
 							<div>Next</div>
 							<div><ArrowRight fill="black" /></div>
 						</div>
-					{:else}
-						<div class="flex gap-1 items-center">
+					{/if}
+					{#if secondShowPrev}
+						<div class="flex gap-1 items-center nav-button py-0.5 px-1 backdrop-blur-xl small-caps">
 							<div class="rotate-180"><ArrowRight fill="black" /></div>
 							<div>Prev</div>
 						</div>
