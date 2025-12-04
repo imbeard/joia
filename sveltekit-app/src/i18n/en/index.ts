@@ -15,7 +15,7 @@ const en = {
 	followUs: 'Follow us:',
 	discover: 'Discover',
 	drinkSelection: 'Our drinks selection',
-	drinkAtJoia: 'Drinking at Joia',
+	drinkAtJoia: 'Wine and Beverages',
 	lunchOffer: 'Lunch at Joia',
 	theChefs: 'The Chefs',
 	theFounder: 'The founder',
