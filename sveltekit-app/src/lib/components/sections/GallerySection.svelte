@@ -71,10 +71,6 @@
 		const removeTweenParallax = setupTweenParallax(emblaApi);
 		emblaApi.on('destroy', removeTweenParallax);
 	}
-
-	$effect(() => {
-		console.log(showNext);
-	});
 </script>
 
 {#if section}
