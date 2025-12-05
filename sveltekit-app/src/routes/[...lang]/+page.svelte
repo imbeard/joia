@@ -1,18 +1,26 @@
 <script>
 	//@ts-nocheck
 	import LL from '$i18n/i18n-svelte';
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 	import { page } from '$app/state';
 	import PortableText from '$lib/components/element/PortableText.svelte';
 	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import Gallery from '$lib/components/element/Gallery.svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
+	import Popup from '$lib/components/Popup.svelte';
+	import { popupToOpen } from '$lib/stores/popup';
 	import SEO from '$lib/components/seo/SEO.svelte';
 
 	let { data } = $props();
+	let popup = $derived(data?.settings?.data?.popup);
+	let mounted = $state(false);
 	let home = $derived(data?.document?.data?.home);
 	let menus = $derived(data?.document?.data?.menus);
 	let aboutHeight = $state(0);
+	let popupActive = $derived(popup?.isActive === true);
+	let showPopup = $derived(mounted && $popupToOpen && popupActive && browser);
 
 	const handleMenuLinks = (slug) => {
 		const currentLang = page?.params?.lang || 'en';
@@ -24,9 +32,18 @@
 		const currentLang = page?.params?.lang || 'en';
 		goto(`/${currentLang}/about#chefs`);
 	};
+
+	onMount(() => {
+		mounted = true;
+		popupToOpen.set(true);
+	});
 </script>
 
 <SEO data={home?.seo} />
+
+{#if showPopup}
+	<Popup data={popup} />
+{/if}
 
 {#if home}
 	<main>

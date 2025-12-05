@@ -103,6 +103,46 @@
 				updateNewsletterInput('Please confirm by email');
 			}
 		</script>
+		<!-- hide iubenda banner -->
+		<script>
+			function setBannerZIndex() {
+				const banner = document.getElementById('iubenda-cs-banner');
+				if (banner) {
+					banner.style.zIndex = 0;
+					return true;
+				}
+				return false;
+			}
+
+			// Try immediately in case element already exists
+			if (!setBannerZIndex()) {
+				// Use MutationObserver to wait for the element to be added
+				const observer = new MutationObserver(function (mutations) {
+					mutations.forEach(function (mutation) {
+						if (mutation.type === 'childList') {
+							if (setBannerZIndex()) {
+								observer.disconnect();
+							}
+						}
+					});
+				});
+
+				// Start observing when DOM is ready
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', function () {
+						observer.observe(document.body, {
+							childList: true,
+							subtree: true
+						});
+					});
+				} else {
+					observer.observe(document.body, {
+						childList: true,
+						subtree: true
+					});
+				}
+			}
+		</script>
 
 		%sveltekit.head%
 	</head>

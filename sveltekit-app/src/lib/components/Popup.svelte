@@ -12,9 +12,9 @@
 		popupToOpen.set(false);
 	}
 
-	onMount(() => {
-		sessionStorage.setItem('popupShown', 'true');
-	});
+	// onMount(() => {
+	// 	sessionStorage.setItem('popupShown', 'true');
+	// });
 </script>
 
 <div

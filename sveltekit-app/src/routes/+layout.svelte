@@ -113,10 +113,6 @@
 	</div>
 </div>
 
-{#if showPopup}
-	<Popup data={popup} />
-{/if}
-
 {#if $isPreviewing}
 	<VisualEditing />
 	<LiveMode />
