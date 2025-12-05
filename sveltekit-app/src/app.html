@@ -9,23 +9,15 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<!-- External scripts -->
-		<!-- Matomo -->
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-XN346PEG4R"></script>
 		<script>
-			var _paq = (window._paq = window._paq || []);
-			/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-			_paq.push(['trackPageView']);
-			_paq.push(['enableLinkTracking']);
-			(function () {
-				var u = '//joia.it/matomo/';
-				_paq.push(['setTrackerUrl', u + 'matomo.php']);
-				_paq.push(['setSiteId', '1']);
-				var d = document,
-					g = d.createElement('script'),
-					s = d.getElementsByTagName('script')[0];
-				g.async = true;
-				g.src = u + 'matomo.js';
-				s.parentNode.insertBefore(g, s);
-			})();
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-XN346PEG4R');
 		</script>
 		<!-- StampReady Newsletter -->
 		<script
