@@ -86,7 +86,7 @@
 	});
 
 	$effect(() => {
-		if (showPopup && browser) {
+		if (showPopup && browser && page.route.id === '/') {
 			document.body.classList.add('overflow-hidden');
 		} else {
 			document.body.classList.remove('overflow-hidden');
