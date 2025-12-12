@@ -85,13 +85,13 @@
 		};
 	});
 
-	$effect(() => {
-		if (showPopup && browser && page.route.id === '/') {
-			document.body.classList.add('overflow-hidden');
-		} else {
-			document.body.classList.remove('overflow-hidden');
-		}
-	});
+	// $effect(() => {
+	// 	if (showPopup && browser) {
+	// 		document.body.classList.add('overflow-hidden');
+	// 	} else {
+	// 		document.body.classList.remove('overflow-hidden');
+	// 	}
+	// });
 </script>
 
 <svelte:head>
