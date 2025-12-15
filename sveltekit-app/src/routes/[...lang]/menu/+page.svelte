@@ -13,6 +13,7 @@
 	let pageData = $derived(data?.document?.data);
 
 	onMount(() => {
+		console.log(pageData);
 		const storedHash = sessionStorage.getItem('scrollToHash');
 
 		if (storedHash) {

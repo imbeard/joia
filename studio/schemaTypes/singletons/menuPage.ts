@@ -36,6 +36,11 @@ export const menuPage = defineType({
       description: 'Short summary of the lunch offer',
       type: 'infoSection',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

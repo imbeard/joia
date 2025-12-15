@@ -60,6 +60,11 @@ export const drinking = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

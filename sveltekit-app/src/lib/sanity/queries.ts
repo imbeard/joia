@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { portableText } from './fragments/portableText';
+import { seo } from './fragments/seo';
 
 // singletons
 export const homepageQuery = groq`{
@@ -77,7 +78,8 @@ export const menuPageQuery = groq`*[_type == "menuPage" && language == $language
           }
         }
       },
-    }
+    },
+    ${seo}
 }`;
 export const press = groq`*[_type == "press"]`;
 
@@ -94,7 +96,8 @@ export const contactQuery = groq`*[_type == "contacts" && language == $language]
       content[]{
         ${portableText}
       }
-    }
+    },
+    ${seo}
   }`;
 
 export const aboutQuery = groq`{
@@ -138,7 +141,8 @@ export const aboutQuery = groq`{
     description[]{
       ${portableText}
     }
-  }
+  },
+  ${seo}
   }`;
 
 export const academyQuery = groq`*[_type == "academy" && language == $language][0]{
@@ -154,7 +158,8 @@ export const academyQuery = groq`*[_type == "academy" && language == $language][
         ${portableText}
       }
     },
-  }
+  },
+  ${seo}
 }`;
 
 export const eventsQuery = groq`*[_type == "events" && language == $language][0] {
@@ -167,7 +172,8 @@ export const eventsQuery = groq`*[_type == "events" && language == $language][0]
       content[]{
         ${portableText}
       }
-    }
+    },
+    ${seo}
   }`;
 export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
   ...,
@@ -193,7 +199,8 @@ export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
             language,
         }
       }
-    }
+    },
+    ${seo}
   }`;
 
 export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $language][0] {
@@ -220,7 +227,8 @@ export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $lang
             language,
         }
       }
-    }
+    },
+    ${seo}
   }`;
 
 export const herbalTeasQuery = groq`*[_type == "herbalTeas" && language == $language][0] {
@@ -247,7 +255,8 @@ export const herbalTeasQuery = groq`*[_type == "herbalTeas" && language == $lang
               language,
           }
         }
-      }
+      },
+      ${seo}
   }`;
 
 export const lunchQuery = groq`*[_type == "lunch" && language == $language][0] {
@@ -279,7 +288,8 @@ export const lunchQuery = groq`*[_type == "lunch" && language == $language][0] {
               language,
           }
         }
-      }
+      },
+      ${seo}
   }`;
 export const drinkingQuery = groq`*[_type == "drinking" && language == $language][0] {
   ...,
@@ -314,11 +324,15 @@ export const drinkingQuery = groq`*[_type == "drinking" && language == $language
             language,
         }
       }
-    }
+    },
+    ${seo}
   }`;
 
 export const settingsQuery = groq`{
-  "settings" : *[_type == "settings" && language == $language][0],
+  "settings" : *[_type == "settings" && language == $language][0] {
+  ...,
+  ${seo}
+  },
   "popup" : *[_type == "popup" && language == $language][0] {
     ...,
     content[]{

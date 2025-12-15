@@ -31,6 +31,11 @@ export const events = defineType({
       name: 'gallerySection',
       type: 'gallerySection',
     }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

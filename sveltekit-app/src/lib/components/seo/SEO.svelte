@@ -6,7 +6,7 @@
 	// Default values
 	const defaults = {
 		ogType: 'website',
-		ogImage: '/images/ogImage.png',
+		ogImage: '/images/ogImage.jpg',
 		siteName: 'Joia',
 		siteDescription: 'Joia: alta cucina vegetariana',
 		locale: 'it_IT'
@@ -19,12 +19,13 @@
 			: !data?.title && page?.route?.id !== '/' && pageTitle
 				? `${defaults.siteName} | ${pageTitle}`
 				: defaults.siteName;
-	const description = data?.description || defaults.siteDescription;
-	const ogImage = data?.ogImage || '/images/ogImage.png';
-	const ogType = data?.ogType || defaults.ogType;
-	const twitterCard = data?.twitterCard || defaults.ogImage;
-	const siteName = data?.siteName || defaults.siteName;
-	const locale = page?.params?.lang || defaults.locale;
+	const description = data?.description || '';
+	const image = data?.imageUrl || defaults?.ogImage;
+	const ogImage = data?.ogImageUrl || defaults?.ogImage;
+	const ogType = data?.ogType || defaults?.ogType;
+	const twitterCard = data?.twitterCard || defaults?.ogImage;
+	const siteName = data?.siteName || defaults?.siteName;
+	const locale = page?.params?.lang || defaults?.locale;
 	const canonical = data?.canonical || page?.url?.href;
 </script>
 
@@ -32,7 +33,7 @@
 	<!-- Primary Meta Tags -->
 	<title>{title} | {locale}</title>
 	<meta name="description" content={description} />
-
+	<meta name="image" content={image} />
 	<!-- Canonical URL -->
 	<link rel="canonical" href={canonical} />
 
