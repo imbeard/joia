@@ -1,7 +1,6 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte';
 	import Logo from '$lib/components/svg/Logo.svelte';
-	import ArrowRight from '$lib/components/svg/ArrowRight.svelte';
 	import NewsletterFormFooter from '$lib/components/NewsletterFormFooter.svelte';
 	let { data } = $props();
 	let currentYear = $derived(new Date().getFullYear());
@@ -23,11 +22,15 @@
 			</div>
 			<div class="hidden md:block small-caps">©JOIA {currentYear}</div>
 			<div class="hidden md:flex flex-col">
-				<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559/cookie-policy"
-					>Cookie Policy</a
+				<a
+					class="small-caps"
+					href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}/cookie-policy"
+					target="_blank">Cookie Policy</a
 				>
-				<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559" target="_blank"
-					>Privacy Policy</a
+				<a
+					class="small-caps"
+					href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}"
+					target="_blank">Privacy Policy</a
 				>
 				<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
 			</div>
@@ -46,12 +49,14 @@
 			<!-- MOBILE VERSION -->
 			<div class="flex justify-between place-items-end pb-1 md:hidden">
 				<div class="flex flex-col gap-0.5">
-					<a class="small-caps" href="https://www.iubenda.com/privacy-policy/65841559/cookie-policy"
-						>Cookie Policy</a
+					<a
+						class="small-caps"
+						href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}/cookie-policy"
+						target="_blank">Cookie Policy</a
 					>
 					<a
 						class="small-caps"
-						href="https://www.iubenda.com/privacy-policy/65841559"
+						href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}"
 						target="_blank">Privacy Policy</a
 					>
 					<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
@@ -69,14 +74,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	input::placeholder {
-		color: var(--color-green);
-	}
-	input {
-		outline: none;
-		appearance: none;
-		width: 100%;
-	}
-</style>

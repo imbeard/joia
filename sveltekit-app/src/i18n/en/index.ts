@@ -19,7 +19,8 @@ const en = {
 	lunchOffer: 'Lunch at Joia',
 	theChefs: 'The Chefs',
 	theFounder: 'The founder',
-	enrolling: 'Enrolling'
+	enrolling: 'Enrolling',
+	iubenda: '92904674'
 } satisfies Translation;
 
 export default en;

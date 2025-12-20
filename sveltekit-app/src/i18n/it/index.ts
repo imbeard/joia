@@ -19,7 +19,8 @@ const it = {
 	lunchOffer: 'Il pranzo al Joia',
 	theChefs: 'Gli Chef',
 	theFounder: 'Il fondatore',
-	enrolling: 'Iscrizioni Aperte'
+	enrolling: 'Iscrizioni Aperte',
+	iubenda: '65841559'
 } satisfies BaseTranslation;
 
 export default it;
