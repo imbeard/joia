@@ -83,7 +83,7 @@ export const handleI18n: Handle = async ({ event, resolve }) => {
 	event.locals.locale = locale;
 	event.locals.LL = LL;
 
-	console.info(`[hooks.server.ts] Using locale: ${locale}`);
+	// console.info(`[hooks.server.ts] Using locale: ${locale}`);
 
 	// replace html lang attribute with correct language
 	return resolve(event, {

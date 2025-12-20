@@ -9,6 +9,6 @@ export const DEFAULT_COOKIE_OPTIONS = {
 	path: '/',
 	maxAge: LOCALE_COOKIE_MAX_AGE,
 	httpOnly: false,
-	secure: false,
+	secure: true,
 	sameSite: 'lax' as const
 };
