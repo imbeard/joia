@@ -1,5 +1,5 @@
 # Netlify redirects for Joia website
-# Total redirects: 293
+# Total redirects: 292
 
 /category/novita/ / 301
 /category/appunti-di-viaggio/ / 301
@@ -292,5 +292,4 @@
 /buoni-regalo/ /it/ 301
 /en/contatti/ /en/contacts 301
 /menu/ /it/menu 301
-/en/menu/ /en/menu 301
 /contatti/ /it/contacts 301
