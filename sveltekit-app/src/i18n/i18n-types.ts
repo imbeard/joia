@@ -71,7 +71,7 @@ type RootTranslation = {
 	 */
 	drinkSelection: string
 	/**
-	 * D​r​i​n​k​i​n​g​ ​a​t​ ​J​o​i​a
+	 * W​i​n​e​ ​a​n​d​ ​B​e​v​e​r​a​g​e​s
 	 */
 	drinkAtJoia: string
 	/**
@@ -90,6 +90,10 @@ type RootTranslation = {
 	 * E​n​r​o​l​l​i​n​g
 	 */
 	enrolling: string
+	/**
+	 * 9​2​9​0​4​6​7​4
+	 */
+	iubenda: string
 }
 
 export type TranslationFunctions = {
@@ -150,7 +154,7 @@ export type TranslationFunctions = {
 	 */
 	drinkSelection: () => LocalizedString
 	/**
-	 * Drinking at Joia
+	 * Wine and Beverages
 	 */
 	drinkAtJoia: () => LocalizedString
 	/**
@@ -169,6 +173,10 @@ export type TranslationFunctions = {
 	 * Enrolling
 	 */
 	enrolling: () => LocalizedString
+	/**
+	 * 92904674
+	 */
+	iubenda: () => LocalizedString
 }
 
 export type Formatters = {}
