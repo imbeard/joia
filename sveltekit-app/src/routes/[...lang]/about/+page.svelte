@@ -49,7 +49,7 @@
 
 <svelte:window bind:innerHeight={viewportHeight} />
 
-<SEO data={about?.seo} aboutTitle="About" />
+<SEO data={about?.seo} pageTitle="About" locale={data?.locale} />
 
 {#if about}
 	<main>

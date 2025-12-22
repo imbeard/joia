@@ -36,10 +36,11 @@
 	onMount(() => {
 		mounted = true;
 		popupToOpen.set(true);
+		console.log(data);
 	});
 </script>
 
-<SEO data={home?.seo} />
+<SEO data={home?.seo} locale={data?.locale} />
 
 {#if showPopup}
 	<Popup data={popup} />

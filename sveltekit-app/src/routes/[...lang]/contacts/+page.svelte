@@ -16,7 +16,7 @@
 	let settings = $derived(data?.settings?.data);
 </script>
 
-<SEO data={document?.seo} pageTitle={$LL.contacts()} />
+<SEO data={document?.seo} pageTitle={$LL.contacts()} locale={data?.locale} />
 
 {#if document}
 	<main>

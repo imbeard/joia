@@ -1,7 +1,5 @@
 <script>
-	import { page } from '$app/state';
-
-	let { data, pageTitle } = $props();
+	let { data, pageTitle, noindex = false, locale } = $props();
 
 	// Default values
 	const defaults = {
@@ -9,50 +7,67 @@
 		ogImage: '/images/ogImage.jpg',
 		siteName: 'Joia',
 		siteDescription: 'Joia: alta cucina vegetariana',
-		locale: 'it_IT'
+		locale: 'it'
 	};
 
 	// Computed values
-	const title =
-		data?.title && page?.route?.id !== '/'
-			? `${defaults.siteName} | ${data?.title}`
-			: !data?.title && page?.route?.id !== '/' && pageTitle
-				? `${defaults.siteName} | ${pageTitle}`
-				: defaults.siteName;
-	const description = data?.description || '';
+	const title = data?.title
+		? `${data?.title} | ${defaults.siteName} | ${locale}`
+		: pageTitle
+			? `${pageTitle} | ${defaults.siteName} | ${locale}`
+			: `${defaults.siteName} | ${locale}`;
+	const description = data?.description;
 	const image = data?.imageUrl || defaults?.ogImage;
 	const ogType = data?.ogType || defaults?.ogType;
 	const twitterCard = data?.imageUrl || defaults?.ogImage;
 	const siteName = data?.siteName || defaults?.siteName;
-	const locale = page?.params?.lang || defaults?.locale;
-	const canonical = data?.canonical || page?.url?.href;
+	const canonical = data?.canonical;
 </script>
 
 <svelte:head>
 	<!-- Primary Meta Tags -->
-	<title>{title} | {locale}</title>
-	<meta name="description" content={description} />
-	<meta name="image" content={image} />
-	<!-- Canonical URL -->
-	<link rel="canonical" href={canonical} />
+	<title>{title}</title>
+	{#if description}
+		<meta name="description" content={description} />
+	{/if}
+	{#if noindex}
+		<meta name="robots" content="noindex, nofollow" />
+	{/if}
 
-	<!-- Open Graph / Facebook -->
+	<!-- Canonical URL -->
+	{#if canonical}
+		<link rel="canonical" href={canonical} />
+	{/if}
+
+	<!-- Open Graph / Facebook / WhatsApp -->
 	<meta property="og:type" content={ogType} />
-	<meta property="og:url" content={canonical} />
+	{#if canonical}
+		<meta property="og:url" content={canonical} />
+	{/if}
 	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
-	<meta property="og:image" content={image} />
+	{#if description}
+		<meta property="og:description" content={description} />
+	{/if}
+	{#if image}
+		<meta property="og:image" content={image} />
+		<meta property="og:image:secure_url" content={image} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="1200" />
+		<meta property="og:image:alt" content={title} />
+	{/if}
 	<meta property="og:site_name" content={siteName} />
-	<!-- <meta property="og:locale" content={locale} /> -->
+	<meta property="og:locale" content={locale} />
 
 	<!-- Twitter -->
-	<meta property="twitter:card" content={twitterCard} />
-	<meta property="twitter:url" content={canonical} />
-	<meta property="twitter:title" content={title} />
-	<meta property="twitter:description" content={description} />
-	<meta property="twitter:image" content={image} />
-
-	<!-- Additional Meta Tags -->
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta charset="utf-8" /> -->
+	<meta name="twitter:card" content={twitterCard} />
+	{#if canonical}
+		<meta name="twitter:url" content={canonical} />
+	{/if}
+	<meta name="twitter:title" content={title} />
+	{#if description}
+		<meta name="twitter:description" content={description} />
+	{/if}
+	{#if image}
+		<meta name="twitter:image" content={image} />
+	{/if}
 </svelte:head>

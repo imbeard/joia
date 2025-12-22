@@ -32,7 +32,7 @@
 	});
 </script>
 
-<SEO data={pageData?.seo} pageTitle={pageData?.heading} />
+<SEO data={pageData?.seo} pageTitle={pageData?.heading} locale={data?.locale} />
 
 {#if pageData}
 	<main class="p-1.5">

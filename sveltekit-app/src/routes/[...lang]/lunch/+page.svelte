@@ -13,7 +13,7 @@
 	let document = $derived(data?.document?.data);
 </script>
 
-<SEO data={document?.seo} pageTitle={$LL.lunchOffer()} />
+<SEO data={document?.seo} pageTitle={$LL.lunchOffer()} locale={data?.locale} />
 
 {#if document}
 	<main>
