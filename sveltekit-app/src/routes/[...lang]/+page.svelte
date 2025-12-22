@@ -36,7 +36,6 @@
 	onMount(() => {
 		mounted = true;
 		popupToOpen.set(true);
-		console.log(data);
 	});
 </script>
 
