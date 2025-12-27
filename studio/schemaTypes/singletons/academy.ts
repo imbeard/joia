@@ -77,11 +77,6 @@ export const academy = defineType({
               title: 'Contact',
               type: 'email',
             }),
-            defineField({
-              name: 'seo',
-              title: 'SEO',
-              type: 'seo',
-            }),
           ],
           preview: {
             select: {
@@ -91,6 +86,11 @@ export const academy = defineType({
           },
         },
       ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
     }),
   ],
   preview: {
