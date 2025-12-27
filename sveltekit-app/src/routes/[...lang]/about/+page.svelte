@@ -27,6 +27,20 @@
 	let differenceHeight = $derived(Math.abs(galleryClientHeight - teamHeight));
 	let differenceHeight2 = $derived(Math.abs(galleryClientHeight - teamHeight2));
 
+	onMount(() => {
+		const hash = page.url.hash;
+		if (hash === '#chefs') {
+			setTimeout(() => {
+				// Try mobile version first, fallback to desktop
+				const element = document.querySelector('#chefs-mobile') || document.querySelector('#chefs');
+				if (element) {
+					const top = element.getBoundingClientRect().top + window.scrollY;
+					window.scrollTo({ top, behavior: 'instant' });
+				}
+			}, 100);
+		}
+	});
+
 	$effect(() => {
 		if (gallery) {
 			const resizeObserver = new ResizeObserver((entries) => {
@@ -115,7 +129,7 @@
 				</div>
 			</div>
 
-			<div class="w-full block lg:hidden">
+			<div id="chefs-mobile" class="w-full block lg:hidden">
 				<Gallery data={about?.teamGallery} fit="contain" />
 				<div class="p-1.5 grid-2 gap-1 pt-1.5">
 					<div class="flex flex-col">

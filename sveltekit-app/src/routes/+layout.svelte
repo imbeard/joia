@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import LiveMode from '$lib/components/LiveMode.svelte';
@@ -72,8 +73,10 @@
 		if (!pluginsInitialized) return;
 
 		// Scroll to top on route changes
-		window.scrollTo(0, 0);
-		setTimeout(() => window.scrollTo(0, 0), 0);
+		if (!page.url.hash) {
+			window.scrollTo(0, 0);
+			setTimeout(() => window.scrollTo(0, 0), 0);
+		}
 
 		setTimeout(() => {
 			scrollAnimations();

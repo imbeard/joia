@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { invalidateAll, pushState, replaceState } from '$app/navigation';
+	import { afterNavigate, invalidateAll, pushState, replaceState } from '$app/navigation';
 	import { page } from '$app/state';
 	import { setLocale, locale } from '$i18n/i18n-svelte';
 	import type { Locales } from '$i18n/i18n-types';
 	import { locales } from '$i18n/i18n-util';
 	import { loadLocaleAsync } from '$i18n/i18n-util.async';
-	import { onMount } from 'svelte';
 	import { replaceLocaleInUrl, setCookie } from '../../utils.js';
 	import { LOCALE_COOKIE_NAME } from '$lib/constants.js';
+
+	let navigated = $state(false);
 
 	const switchLocale = async (newLocale: Locales, updateHistoryState = true) => {
 		if (!newLocale || $locale === newLocale) return;
@@ -26,7 +27,7 @@
 
 		if (updateHistoryState) {
 			// update url to reflect locale changes
-			history.pushState({ locale: newLocale }, '', replaceLocaleInUrl(page.url, newLocale));
+			pushState(replaceLocaleInUrl(page.url, newLocale), { locale: newLocale });
 		}
 
 		// run the `load` function again
@@ -40,18 +41,19 @@
 		}
 	});
 	// update locale when navigating via browser back/forward buttons
-	const handlePopStateEvent = async ({ state }: PopStateEvent) => switchLocale(state.locale, false);
+	const handlePopStateEvent = async ({ state }: PopStateEvent) =>
+		switchLocale(state?.locale, false);
+
+	afterNavigate(() => {
+		navigated = true;
+	});
 
 	// update locale when page store changes
 	$effect(() => {
-		if (browser) {
+		if (browser && navigated) {
 			const lang = page.params.lang as Locales;
 			switchLocale(lang, false);
-			history.replaceState(
-				{ ...history.state, locale: lang },
-				'',
-				replaceLocaleInUrl(page.url, lang)
-			);
+			replaceState(replaceLocaleInUrl(page.url, lang), { locale: lang });
 		}
 	});
 </script>

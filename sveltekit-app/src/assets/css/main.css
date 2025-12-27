@@ -117,7 +117,7 @@ button {
 
 /* Fade-in animation styles */
 .fade-in {
-	opacity: 0;
+	opacity: 1;
 	transition:
 		opacity 0.1s ease-out,
 		transform 0.1s ease-out;

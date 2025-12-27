@@ -62,7 +62,7 @@ export const handleI18n: Handle = async ({ event, resolve }) => {
 		const newPathname = `/${locale}${pathname}`;
 		// Set cookie to remember the locale
 		event.cookies.set(LOCALE_COOKIE_NAME, locale, DEFAULT_COOKIE_OPTIONS);
-		throw redirect(307, `${base}${newPathname}${event.url.search}`);
+		throw redirect(307, `${base}${newPathname}${event.url.search}${event.url.hash}`);
 	}
 
 	// Additional check: if we have a locale, verify the route exists
