@@ -29,7 +29,7 @@
 				<a href="mailto:{settings?.settings?.email}">Email {settings?.settings?.email}</a>
 			</div>
 		</div>
-		<div class="fade-in flex flex-col gap-25 md:grid-2 p-1.5 md:gap-1.5">
+		<div class="fade-in flex flex-col gap-15 md:grid-2 p-1.5 md:gap-1.5">
 			<div class="flex flex-col gap-2">
 				<div class="small-caps text-center md:text-left">{document?.hours?.heading}</div>
 				<div class="max-w-xl"><PortableText data={document?.hours?.content} /></div>
