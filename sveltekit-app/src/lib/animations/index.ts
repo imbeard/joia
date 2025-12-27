@@ -6,7 +6,7 @@ export const scrollAnimations = () => {
 
 	requestAnimationFrame(() => {
 		// Initialize fade-in animations
-		gsap.set('.fade-in', { opacity: 1 });
+		gsap.set('.fade-in', { opacity: 0 });
 		ScrollTrigger.batch('.fade-in', {
 			onEnter: (elements) => {
 				gsap.to(elements, {
