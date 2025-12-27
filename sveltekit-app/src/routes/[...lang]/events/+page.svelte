@@ -32,7 +32,7 @@
 					<div class="fade-in">
 						<Gallery data={document.gallery} fit="contain" />
 					</div>
-					<h3 class="px-1.5 md:px-0 py-40 small-caps fade-in">
+					<h3 class="px-1.5 md:px-0 py-30 md:py-40 small-caps fade-in">
 						{document.eventsBlock?.heading}
 					</h3>
 					<div class="px-1.5 md:px-0 fade-in">

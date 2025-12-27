@@ -165,9 +165,9 @@
 			<div class="flex flex-col gap-3 p-1.5 pt-25">
 				<h3 class="small-caps text-center pb-25 fade-in">Press</h3>
 				{#each press as item}
-					<a class="press-item fade-in" href={item?.link} target="_blank">
+					<a class="press-item fade-in group" href={item?.link} target="_blank">
 						<div
-							class="small-caps flex w-full justify-between pb-3 md:pb-0 md:w-fit md:flex-col md:justify-normal"
+							class="small-caps flex w-full justify-between pb-3 md:pb-0 md:w-fit md:flex-col md:justify-normal group-hover:opacity-30 transition-fast"
 						>
 							<div>{item?.magazine}</div>
 							{#if item?.releaseDate}
@@ -178,8 +178,12 @@
 								<div></div>
 							{/if}
 						</div>
-						<div class="small-caps pb-3 md:pb-0">{item?.title}</div>
-						<div><PortableText data={item?.description} /></div>
+						<div class="small-caps pb-3 md:pb-0 group-hover:opacity-30 transition-fast">
+							{item?.title}
+						</div>
+						<div class="group-hover:opacity-30 transition-fast">
+							<PortableText data={item?.description} />
+						</div>
 					</a>
 				{/each}
 			</div>

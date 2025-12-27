@@ -47,7 +47,7 @@
 			target="_blank"
 			class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a
 		>
-		<button class="py-0.5 px-1" onclick={() => ($menuOpen = !$menuOpen)}>
+		<button class="py-0.5 px-1 backdrop-blur-xl" onclick={() => ($menuOpen = !$menuOpen)}>
 			<MenuIcon />
 		</button>
 	</div>

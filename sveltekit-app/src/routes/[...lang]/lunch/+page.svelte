@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<TwoGalleriesSection section={document.twoGalleries} fit="contain" />
-		<div class="fade-in pb-10 md:py-40 px-1.5 w-full flex flex-col items-center">
+		<div class="fade-in pb-10 pt-30 md:pt-40 px-1.5 w-full flex flex-col items-center">
 			<h3 class="small-caps text-center">{document.tastingNotes?.infoSection?.heading}</h3>
 			<div class="text-center max-w-2xl">
 				<PortableText data={document.tastingNotes?.infoSection?.content} />

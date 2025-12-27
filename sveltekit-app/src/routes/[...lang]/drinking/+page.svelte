@@ -31,7 +31,7 @@
 			{/if}
 		</div>
 
-		<div class="fade-in pt-15 pb-10 md:py-40 px-1.5 w-full md:w-1/2 mx-auto">
+		<div class="fade-in pt-30 pb-10 w-full mx-auto max-w-2xl text-center md:pt-40 px-1.5 md:w-1/2">
 			<h3 class="small-caps text-center">{document?.tastingNotes?.infoSection?.heading}</h3>
 			<PortableText data={document?.tastingNotes?.infoSection?.content} />
 			<a

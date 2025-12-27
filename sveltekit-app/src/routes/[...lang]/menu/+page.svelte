@@ -68,19 +68,17 @@
 			</div>
 		{/if}
 
-		<div class="flex flex-col sm:grid-2 place-items-center pt-40">
+		<div class="flex flex-col sm:grid-2 place-items-center pt-30 md:pt-40">
 			{#if pageData?.drink}
-				<div class="fade-in w-1/2 flex flex-col items-center justify-center text-center">
+				<div class="fade-in flex flex-col items-center justify-center text-center">
 					<h3 class="small-caps">{pageData?.drink?.heading}</h3>
-					<div class="max-w-lg"><PortableText data={pageData?.drink?.content} /></div>
+					<div class="max-w-2xl"><PortableText data={pageData?.drink?.content} /></div>
 				</div>
 			{/if}
 			{#if pageData?.lunch}
-				<div
-					class="pt-10 sm:pt-0 w-1/2 flex flex-col items-center justify-center text-center fade-in"
-				>
+				<div class="pt-10 sm:pt-0 flex flex-col items-center justify-center text-center fade-in">
 					<h3 class="small-caps">{pageData?.lunch?.heading}</h3>
-					<div class="max-w-lg"><PortableText data={pageData?.lunch?.content} /></div>
+					<div class="max-w-2xl"><PortableText data={pageData?.lunch?.content} /></div>
 				</div>
 			{/if}
 		</div>

@@ -31,11 +31,13 @@
 		</div>
 		<div class="fade-in flex flex-col gap-25 md:grid-2 p-1.5 md:gap-1.5">
 			<div class="flex flex-col gap-2">
-				<div class="small-caps">{document?.hours?.heading}</div>
+				<div class="small-caps text-center md:text-left">{document?.hours?.heading}</div>
 				<div class="max-w-xl"><PortableText data={document?.hours?.content} /></div>
 			</div>
 			<div>
-				<div class="small-caps pb-2">{document?.generalInformations?.heading}</div>
+				<div class="small-caps pb-2 text-center md:text-left">
+					{document?.generalInformations?.heading}
+				</div>
 				<PortableText data={document?.generalInformations?.content} />
 			</div>
 		</div>

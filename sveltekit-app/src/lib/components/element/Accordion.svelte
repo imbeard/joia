@@ -1,5 +1,4 @@
 <script>
-	import { text } from '@sveltejs/kit';
 	import { slide } from 'svelte/transition';
 
 	let {
@@ -9,8 +8,7 @@
 		sticky = false,
 		arrow = true,
 		lineColor = '',
-		openHeight = 0,
-		aboutPage = false
+		openHeight = 0
 	} = $props();
 
 	const handleClick = () => (open = !open);
@@ -18,26 +16,16 @@
 
 <div
 	class="accordion py-1 border-y {lineColor} cursor-pointer group"
-	class:py-xs={aboutPage}
-	class:border-t-0={aboutPage}
 	onclick={handleClick}
 	onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' ? handleClick() : null)}
 	role="button"
 	tabindex="0"
 >
-	<div class="w-full flex items-center" class:sticky class:top-0={sticky}>
+	<div class="w-full flex items-center relative" class:sticky class:top-0={sticky}>
 		<div class="flex justify-between w-full group-hover:opacity-30 transition-fast">
 			{@render head()}
 		</div>
-		<button
-			class:button={aboutPage}
-			class:theme-red-pink={aboutPage}
-			class:w-3={aboutPage}
-			class:aspect-square={aboutPage}
-			class:text-red={aboutPage && open}
-			class:bg-pink={aboutPage && open}
-			class="group-hover:opacity-30 transition-fast"
-		>
+		<button class="group-hover:opacity-30 transition-fast absolute right-0">
 			{#if !open}
 				+
 			{:else}

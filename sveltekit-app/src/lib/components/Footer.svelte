@@ -32,7 +32,7 @@
 					href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}"
 					target="_blank">Privacy Policy</a
 				>
-				<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
+				<a class="small-caps" href="https://frakas.design/" target="_blank">Design by Frakas</a>
 			</div>
 			{#if data?.social}
 				<div class="hidden md:flex flex-col">
@@ -59,7 +59,7 @@
 						href="https://www.iubenda.com/privacy-policy/{$LL.iubenda()}"
 						target="_blank">Privacy Policy</a
 					>
-					<a class="small-caps" href="https://parco.studio" target="_blank">Design by Parco</a>
+					<a class="small-caps" href="https://frakas.design/" target="_blank">Design by Frakas</a>
 				</div>
 				{#if data?.social}
 					<div class="flex flex-col gap-0.5">
