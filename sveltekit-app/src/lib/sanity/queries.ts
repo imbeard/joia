@@ -33,7 +33,8 @@ export const homepageQuery = groq`{
       content[]{
         ${portableText}
       }
-    }
+    },
+    ${seo}
   },
   "menus": *[_type == "menu" && language == $language] {
     title,
@@ -329,10 +330,7 @@ export const drinkingQuery = groq`*[_type == "drinking" && language == $language
   }`;
 
 export const settingsQuery = groq`{
-  "settings" : *[_type == "settings" && language == $language][0] {
-  ...,
-  ${seo}
-  },
+  "settings" : *[_type == "settings" && language == $language][0],
   "popup" : *[_type == "popup" && language == $language][0] {
     ...,
     content[]{

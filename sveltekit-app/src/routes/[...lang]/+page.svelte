@@ -39,7 +39,7 @@
 	});
 </script>
 
-<SEO data={home?.seo} locale={data?.locale} />
+<SEO data={home?.seo} locale={data?.locale} isHomepage={true} />
 
 {#if showPopup}
 	<Popup data={popup} />

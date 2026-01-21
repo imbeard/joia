@@ -1,5 +1,5 @@
 <script>
-	let { data, pageTitle, noindex = false, locale } = $props();
+	let { data, pageTitle, noindex = false, isHomepage = false, locale } = $props();
 
 	// Default values
 	const defaults = {
@@ -11,11 +11,14 @@
 	};
 
 	// Computed values
-	const title = data?.title
-		? `${data?.title} | ${defaults.siteName} | ${locale}`
-		: pageTitle
-			? `${pageTitle} | ${defaults.siteName} | ${locale}`
-			: `${defaults.siteName} | ${locale}`;
+	const title =
+		isHomepage && data?.title
+			? `${defaults.siteName} | ${data?.title} | ${locale}`
+			: data?.title
+				? `${data?.title} | ${defaults.siteName} | ${locale}`
+				: pageTitle
+					? `${pageTitle} | ${defaults.siteName} | ${locale}`
+					: `${defaults.siteName} | ${locale}`;
 	const description = data?.description;
 	const image = data?.imageUrl || defaults?.ogImage;
 	const ogType = data?.ogType || defaults?.ogType;
