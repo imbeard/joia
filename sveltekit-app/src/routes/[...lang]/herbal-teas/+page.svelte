@@ -12,7 +12,11 @@
 	let document = $derived(data?.document?.data);
 </script>
 
-<SEO data={document?.seo} pageTitle={document?.title} locale={data?.locale} />
+<SEO
+	data={document?.seo}
+	pageTitle={document?.seo?.title || document?.title}
+	locale={data?.locale}
+/>
 
 {#if document}
 	<main class="p-1.5">

@@ -31,7 +31,7 @@
 	});
 </script>
 
-<SEO data={pageData?.seo} pageTitle={pageData?.heading} locale={data?.locale} />
+<SEO data={pageData?.seo} pageTitle={pageData?.heading || 'Menu'} locale={data?.locale} />
 
 {#if pageData}
 	<main class="p-1.5">
