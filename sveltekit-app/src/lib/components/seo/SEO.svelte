@@ -11,20 +11,21 @@
 	};
 
 	// Computed values
-	const title =
+	let title = $derived(
 		isHomepage && data?.title
 			? `${defaults.siteName} | ${data?.title} | ${locale}`
 			: data?.title
 				? `${data?.title} | ${defaults.siteName} | ${locale}`
 				: pageTitle
 					? `${pageTitle} | ${defaults.siteName} | ${locale}`
-					: `${defaults.siteName} | ${locale}`;
-	const description = data?.description;
-	const image = data?.imageUrl || defaults?.ogImage;
-	const ogType = data?.ogType || defaults?.ogType;
-	const twitterCard = data?.imageUrl || defaults?.ogImage;
-	const siteName = data?.siteName || defaults?.siteName;
-	const canonical = data?.canonical;
+					: `${defaults.siteName} | ${locale}`
+	);
+	let description = $derived(data?.description);
+	let image = $derived(data?.imageUrl || defaults?.ogImage);
+	let ogType = $derived(data?.ogType || defaults?.ogType);
+	let twitterCard = $derived(data?.imageUrl || defaults?.ogImage);
+	let siteName = $derived(data?.siteName || defaults?.siteName);
+	let canonical = $derived(data?.canonical);
 </script>
 
 <svelte:head>
