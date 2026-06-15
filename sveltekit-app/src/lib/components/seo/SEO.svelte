@@ -1,31 +1,50 @@
-<script>
-	let { data, pageTitle, noindex = false, isHomepage = false, locale } = $props();
+<script lang="ts">
+	type Props = {
+		data?: any;
+		pageTitle?: string;
+		noindex?: boolean;
+		pageDescription?: string;
+		isHomepage?: boolean;
+		locale?: string;
+	};
+
+	let {
+		data,
+		pageTitle,
+		noindex = false,
+		isHomepage = false,
+		locale,
+		pageDescription
+	}: Props = $props();
 
 	// Default values
 	const defaults = {
 		ogType: 'website',
-		ogImage: '/images/ogImage.jpg',
+		image: '/images/ogImage.jpg',
 		siteName: 'Joia',
-		siteDescription: 'Joia: alta cucina vegetariana',
+		pageDescription,
 		locale: 'it'
 	};
 
-	// Computed values
-	let title = $derived(
-		isHomepage && data?.title
-			? `${defaults.siteName} | ${data?.title} | ${locale}`
-			: data?.title
-				? `${data?.title} | ${defaults.siteName} | ${locale}`
-				: pageTitle
-					? `${pageTitle} | ${defaults.siteName} | ${locale}`
-					: `${defaults.siteName} | ${locale}`
+	// Computed values - all must be available during SSR
+	const title = $derived.by(() => {
+		if (data?.title) {
+			return `${data.title}`;
+		}
+		if (pageTitle) {
+			return `${pageTitle}`;
+		}
+		return `${defaults.siteName}`;
+	});
+
+	const description = $derived(
+		pageDescription ? pageDescription : data?.description ? data?.description : null
 	);
-	let description = $derived(data?.description);
-	let image = $derived(data?.imageUrl || defaults?.ogImage);
-	let ogType = $derived(data?.ogType || defaults?.ogType);
-	let twitterCard = $derived(data?.imageUrl || defaults?.ogImage);
-	let siteName = $derived(data?.siteName || defaults?.siteName);
-	let canonical = $derived(data?.canonical);
+	const image = $derived(data?.image || null);
+	const ogType = $derived(data?.ogType || defaults.ogType);
+	const twitterCard = $derived(image ? 'summary_large_image' : 'summary');
+	const siteName = $derived(data?.siteName || defaults.siteName);
+	const canonical = $derived(data?.canonical);
 </script>
 
 <svelte:head>
