@@ -1,5 +1,5 @@
 <script>
-	import LL from '$i18n/i18n-svelte';
+	import LL, { locale } from '$i18n/i18n-svelte';
 	import { menuOpen } from '$lib/stores/header';
 	import CloseIcon from '$lib/components/svg/CloseIcon.svelte';
 	import LocaleSwitcher from '$lib/components/LocaleSwitcher.svelte';
@@ -61,7 +61,7 @@
 			><div class="w-12 h-full">{$LL.book()}</div></a
 		>
 		<a
-			href="https://joia.bonkdo.com/en/"
+			href={`https://joia.shop.bonkdo.com/${$locale === 'it' ? 'it' : 'en'}/`}
 			target="_blank"
 			class="button border border-white w-fit small-caps menu-btn"
 			><div class="w-12 h-full">{$LL.gift()}</div></a

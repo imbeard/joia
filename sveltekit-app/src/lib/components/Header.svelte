@@ -1,5 +1,5 @@
 <script>
-	import LL from '$i18n/i18n-svelte';
+	import LL, { locale } from '$i18n/i18n-svelte';
 
 	import { onMount } from 'svelte';
 	import { headerHeight, menuOpen } from '$lib/stores/header';
@@ -43,7 +43,7 @@
 			class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.book()}</a
 		>
 		<a
-			href="https://joia.bonkdo.com/en/"
+			href={`https://joia.shop.bonkdo.com/${$locale === 'it' ? 'it' : 'en'}/`}
 			target="_blank"
 			class="py-0.5 px-1 backdrop-blur-xl hidden md:block">{$LL.gift()}</a
 		>

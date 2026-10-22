@@ -13,7 +13,6 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import HeadHrefLangs from '$lib/components/HeaderHrefLangs.svelte';
-	import Popup from '$lib/components/Popup.svelte';
 	import { scrollAnimations } from '$lib/animations';
 	import { popupToOpen } from '$lib/stores/popup';
 
@@ -21,30 +20,14 @@
 	setLocale(data.locale);
 
 	let settings = $derived(data?.settings?.data?.settings);
-	let popup = $derived(data?.settings?.data?.popup);
 	let name = $derived(settings?.companyName);
 	let season = $derived(settings?.season);
 	let mounted = $state(false);
 	let initialUrl = $state('');
-	let popupActive = $derived(popup?.isActive === true);
-	let showPopup = $derived(
-		mounted &&
-			$popupToOpen &&
-			popupActive &&
-			browser &&
-			sessionStorage &&
-			sessionStorage.getItem('popupShown') === 'false'
-	);
 
 	let pluginsInitialized = $state(false);
 
 	onMount(() => {
-		if (browser && !sessionStorage.getItem('popupShown')) {
-			sessionStorage.setItem('popupShown', 'false');
-		} else if (browser && sessionStorage.getItem('popupShown') === 'true') {
-			popupToOpen.set(false);
-		}
-
 		// Initialize GSAP
 		if (!pluginsInitialized) {
 			gsap.registerPlugin(ScrollTrigger);
@@ -87,14 +70,6 @@
 			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 		};
 	});
-
-	// $effect(() => {
-	// 	if (showPopup && browser) {
-	// 		document.body.classList.add('overflow-hidden');
-	// 	} else {
-	// 		document.body.classList.remove('overflow-hidden');
-	// 	}
-	// });
 </script>
 
 <svelte:head>

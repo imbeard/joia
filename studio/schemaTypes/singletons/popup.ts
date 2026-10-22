@@ -19,6 +19,19 @@ export const popup = defineType({
       type: 'boolean',
     }),
     defineField({
+      name: 'display',
+      title: 'Display',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Once per browser session', value: 'session'},
+          {title: 'Every visit to the homepage', value: 'always'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'session',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',

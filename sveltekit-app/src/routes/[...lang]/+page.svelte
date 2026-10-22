@@ -35,7 +35,7 @@
 
 	onMount(() => {
 		mounted = true;
-		popupToOpen.set(true);
+		popupToOpen.set(popup?.display === 'always' || !sessionStorage.getItem('popupShown'));
 	});
 </script>
 
