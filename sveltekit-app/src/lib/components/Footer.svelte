@@ -10,7 +10,11 @@
 	<div class="pl-[1.2rem] pt-[8.4rem] w-20"><Logo fill="var(--color-green)" /></div>
 
 	<div>
-		<img class="pl-1.5 hidden md:block" src="/michelin.png" alt="" />
+		<div class="pl-1.5 pb-2 hidden md:flex items-center gap-3.5">
+			<img class="h-[95px] w-auto" src="/michelin.png" alt="Michelin Guide 2025" />
+			<div class="w-px h-[90px] bg-green"></div>
+			<img class="h-[90px] w-auto" src="/green-guide.png" alt="Green Guide" />
+		</div>
 		<div class="p-1.5 flex flex-col gap-5 md:gap-0 md:flex-row md:justify-between">
 			<div>
 				<div class="small-caps">{data?.companyName}</div>
