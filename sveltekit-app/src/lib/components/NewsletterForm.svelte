@@ -18,7 +18,7 @@
 		register-email-subject="Subject of registered email"
 		verify-email="https://www.stampready.net/api2/example/confirm/index.html"
 		verify-email-subject="Confirm subscription to JOIA newsletter"
-		onclick={submit}
+		onclick={() => window.submit?.()}
 	/>
 	<div class="absolute right-0 pointer-events-none">
 		<ArrowRight fill="var(--color-white)" />

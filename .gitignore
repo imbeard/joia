@@ -1,1 +1,4 @@
 /node_modules
+/sveltekit-app/.netlify
+/sveltekit-app/.DS_Store
+.gitignore
