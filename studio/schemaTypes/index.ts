@@ -2,7 +2,6 @@
 import {menu} from './documents/menu'
 import {press} from './documents/press'
 import {wine} from './documents/wine'
-import {softDrink} from './documents/softDrink'
 import {herbalTea} from './documents/herbalTea'
 
 // objects
@@ -45,7 +44,6 @@ export const schemaTypes = [
   menu,
   press,
   wine,
-  softDrink,
   herbalTea,
 
   // objects

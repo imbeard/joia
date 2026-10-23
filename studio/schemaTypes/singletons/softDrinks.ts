@@ -33,46 +33,20 @@ export const softDrinks = defineType({
       type: 'text',
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
+      name: 'description',
+      title: 'Description',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'sectionsHeading',
+      title: 'Sections Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'gallerySections',
+      title: 'Gallery Sections',
       type: 'array',
-      of: [
-        {
-          name: 'category',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-            }),
-            defineField({
-              name: 'subCategories',
-              title: 'Sub Categories',
-              type: 'array',
-              of: [
-                {
-                  name: 'subCategory',
-                  type: 'object',
-                  fields: [
-                    defineField({
-                      name: 'title',
-                      title: 'Title',
-                      type: 'string',
-                    }),
-                    defineField({
-                      name: 'drink',
-                      title: 'Drink',
-                      type: 'array',
-                      of: [{type: 'reference', to: [{type: 'softDrink'}]}],
-                    }),
-                  ],
-                },
-              ],
-            }),
-          ],
-        },
-      ],
+      of: [{type: 'gallerySection'}],
     }),
     defineField({
       name: 'tastingNotes',

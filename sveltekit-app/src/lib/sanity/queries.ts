@@ -206,11 +206,17 @@ export const winesQuery = groq`*[_type == "wines" && language == $language][0] {
 
 export const softDrinksQuery = groq`*[_type == "softDrinks" && language == $language][0] {
   ...,
-  categories[] {
-  title,
-    subCategories[] {
-      title,
-      drink[]->
+  description[] {
+    ${portableText}
+  },
+  gallerySections[] {
+    ...,
+    cta {
+      label,
+      url->{
+          "_type": _type,
+          language,
+      }
     }
   },
   tastingNotes {

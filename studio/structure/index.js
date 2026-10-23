@@ -1,5 +1,5 @@
 import {FolderIcon} from '@sanity/icons'
-import {herbalTeaList, menuList, pressList, softDrinksList, wineList} from './translations'
+import {herbalTeaList, menuList, pressList, wineList} from './translations'
 
 export const structure = (S, context) =>
   S.list()
@@ -64,7 +64,6 @@ export const structure = (S, context) =>
 
       menuList(S),
       wineList(S),
-      softDrinksList(S),
       herbalTeaList(S),
       pressList(S, context),
 
